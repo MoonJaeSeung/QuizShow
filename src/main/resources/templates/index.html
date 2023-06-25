@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>퀴즈맞추기 시작화면</title>
+    <style>
+        body {
+            text-align: center;
+            padding-top: 150px;
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .nickname-input {
+            width: 200px;
+            padding: 10px;
+            font-size: 16px;
+        }
+
+        .submit-button {
+            margin-left: 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+
+        .submit-button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+<h1>퀴즈맞추기</h1>
+<div class="container">
+    <form action="/start" method="post">
+        <input type="text" class="nickname-input" id="nick" name="nick" placeholder="닉네임을 입력하세요">
+        <button class="submit-button" type="submit">시작</button>
+    </form>
+
+</div>
+</body>
+</html>

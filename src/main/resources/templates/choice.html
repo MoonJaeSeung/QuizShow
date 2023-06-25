@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>퀴즈맞추기 게임 선택</title>
+  <style>
+    body {
+      text-align: center;
+      padding-top: 150px;
+      font-family: Arial, sans-serif;
+    }
+
+    h1 {
+      color: #333;
+    }
+
+    .container {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+    }
+
+    .game-button {
+      margin: 10px;
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #4CAF50;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+    }
+
+    .game-button:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+<h1>퀴즈맞추기</h1>
+<div class="container">
+  <a th:href="@{/game/lion}" class="game-button">사자성어 맞추기</a>
+  <a th:href="@{/game/celebrity}" class="game-button">연예인 이름 맞추기</a>
+</div>
+</body>
+</html>
