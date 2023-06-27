@@ -8,10 +8,11 @@ group = 'com.example'
 version = '0.0.1-SNAPSHOT'
 
 java {
-    sourceCompatibility = '11'
+    sourceCompatibility = '17' // Java 17으로 변경
+    targetCompatibility = '17' // Java 17으로 변경
 }
 
-jar{
+jar {
     enabled = false
 }
 
