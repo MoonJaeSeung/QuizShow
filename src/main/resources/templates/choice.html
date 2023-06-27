@@ -57,7 +57,7 @@
   <a th:href="@{/game/celebrity}" class="game-button">연예인 이름 맞추기</a>
 </div>
 <div class="member-list">
-  <div class="member-list-title">현재 가입한 회원들:</div>
+  <div class="member-list-title">현재 가입한 회원들.:</div>
   <ul>
     <li th:each="member : ${members}" class="member-list-item" th:text="${member.nick}"></li>
 
