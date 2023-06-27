@@ -53,9 +53,9 @@ jobs:
       ## 웹 이미지 빌드 및 도커허브에 push
       - name: web docker build and push
         run: |
-          docker login -u wotmdskfk32@naver.com -p fn2812sl!!
-          docker build -t ${{ secrets.DOCKER_REPO }}/moon .
-          docker push ${{ secrets.DOCKER_REPO }}/moon
+          docker login -u MoonJaeSeung -p fn2812sl!!
+          docker build -t moonjaeseung/moon .
+          docker push moonjaeseung/moon
 
       ## docker compose up
       - name: executing remote ssh commands using password
