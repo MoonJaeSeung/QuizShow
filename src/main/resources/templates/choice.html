@@ -32,6 +32,22 @@
     .game-button:hover {
       background-color: #45a049;
     }
+
+    .member-list {
+      text-align: left;
+      margin-top: 30px;
+    }
+
+    .member-list-title {
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .member-list-item {
+      font-size: 14px;
+      margin-bottom: 5px;
+    }
   </style>
 </head>
 <body>
@@ -39,6 +55,13 @@
 <div class="container">
   <a th:href="@{/game/lion}" class="game-button">사자성어 맞추기</a>
   <a th:href="@{/game/celebrity}" class="game-button">연예인 이름 맞추기</a>
+</div>
+<div class="member-list">
+  <div class="member-list-title">현재 가입한 회원들:</div>
+  <ul>
+    <li th:each="member : ${members}" class="member-list-item" th:text="${member.nick}"></li>
+
+  </ul>
 </div>
 </body>
 </html>

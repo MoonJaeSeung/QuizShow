@@ -1,8 +1,13 @@
 package com.example.gp.entity;
 
-import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.ToString;
+
+import javax.persistence.*;
 
 @Entity
+@ToString
+@Getter
 public class Member {
 
     @Id

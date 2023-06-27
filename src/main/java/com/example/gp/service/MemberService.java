@@ -6,6 +6,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class MemberService {
 
@@ -15,6 +17,10 @@ public class MemberService {
     public void save(String nick) {
         Member member = new Member(nick);
         memberRepository.save(member);
+    }
+
+    public List<Member> getAllMembers() {
+        return memberRepository.findAll();
     }
 }
 
