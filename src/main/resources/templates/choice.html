@@ -4,9 +4,20 @@
   <title>퀴즈맞추기 게임 선택</title>
   <style>
     body {
-      text-align: center;
-      padding-top: 150px;
       font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .main {
+      background-color: #fff;
+      padding: 20px;
+      text-align: center;
+      margin-bottom: 20px;
     }
 
     h1 {
@@ -16,7 +27,6 @@
     .container {
       display: flex;
       justify-content: center;
-      margin-top: 20px;
     }
 
     .game-button {
@@ -34,8 +44,10 @@
     }
 
     .member-list {
-      text-align: left;
-      margin-top: 30px;
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      font-size: 12px;
     }
 
     .member-list-title {
@@ -51,17 +63,21 @@
   </style>
 </head>
 <body>
-<h1>퀴즈맞추기</h1>
-<div class="container">
-  <a th:href="@{/game/lion}" class="game-button">단어 이어서 말하기</a>
-  <a th:href="@{/game/celebrity}" class="game-button">연예인 이름 맞추기</a>
-</div>
 <div class="member-list">
-  <div class="member-list-title">현재 가입한 회원들.:</div>
+  <div class="member-list-title">현재 가입한 회원들</div>
   <ul>
-    <li th:each="member : ${members}" class="member-list-item" th:text="${member.nick}"></li>
-
+    <li th:each="member, stat : ${members}" class="member-list-item"
+        th:text="${member.nick}" th:if="${stat.index < 5}"></li>
   </ul>
+</div>
+<div class="main">
+  <div class="header">
+    <h1>퀴즈맞추기</h1>
+  </div>
+  <div class="container">
+    <a th:href="@{/game/lion}" class="game-button">단어 이어서 말하기</a>
+    <a th:href="@{/game/celebrity}" class="game-button">연예인 이름 맞추기</a>
+  </div>
 </div>
 </body>
 </html>

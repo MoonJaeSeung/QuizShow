@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 @RequestMapping
@@ -29,15 +31,21 @@ public class MemberController {
     }
 
     @PostMapping("/start")
-    public String startGame(@RequestParam("nick") String nick, Model model) {
-        // 사용할 닉네임 선택
+    public String startGame(@RequestParam("nick") String nick, Model model, HttpServletResponse response) {
+        // 사용할 닉네임 설정
         memberService.save(nick);
+
+        // 닉네임 쿠키에 담기
+        Cookie nickCookie = new Cookie("nick", nick);
+        nickCookie.setMaxAge(3600);  //쿠키 유효시간 설정
+        response.addCookie(nickCookie);
+
         // 닉네임(nickname)을 이용하여 게임 데이터를 초기화하거나 처리하는 로직을 구현하세요.
         List<Member> members = memberService.getAllMembers(); // 회원 리스트를 가져오는 메서드
         model.addAttribute("members", members); // 모델에 회원 리스트를 추가
 
 
 // 게임 선택 화면(choice.html)으로 이동합니다.
-        return "choice";
+        return "redirect:/choice";
     }
 }

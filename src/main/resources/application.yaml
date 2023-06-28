@@ -1,15 +1,3 @@
-## RDS ?? ??
-#spring.datasource.url=jdbc:mariadb://quiz2.cj6w8kog5kvm.ap-northeast-2.rds.amazonaws.com:3307/gp?serverTimezone=Asia/Seoul
-#spring.datasource.username=moon2
-#spring.datasource.password=fn2812sl
-#spring.datasource.driver-class-name=org.mariadb.jdbc.Driver
-#spring.jpa.database-platform=org.hibernate.dialect.MariaDBDialect
-#
-#spring.jpa.hibernate.ddl-auto=update
-#
-#logging.level.root=info
-
-
 spring:
   datasource:
     url: jdbc:mariadb://quiz2.cj6w8kog5kvm.ap-northeast-2.rds.amazonaws.com:3307/gp?serverTimezone=Asia/Seoul
@@ -23,3 +11,5 @@ spring:
 logging:
   level:
     root: info
+server:
+  port: 8080
