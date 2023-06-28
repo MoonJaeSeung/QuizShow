@@ -17,6 +17,9 @@ import java.util.List;
 @Slf4j
 public class GameController {
 
-
+    @GetMapping("/game/word")
+    public String showGameWord(){
+        return "/game/gameWord";
+    }
 
 }
