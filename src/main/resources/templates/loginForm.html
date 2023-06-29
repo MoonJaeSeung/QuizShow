@@ -25,6 +25,13 @@
             font-size: 16px;
         }
 
+        .password-input {
+            display: none;
+            width: 200px;
+            padding: 10px;
+            font-size: 16px;
+        }
+
         .submit-button {
             margin-left: 10px;
             padding: 10px 20px;
@@ -43,11 +50,24 @@
 <body>
 <h1>퀴즈맞추기</h1>
 <div class="container">
-    <form action="/start" method="post">
+    <form role="form" method="post" action="/members/login">
         <input type="text" class="nickname-input" id="nick" name="nick" placeholder="닉네임을 입력하세요">
+        <input type="password" class="password-input" id="password" name="password" placeholder="비밀번호를 입력하세요">
         <button class="submit-button" type="submit">시작</button>
     </form>
-
 </div>
+
+<script th:inline="javascript">
+    var nicknameInput = document.getElementById('nick');
+    var passwordInput = document.getElementById('password');
+
+    nicknameInput.addEventListener('input', function() {
+        if (nicknameInput.value === 'admin') {
+            passwordInput.style.display = 'block';
+        } else {
+            passwordInput.style.display = 'none';
+        }
+    });
+</script>
 </body>
 </html>
