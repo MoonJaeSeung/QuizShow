@@ -46,6 +46,8 @@ dependencies {
 
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'commons-fileupload:commons-fileupload:1.4'
+
+    implementation 'nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect'
 }
 
 //querydsl 추가 시작
