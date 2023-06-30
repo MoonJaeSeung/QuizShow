@@ -2,6 +2,69 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Guess the Word</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        #wordContainer {
+            margin-top: 50px;
+        }
+
+        #guessForm {
+            display: inline-block;
+            text-align: left;
+            background-color: #f5f5f5;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            font-weight: bold;
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        input[type="text"] {
+            padding: 5px;
+            font-size: 16px;
+            border-radius: 3px;
+            border: 1px solid #ccc;
+            width: 200px;
+        }
+
+        button[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 8px 16px;
+            font-size: 16px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        #errorContainer {
+            margin-top: 20px;
+            font-size: 16px;
+        }
+
+        #completionMessage {
+            font-size: 20px;
+            font-weight: bold;
+            margin-top: 50px;
+        }
+    </style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
@@ -20,6 +83,17 @@
     var correctGuesses = 0; // count of correct guesses
     var incorrectGuessesForCurrentWord = 0; // count of incorrect guesses for the current word
 
+    // Function to shuffle the words array
+    function shuffleArray(array) {
+        for (var i = array.length - 1; i > 0; i--) {
+            var j = Math.floor(Math.random() * (i + 1));
+            var temp = array[i];
+            array[i] = array[j];
+            array[j] = temp;
+        }
+        return array;
+    }
+
     function generateForm() {
         // get the current word index
         var currentWordIndex = parseInt($('#currentWordIndex').val());
@@ -31,10 +105,10 @@
             var hiddenPart = word.fullWord.substring(2); // Get the rest of the word
 
             var formHtml = '<form id="guessForm">' +
-                '<label for="guess">' + revealedPart + ' __</label>' +
+                '<label for="guess">' + revealedPart + ' __</label><br>' +
                 '<input type="hidden" id="wordId" value="' + word.id + '">' +
                 '<input type="hidden" id="hiddenPart" value="' + hiddenPart + '">' +
-                '<input type="text" id="guess" required>' +
+                '<input type="text" id="guess" required><br>' +
                 '<button type="submit">Submit Guess</button>' +
                 '</form>';
 
@@ -76,9 +150,12 @@
             });
         } else {
             // no more words, display a completion message
-            $('#wordContainer').html('<p>You have correctly guessed ' + correctGuesses + ' out of ' + words.length + ' words!</p>');
+            $('#wordContainer').html('<p id="completionMessage">You have correctly guessed ' + correctGuesses + ' out of ' + words.length + ' words!</p>');
         }
     }
+
+    // Shuffle the words array
+    words = shuffleArray(words);
 
     // generate the first form when the page loads
     $(document).ready(function() {
