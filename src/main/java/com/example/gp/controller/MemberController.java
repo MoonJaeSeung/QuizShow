@@ -34,10 +34,6 @@ public class MemberController {
     @PostMapping(value="/login")
     public String login(@RequestParam("nick") String nick, Model model, HttpServletResponse response){
 
-        List<Member> allMembers = memberService.getAllMembers();
-        System.out.println("allMembers = " + allMembers);
-
-
         Cookie nickCookie = new Cookie("nick", nick);
         nickCookie.setMaxAge(3600);  //쿠키 유효시간 설정
         response.addCookie(nickCookie);

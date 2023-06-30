@@ -12,9 +12,13 @@
 
 <!-- This is a hidden field for storing the current word's index -->
 <input type="hidden" id="currentWordIndex" value="0">
+<!-- A div for displaying error messages -->
+<div id="errorContainer" style="color: red;"></div>
 <script th:inline="javascript">
     /*<![CDATA[*/
     var words = /*[[${words}]]*/ []; // get the words from the Thymeleaf model
+    var correctGuesses = 0; // count of correct guesses
+    var incorrectGuessesForCurrentWord = 0; // count of incorrect guesses for the current word
 
     function generateForm() {
         // get the current word index
@@ -36,6 +40,7 @@
 
             // set the form HTML in the wordContainer
             $('#wordContainer').html(formHtml);
+            $('#errorContainer').html(''); // clear any existing error messages
 
             // attach the form submit event handler
             $('#guessForm').on('submit', function(event) {
@@ -49,18 +54,29 @@
 
                 // check if the guess matches the hidden part
                 if (guess.toLowerCase() === hiddenPart.toLowerCase()) {
-                    // if the guess is correct, increment the current word index
+                    // if the guess is correct, increment the current word index and correctGuesses
                     $('#currentWordIndex').val(currentWordIndex + 1);
+                    correctGuesses++;
+                    incorrectGuessesForCurrentWord = 0; // reset the count of incorrect guesses
                     generateForm(); // generate the next form
                 } else {
-                    // if the guess is incorrect, show an error message and clear the input
-                    alert('Incorrect guess! Please try again.');
-                    $('#guess').val('');
+                    incorrectGuessesForCurrentWord++;
+                    if (incorrectGuessesForCurrentWord >= 2) {
+                        // if the user has guessed incorrectly twice, move to the next word
+                        $('#errorContainer').html('You have guessed incorrectly twice. Moving to the next word.');
+                        $('#currentWordIndex').val(currentWordIndex + 1);
+                        incorrectGuessesForCurrentWord = 0; // reset the count of incorrect guesses
+                        generateForm(); // generate the next form
+                    } else {
+                        // if the guess is incorrect, show an error message and clear the input
+                        $('#errorContainer').html('Incorrect guess! Please try again.');
+                        $('#guess').val('');
+                    }
                 }
             });
         } else {
             // no more words, display a completion message
-            $('#wordContainer').html('<p>You have guessed all the words!</p>');
+            $('#wordContainer').html('<p>You have correctly guessed ' + correctGuesses + ' out of ' + words.length + ' words!</p>');
         }
     }
 
