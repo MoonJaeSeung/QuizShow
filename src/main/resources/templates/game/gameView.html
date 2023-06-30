@@ -2,14 +2,73 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Guess the Word</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
 <h1>Guess the Word</h1>
-<form th:action="@{/guess}" method="post">
-    <label for="guess"><span th:text="${#strings.substring(currentWord.fullWord, 0, 2)}"></span>__</label>
-    <input type="hidden" name="wordId" th:value="${currentWord.id}">
-    <input type="text" id="guess" name="guess" required>
-    <button type="submit">Submit Guess</button>
-</form>
+<div id="wordContainer">
+    <!-- The JavaScript code will generate the forms here -->
+</div>
+
+<!-- This is a hidden field for storing the current word's index -->
+<input type="hidden" id="currentWordIndex" value="0">
+<script th:inline="javascript">
+    /*<![CDATA[*/
+    var words = /*[[${words}]]*/ []; // get the words from the Thymeleaf model
+
+    function generateForm() {
+        // get the current word index
+        var currentWordIndex = parseInt($('#currentWordIndex').val());
+
+        if (currentWordIndex < words.length) {
+            // create the HTML for the form
+            var word = words[currentWordIndex];
+            var revealedPart = word.fullWord.substring(0, 2); // Get the first two letters
+            var hiddenPart = word.fullWord.substring(2); // Get the rest of the word
+
+            var formHtml = '<form id="guessForm">' +
+                '<label for="guess">' + revealedPart + ' __</label>' +
+                '<input type="hidden" id="wordId" value="' + word.id + '">' +
+                '<input type="hidden" id="hiddenPart" value="' + hiddenPart + '">' +
+                '<input type="text" id="guess" required>' +
+                '<button type="submit">Submit Guess</button>' +
+                '</form>';
+
+            // set the form HTML in the wordContainer
+            $('#wordContainer').html(formHtml);
+
+            // attach the form submit event handler
+            $('#guessForm').on('submit', function(event) {
+                event.preventDefault(); // prevent the form from being submitted normally
+
+                // get the user's guess
+                var guess = $('#guess').val();
+
+                // get the hidden part
+                var hiddenPart = $('#hiddenPart').val();
+
+                // check if the guess matches the hidden part
+                if (guess.toLowerCase() === hiddenPart.toLowerCase()) {
+                    // if the guess is correct, increment the current word index
+                    $('#currentWordIndex').val(currentWordIndex + 1);
+                    generateForm(); // generate the next form
+                } else {
+                    // if the guess is incorrect, show an error message and clear the input
+                    alert('Incorrect guess! Please try again.');
+                    $('#guess').val('');
+                }
+            });
+        } else {
+            // no more words, display a completion message
+            $('#wordContainer').html('<p>You have guessed all the words!</p>');
+        }
+    }
+
+    // generate the first form when the page loads
+    $(document).ready(function() {
+        generateForm();
+    });
+    /*]]>*/
+</script>
 </body>
 </html>
