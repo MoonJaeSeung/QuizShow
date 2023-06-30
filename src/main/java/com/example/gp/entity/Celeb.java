@@ -1,7 +1,9 @@
 package com.example.gp.entity;
 
 import com.sun.istack.NotNull;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,6 +12,7 @@ import javax.persistence.Id;
 
 @NoArgsConstructor
 @Entity
+@Getter @Setter
 public class Celeb {
 
     @Id
@@ -24,4 +27,9 @@ public class Celeb {
 
     private String fileUrl;
 
+    public void updateCeleb(String filename, String fileOriName, String fileUrl) {
+        this.fileName = filename;
+        this.fileOriName = fileOriName;
+        this.fileUrl = fileUrl;
+    }
 }

@@ -17,7 +17,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
-@RequestMapping("/members")
+
 @Controller
 @RequiredArgsConstructor
 @Slf4j
@@ -31,35 +31,26 @@ public class MemberController {
         return "/loginForm";
     }
 
+    @PostMapping(value="/login")
+    public String login(@RequestParam("nick") String nick, Model model, HttpServletResponse response){
 
+        List<Member> allMembers = memberService.getAllMembers();
+        System.out.println("allMembers = " + allMembers);
+
+
+        Cookie nickCookie = new Cookie("nick", nick);
+        nickCookie.setMaxAge(3600);  //쿠키 유효시간 설정
+        response.addCookie(nickCookie);
+
+        return "choice";
+
+
+    }
 
     @GetMapping(value = "/login/error")
     public String loginError(Model model){
         model.addAttribute("loginErrorMsg", "아이디 또는 비밀번호를 확인해주세요");
         return "/loginForm";
     }
-
-//    @GetMapping("/choice")
-//    public String showGameChoice() {
-//        return "choice";
-//    }
-//
-//    @PostMapping("/start")
-//    public String startGame(@RequestParam("nick") String nick, Model model, HttpServletResponse response) {
-//        // 사용할 닉네임 설정
-//        if ("admin".equals(nick)) {
-//            adminService.loadUserByUsername(nick);
-//        }
-//        // 닉네임 쿠키에 담기
-//        Cookie nickCookie = new Cookie("nick", nick);
-//        nickCookie.setMaxAge(3600);  //쿠키 유효시간 설정
-//        response.addCookie(nickCookie);
-//
-//        log.info("abcd");
-//
-//// 게임 선택 화면(choice.html)으로 이동합니다.
-//        return "redirect:/choice";
-//    }
-
 
 }

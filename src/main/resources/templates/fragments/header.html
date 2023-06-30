@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <style>
+        /* CSS for navbar */
+        .navbar {
+            background-color: transparent;
+            border-bottom: 2px solid mediumpurple;
+        }
+
+        .navbar-brand {
+            color: #000;
+            font-weight: bold;
+        }
+
+        .navbar-nav .nav-link {
+            color: #000;
+            font-size: 18px;
+            font-family: 'Arial', sans-serif;
+            font-weight: bold;"
+        }
+
+        .navbar-nav .nav-link:hover {
+            background-color: #228b22;
+            color: #fff;
+        }
+
+        /* CSS for form */
+        .form-inline .form-control {
+            width: 200px;
+        }
+
+        .form-inline .btn {
+            background-color: #fff;
+            color: #87ceeb;
+        }
+
+        .form-inline .btn:hover {
+            background-color: #e9ecef;
+            color: #228b22;
+        }
+
+
+    </style>
+
+</head>
+<body>
+<div th:fragment="header">
+    <nav class="navbar navbar-expand-sm bg-primary navbar-dark" style="background-color: rgb(255,255,255) !important;">
+        <button class="navbar-toggler" type="button" data-toggle="collapse"
+                data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03"
+                aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <img src="/static/img/jewlry.png" style="width: 70px"></img>
+        <a class="navbar-brand" href="/" style="color: #ac89ff;  font-size: 18px; font-family: 'Arial', sans-serif; margin-right: 0px; font-weight: bold;">보물 상자</a>
+        <div class="collapse navbar-collapse justify-content-center align-items-center" id="navbarTogglerDemo03">
+
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0" style="margin: auto">
+                <li class="nav-item" sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
+                    <a class="nav-link" href="/admin/item/new"
+                       style="color: black; font-size: 18px; font-family: 'Arial', sans-serif; font-weight: bold;">상품 등록</a>
+                </li>
+                <li class="nav-item" sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
+                    <a class="nav-link" href="/admin/items"
+                       style="color: black;  font-size: 18px; font-family: 'Arial', sans-serif; font-weight: bold;">
+                        상품 관리</a>
+                </li>
+                <li class="nav-item" sec:authorize="isAuthenticated()">
+                    <a class="nav-link" href="/cart"
+                       style="color: black;  font-size: 18px; font-family: 'Arial', sans-serif; font-weight: bold;">
+                        장바구니</a>
+                </li>
+                <li class="nav-item" sec:authorize="isAuthenticated()">
+                    <a class="nav-link" href="/orders"
+                       style="color: black;  font-size: 18px; font-family: 'Arial', sans-serif; font-weight: bold;">
+                    구매이력</a>
+                </li>
+                <li class="nav-item" sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
+                    <a class="nav-link" href="/admin/coupons"
+                       style="color: black;  font-size: 18px; font-family: 'Arial', sans-serif; font-weight: bold;">
+                    쿠폰관리</a>
+                </li>
+                <li class="nav-item" sec:authorize="isAnonymous()">
+                    <a class="nav-link" href="/members/login"
+                       style="color: black;  font-size: 18px; font-family: 'Arial', sans-serif; font-weight: bold;">
+                    로그인</a>
+                </li>
+                <li class="nav-item" sec:authorize="isAuthenticated()">
+                    <a class="nav-link" href="/members/logout"
+                       style="color: black;  font-size: 18px; font-family: 'Arial', sans-serif; font-weight: bold;">
+                    로그아웃</a>
+                </li>
+            </ul>
+
+        </div>
+    </nav>
+</div>
+</body>
+</html>

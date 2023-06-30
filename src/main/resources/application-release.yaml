@@ -1,0 +1,19 @@
+
+
+spring:
+  datasource:
+    url: jdbc:mariadb://quiz2.cj6w8kog5kvm.ap-northeast-2.rds.amazonaws.com:3307/gp?serverTimezone=Asia/Seoul
+    username: moon2
+    password: fn2812sl
+    driver-class-name: org.mariadb.jdbc.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.MariaDBDialect
+    hibernate:
+      ddl-auto: update
+logging:
+  level:
+    root: info
+server:
+  port: 8080
+
+uploadpath:  file:///home/ubuntu/shop/

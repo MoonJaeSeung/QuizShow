@@ -1,10 +1,14 @@
 package com.example.gp.dto;
 
+import com.example.gp.entity.Celeb;
 import com.sun.istack.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+import org.modelmapper.ModelMapper;
+
 import javax.validation.constraints.*;
+
 @Getter
 @Setter
 @ToString
@@ -18,5 +22,11 @@ public class CelebDto {
     private String fileOriName;
 
     private String fileUrl;
+
+    private static ModelMapper modelMapper = new ModelMapper();
+
+    public Celeb createCeleb(){
+        return modelMapper.map(this, Celeb.class);
+    }
 
 }

@@ -41,6 +41,11 @@ dependencies {
     // Querydsl dependencies
     implementation "com.querydsl:querydsl-jpa:${querydslVersion}"
     implementation "com.querydsl:querydsl-apt:${querydslVersion}"
+
+    implementation 'org.modelmapper:modelmapper:3.1.0'
+
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'commons-fileupload:commons-fileupload:1.4'
 }
 
 //querydsl 추가 시작

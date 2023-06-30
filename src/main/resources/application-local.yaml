@@ -8,8 +8,12 @@ spring:
     database-platform: org.hibernate.dialect.MariaDBDialect
     hibernate:
       ddl-auto: update
+  web:
+    resources:
+      static-locations: classpath:/static/
 logging:
   level:
     root: info
 server:
   port: 8080
+

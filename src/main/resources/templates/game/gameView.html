@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Guess the Word</title>
+</head>
+<body>
+<h1>Guess the Word</h1>
+<form th:action="@{/guess}" method="post">
+    <label for="guess"><span th:text="${#strings.substring(currentWord.fullWord, 0, 2)}"></span>__</label>
+    <input type="hidden" name="wordId" th:value="${currentWord.id}">
+    <input type="text" id="guess" name="guess" required>
+    <button type="submit">Submit Guess</button>
+</form>
+</body>
+</html>

@@ -10,4 +10,9 @@ public class MainController {
     public String main(){
         return "loginForm";
     }
+
+    @GetMapping("/admin")
+    public String admin(){
+        return "admin";
+    }
 }

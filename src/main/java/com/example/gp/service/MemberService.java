@@ -25,14 +25,13 @@ public class MemberService implements UserDetailsService {
     //로그인
     @Override
     public UserDetails loadUserByUsername(String nick) throws UsernameNotFoundException {
-
+        System.out.println("MemberService.loadUserByUsername");
         Member member = memberRepository.findByNick(nick);
 
         if(member == null){
             throw new UsernameNotFoundException(nick);
         }
 
-        System.out.println("nick = " + nick);
         return User.builder()
                 .username(member.getNick())
                 .password(member.getPassword())

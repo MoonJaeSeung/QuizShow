@@ -25,25 +25,31 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.formLogin()
-                .loginPage("/members/login")
+                .loginPage("/login")
+//                .loginProcessingUrl("/login")
                 .defaultSuccessUrl("/")
-                .usernameParameter("nick")
+                .usernameParameter("username")
+                .passwordParameter("password")
                 .failureUrl("/members/login/error")
                 .and()
                 .logout()
                 .logoutRequestMatcher(new AntPathRequestMatcher
                         ("/members/logout"))
                 .logoutSuccessUrl("/")
+                .permitAll()
         ;
         http.authorizeRequests()
-                .mvcMatchers("/start").permitAll()
-                .mvcMatchers("/admin/**").hasRole("ADMIN");
+                .mvcMatchers("/**").permitAll();
     }
 
     @Override
     public void configure(WebSecurity web) throws Exception {
         web.ignoring().antMatchers("/css/**", "/js/**", "/img/**","/static/**","/**");
     }
+
+
+}
+
 
 //    @Bean
 //    public PasswordEncoder passwordEncoder(){return new BCryptPasswordEncoder();
@@ -54,4 +60,3 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //        auth.userDetailsService(adminService)
 //                .passwordEncoder(passwordEncoder());
 //    }
-}
