@@ -51,27 +51,27 @@
 </head>
 <body>
 <th:block layout:fragment="content">
-    <h1>퀴즈맞추기</h1>
-    <div class="container">
-        <form role="form" action="/login" method="post">
-            <input type="text" class="nickname-input" id="nick" name="nick" placeholder="닉네임을 입력하세요">
-            <input type="password" class="password-input" id="password" name="password" placeholder="비밀번호를 입력하세요">
-            <button class="submit-button" type="submit">시작</button>
-        </form>
-    </div>
+<h1>퀴즈맞추기</h1>
+<div class="container">
+    <form role="form" action="/login" method="post">
+        <input type="text" class="nickname-input" id="nick" name="nick" placeholder="닉네임을 입력하세요">
+        <input type="password" class="password-input" id="password" name="password" placeholder="비밀번호를 입력하세요">
+        <button class="submit-button" type="submit">시작</button>
+    </form>
+</div>
 
-    <script th:inline="javascript">
-        var nicknameInput = document.getElementById('username');
-        var passwordInput = document.getElementById('password');
+<script th:inline="javascript">
+    var nicknameInput = document.getElementById('username');
+    var passwordInput = document.getElementById('password');
 
-        nicknameInput.addEventListener('input', function () {
-            if (nicknameInput.value === 'admin') {
-                passwordInput.style.display = 'block';
-            } else {
-                passwordInput.style.display = 'none';
-            }
-        });
-    </script>
+    nicknameInput.addEventListener('input', function() {
+        if (nicknameInput.value === 'admin') {
+            passwordInput.style.display = 'block';
+        } else {
+            passwordInput.style.display = 'none';
+        }
+    });
+</script>
 </th:block>
 </body>
 </html>
