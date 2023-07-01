@@ -55,10 +55,18 @@ public class GameController {
     }
 
     @PostMapping ("/record/add")
-    public void addRecord(@RequestBody RecordDto recordDto){
-        System.out.println("recordDto = " + recordDto);
-        Record record = recordDto.createRecord();
+    public String addRecord(@RequestBody Record record){
+        System.out.println("recordDto = " + record);
         recordService.save(record);
+
+        return "choice";
+    }
+
+    @GetMapping("/record")
+    public String viewRecord(@RequestParam("value") int gameNum,Model model){
+        List<Record> records = recordService.findAllByGame(gameNum);
+        model.addAttribute("records",records);
+        return "record";
     }
 
 
