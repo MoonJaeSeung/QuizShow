@@ -40,7 +40,6 @@ public class GameController {
                 if (cookie.getName().equals("nick")) {
                     String nick = cookie.getValue();
                     model.addAttribute("nick", nick);
-                    System.out.println("nick = " + nick);
                 }
             }
         }
@@ -59,7 +58,6 @@ public class GameController {
 
         Word word = new Word(fullWord);
         Word savedWord = gameService.addWord(word);
-        System.out.println("savedWord = " + savedWord);
         return "/admin/addWord";
     }
 }

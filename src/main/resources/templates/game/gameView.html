@@ -73,6 +73,7 @@
 <th:block layout:fragment="content">
     <div class="container">
         <div id="timer" style="font-size: 30px; font-weight: bold;"></div>
+        <br>
 
         <div id="wordContainer">
             <!-- The JavaScript code will generate the forms here -->
@@ -155,7 +156,7 @@
                         });
                     } else {
                         // no more words, display a completion message
-                        $('#wordContainer').html(nick + '<p id="completionMessage">' + words.length + '개 중 ' + correctGuesses + '개 정답!</p>');
+                        $('#wordContainer').html(nick + '<p id="completionMessage">' + correctGuesses + '개 정답!</p>');
                     }
                 }
 
@@ -181,13 +182,15 @@
 
                 function endGame() {
                     clearInterval(countdown);
+                    $('#errorContainer').html('');
+                    $('#timer').html('종료');
                     $('#guessForm').off('submit');
 
                     // clear any existing forms
                     $('#wordContainer').html('');
 
                     // display a message indicating that the game has ended
-                    $('#wordContainer').append('<p id="completionMessage">' + nick + ', 시간이 끝났습니다! ' + words.length + '개 중 ' + correctGuesses + '개 정답!</p>');
+                    $('#wordContainer').append('<p id="completionMessage">' + nick + '님, 시간이 끝났습니다! <br>' + correctGuesses + '개 정답!</p>');
                 }
 
                 // Shuffle the words array
