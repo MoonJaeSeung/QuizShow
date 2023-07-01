@@ -15,4 +15,9 @@ public class MainController {
     public String admin(){
         return "admin";
     }
+
+    @GetMapping("/choice")
+    public String choice(){
+        return "choice";
+    }
 }

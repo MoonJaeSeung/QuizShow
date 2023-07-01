@@ -2,11 +2,19 @@
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link th:href="@{/css/layout1.css}" rel="stylesheet">
+
+</head>
 
 <th:block th:replace="fragments/header::headerFragemnet"></th:block>
 <body>
-<div layout:fragment="content" class="content"></div>
+<div layout:fragment="content" class="content" style="min-height: 750px;"></div>
 </body>
 <th:block th:replace="fragments/footer::footerFragment"></th:block>
 
 </html>
+
