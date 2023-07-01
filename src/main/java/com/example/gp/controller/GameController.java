@@ -1,8 +1,12 @@
 package com.example.gp.controller;
 
+import com.example.gp.dto.RecordDto;
+import com.example.gp.entity.Record;
 import com.example.gp.entity.Word;
+import com.example.gp.repository.RecordRepository;
 import com.example.gp.service.AdminService;
 import com.example.gp.service.GameService;
+import com.example.gp.service.RecordService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -29,6 +33,9 @@ public class GameController {
     @Autowired
     GameService gameService;
 
+    @Autowired
+    RecordService recordService;
+
     @GetMapping("/game")
     public String gameView(Model model, HttpServletRequest request){
         List<Word> words = gameService.findAll();
@@ -45,6 +52,12 @@ public class GameController {
         }
 
         return "game/gameView";
+    }
+
+    @PostMapping ("/record/add")
+    public void addRecord(@RequestBody RecordDto recordDto){
+        Record record = recordDto.createRecord();
+        recordService.save(record);
     }
 
 
