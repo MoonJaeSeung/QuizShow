@@ -11,6 +11,8 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.nio.file.Files;
@@ -28,9 +30,20 @@ public class GameController {
     GameService gameService;
 
     @GetMapping("/game")
-    public String gameView(Model model, HttpSession session){
+    public String gameView(Model model, HttpServletRequest request){
         List<Word> words = gameService.findAll();
         model.addAttribute("words", words);
+
+        Cookie[] cookies = request.getCookies();
+        if(cookies != null){
+            for(Cookie cookie : cookies){
+                if (cookie.getName().equals("nick")) {
+                    String nick = cookie.getValue();
+                    model.addAttribute("nick", nick);
+                    System.out.println("nick = " + nick);
+                }
+            }
+        }
 
         return "game/gameView";
     }

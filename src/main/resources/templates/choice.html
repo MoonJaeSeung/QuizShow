@@ -1,33 +1,15 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout1}">
 <head>
   <title>퀴즈맞추기 게임 선택</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-    }
-
-    .main {
-      background-color: #fff;
-      padding: 20px;
-      text-align: center;
-      margin-bottom: 230px;
-    }
 
     h1 {
       color: #333;
     }
 
-    .container {
-      display: flex;
-      justify-content: center;
-    }
 
     .game-button {
       margin: 10px;
@@ -46,15 +28,11 @@
   </style>
 </head>
 <body>
-
-<div class="main">
-  <div class="header">
-    <h1>퀴즈맞추기</h1>
-  </div>
+<th:block layout:fragment="content">
   <div class="container">
     <a th:href="@{/game}" class="game-button">단어 이어서 말하기</a>
-
   </div>
-</div>
+
+</th:block>
 </body>
 </html>

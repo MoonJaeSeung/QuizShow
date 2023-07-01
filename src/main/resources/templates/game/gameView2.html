@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout1}">
+<head>
+  <title>Guess the Word</title>
+  <th:block layout:fragment="css">
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+
+      }
+
+
+      #wordContainer {
+        margin-top: 50px;
+      }
+
+      #guessForm {
+        display: inline-block;
+        text-align: left;
+        background-color: #f5f5f5;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      }
+
+      label {
+        font-weight: bold;
+        font-size: 20px;
+        margin-bottom: 10px;
+      }
+
+      input[type="text"] {
+        padding: 5px;
+        font-size: 16px;
+        border-radius: 3px;
+        border: 1px solid #ccc;
+        width: 200px;
+      }
+
+      button[type="submit"] {
+        background-color: #4CAF50;
+        color: white;
+        padding: 8px 16px;
+        font-size: 16px;
+        border: none;
+        border-radius: 3px;
+        cursor: pointer;
+      }
+
+      button[type="submit"]:hover {
+        background-color: #45a049;
+      }
+
+      #errorContainer {
+        margin-top: 20px;
+        font-size: 16px;
+      }
+
+      #completionMessage {
+        font-size: 20px;
+        font-weight: bold;
+        margin-top: 50px;
+      }
+    </style>
+    <link th:href="@{/css/layout1.css}" rel="stylesheet">
+  </th:block>
+</head>
+<body>
+<th:block layout:fragment="content">
+  <div id="wordContainer">
+    <!-- The JavaScript code will generate the forms here -->
+  </div>
+
+  <!-- This is a hidden field for storing the current word's index -->
+  <input type="hidden" id="currentWordIndex" value="0">
+  <!-- A div for displaying error messages -->
+  <div id="errorContainer" style="color: red;"></div>
+
+  <th:block layout:fragment="script">
+    <script th:inline="javascript">
+      /*<![CDATA[*/
+      var words = /*[[${words}]]*/ []; // get the words from the Thymeleaf model
+      var correctGuesses = 0; // count of correct guesses
+      var incorrectGuessesForCurrentWord = 0; // count of incorrect guesses for the current word
+
+      // Function to shuffle the words array
+      function shuffleArray(array) {
+        for (var i = array.length - 1; i > 0; i--) {
+          var j = Math.floor(Math.random() * (i + 1));
+          var temp = array[i];
+          array[i] = array[j];
+          array[j] = temp;
+        }
+        return array;
+      }
+
+      function generateForm() {
+        // get the current word index
+        var currentWordIndex = parseInt($('#currentWordIndex').val());
+
+        if (currentWordIndex < words.length) {
+          // create the HTML for the form
+          var word = words[currentWordIndex];
+          var revealedPart = word.fullWord.substring(0, 2); // Get the first two letters
+          var hiddenPart = word.fullWord.substring(2); // Get the rest of the word
+
+          var formHtml = '<form id="guessForm">' +
+                  '<label for="guess">' + revealedPart + ' __</label><br>' +
+                  '<input type="hidden" id="wordId" value="' + word.id + '">' +
+                  '<input type="hidden" id="hiddenPart" value="' + hiddenPart + '">' +
+                  '<input type="text" id="guess" required><br>' +
+                  '<button type="submit">Submit Guess</button>' +
+                  '</form>';
+
+          // set the form HTML in the wordContainer
+          $('#wordContainer').html(formHtml);
+          $('#errorContainer').html(''); // clear any existing error messages
+
+          // attach the form submit event handler
+          $('#guessForm').on('submit', function(event) {
+            event.preventDefault(); // prevent the form from being submitted normally
+
+            // get the user's guess
+            var guess = $('#guess').val();
+
+            // get the hidden part
+            var hiddenPart = $('#hiddenPart').val();
+
+            // check if the guess matches the hidden part
+            if (guess.toLowerCase() === hiddenPart.toLowerCase()) {
+              // if the guess is correct, increment the current word index and correctGuesses
+              $('#currentWordIndex').val(currentWordIndex + 1);
+              correctGuesses++;
+              incorrectGuessesForCurrentWord = 0; // reset the count of incorrect guesses
+              generateForm(); // generate the next form
+            } else {
+              incorrectGuessesForCurrentWord++;
+              if (incorrectGuessesForCurrentWord >= 2) {
+                // if the user has guessed incorrectly twice, move to the next word
+                $('#errorContainer').html('You have guessed incorrectly twice. Moving to the next word.');
+                $('#currentWordIndex').val(currentWordIndex + 1);
+                incorrectGuessesForCurrentWord = 0; // reset the count of incorrect guesses
+                generateForm(); // generate the next form
+              } else {
+                // if the guess is incorrect, show an error message and clear the input
+                $('#errorContainer').html('Incorrect guess! Please try again.');
+                $('#guess').val('');
+              }
+            }
+          });
+        } else {
+          // no more words, display a completion message
+          $('#wordContainer').html('<p id="completionMessage">You have correctly guessed ' + correctGuesses + ' out of ' + words.length + ' words!</p>');
+        }
+      }
+
+      // Shuffle the words array
+      words = shuffleArray(words);
+
+      // generate the first form when the page loads
+      $(document).ready(function() {
+        generateForm();
+      });
+      /*]]>*/
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  </th:block>
+</th:block>
+</body>
+</html>
