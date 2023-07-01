@@ -56,6 +56,7 @@ public class GameController {
 
     @PostMapping ("/record/add")
     public void addRecord(@RequestBody RecordDto recordDto){
+        System.out.println("recordDto = " + recordDto);
         Record record = recordDto.createRecord();
         recordService.save(record);
     }

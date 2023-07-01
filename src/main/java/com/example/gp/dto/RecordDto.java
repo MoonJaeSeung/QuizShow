@@ -1,8 +1,10 @@
 package com.example.gp.dto;
 
 import com.example.gp.entity.Record;
+import lombok.ToString;
 import org.modelmapper.ModelMapper;
 
+@ToString
 public class RecordDto {
 
     private String nick;

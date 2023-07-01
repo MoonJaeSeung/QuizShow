@@ -2,6 +2,7 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{layouts/layout1}">
 <head>
+    <meta charset="utf-8">
     <title>Guess the Word</title>
     <style>
 
@@ -94,7 +95,7 @@
                 var words = /*[[${words}]]*/ []; // get the words from the Thymeleaf model
                 var correctGuesses = 0; // count of correct guesses
                 var incorrectGuessesForCurrentWord = 0; // count of incorrect guesses for the current word
-                var nick = /*[[${nick}]]*/ [];
+                var nick = /*[[${nick}]]*/ '';
                 // Function to shuffle the words array
                 function shuffleArray(array) {
                     for (var i = array.length - 1; i > 0; i--) {
@@ -172,7 +173,7 @@
 
 
 
-                var timeLimit = 30; // time limit in seconds
+                var timeLimit = 3; // time limit in seconds
 
                 // start the countdown when the page loads
                 var countdown = setTimeout(function () {
@@ -203,7 +204,30 @@
                     $('#wordContainer').html('');
 
                     // display a message indicating that the game has ended
-                    $('#wordContainer').append('<p id="completionMessage">' + nick + '님, 시간이 끝났습니다! <br>' + correctGuesses + '개 정답!</p>');
+                    var completionMessage = '<p id="completionMessage">' + nick + '님, 시간이 끝났습니다! <br>' +
+                        correctGuesses + '개 정답!</p>';
+
+                    $('#wordContainer').append(completionMessage);
+
+                    //기록 삽입
+                    var recordDto={
+                        nick:nick,
+                        score:correctGuesses,
+                        game:1
+                    };
+
+                    $.ajax({
+                        url:'/record/add',
+                        type: 'POST',
+                        contentType: 'application/json',
+                        data : JSON.stringify(recordDto),
+                        success: function(){
+                            console.log("성공");
+                        },
+                        error:function(){
+                            console.log('Failed to add record');
+                        }
+                    })
                 }
 
                 function updateTimer() {
@@ -225,6 +249,7 @@
 
                 // generate the first form when the page loads
                 $(document).ready(function () {
+                    console.log(nick);
                     updateTimer();
                     generateForm();
                 });

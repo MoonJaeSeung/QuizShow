@@ -40,6 +40,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         ;
         http.authorizeRequests()
                 .mvcMatchers("/**").permitAll();
+        http
+                .headers().disable()  // Disable the headers
+                .csrf().disable()     // If necessary, you can disable CSRF.
+        // Other configurations...
+        ;
     }
 
     @Override
