@@ -8,6 +8,27 @@
 }
 
 body {
+    font-family: 'Diphylleia', serif;
     text-align: center;
+}
 
+.game-button {
+    font-family: 'Poppins', sans-serif;
+    margin: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+    background: linear-gradient(90deg, #dcd5ff, #d1c8ff);
+    color: #ffffff;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    border-radius: 30px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    transition: all 0.5s ease-in-out;
+}
+
+.game-button:hover {
+    background: linear-gradient(90deg, #d1c8ff, #dcd5ff);
+    transform: scale(1.05);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.2);
 }

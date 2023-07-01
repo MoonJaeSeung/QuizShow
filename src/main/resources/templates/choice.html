@@ -11,26 +11,19 @@
     }
 
 
-    .game-button {
-      margin: 10px;
-      padding: 10px 20px;
-      font-size: 16px;
-      background-color: #4CAF50;
-      color: #fff;
-      border: none;
-      cursor: pointer;
-    }
+  a.game-button{
+    font-family: 'Dongle', sans-serif;
+    font-size: 40px;
+  }
 
-    .game-button:hover {
-      background-color: #45a049;
-    }
+
 
   </style>
 </head>
 <body>
 <th:block layout:fragment="content">
   <div class="container">
-    <a th:href="@{/game}" class="game-button">단어 이어서 말하기</a>
+    <a th:href="@{/game}" class="game-button">사자성어</a>
   </div>
 
 </th:block>

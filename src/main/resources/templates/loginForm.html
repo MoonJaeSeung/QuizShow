@@ -7,25 +7,13 @@
     <title>퀴즈맞추기 시작화면</title>
     <style>
 
+        @import url('https://fonts.googleapis.com/css2?family=Dongle:wght@300&display=swap');
         .selector-for-some-widget {
             box-sizing: content-box;
         }
 
-        body {
-            text-align: center;
-            font-family: Arial, sans-serif;
-        }
-
         h1 {
             color: #333;
-        }
-
-        .container {
-            display: flex;
-            justify-content: center;
-            min-height: 500px;
-            display:flex;
-            align-items: center;
         }
 
         .nickname-input {
@@ -41,21 +29,10 @@
             font-size: 16px;
         }
 
-        .submit-button {
-            margin-left: 10px;
-            padding: 10px 20px;
-            font-size: 16px;
-            background-color: #4CAF50;
-            color: #fff;
-            border: none;
-            cursor: pointer;
-        }
-
-        .submit-button:hover {
-            background-color: #45a049;
-        }
-
-
+       .game-button{
+           font-family: 'Dongle', sans-serif;
+            font-size: 40px;
+       }
     </style>
 
 </head>
@@ -65,7 +42,7 @@
     <form role="form" action="/login" method="post" class="form-style">
         <input type="text" class="nickname-input" id="nick" name="nick" placeholder="닉네임을 입력하세요">
         <input type="password" class="password-input" id="password" name="password" placeholder="비밀번호를 입력하세요">
-        <button class="submit-button" type="submit">시작</button>
+        <button class="game-button" type="submit">시작</button>
     </form>
 
 
