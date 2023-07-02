@@ -1,7 +1,7 @@
 .container {
     display: flex;
     justify-content: center;
-    min-height: 500px;
+    /*min-height: 500px;*/
     display:flex;
     align-items: center;
     padding-bottom : 200px;
@@ -31,4 +31,10 @@ body {
     background: linear-gradient(90deg, #d1c8ff, #dcd5ff);
     transform: scale(1.05);
     box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+}
+
+a.atag{
+    text-decoration: none;
+    color:#d1c8ff;
+    padding:10px;
 }
