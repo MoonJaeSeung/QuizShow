@@ -23,12 +23,13 @@ import java.util.List;
 @Slf4j
 public class MemberController {
 
+
     private final MemberService memberService;
 
-
-    @GetMapping(value="/login")
+    // 시작 화면 · 로그인 화면
+    @GetMapping(value={"/login","/"})
     public String loginMember(){
-        return "/loginForm";
+        return "/member/loginForm";
     }
 
     @PostMapping(value="/login")
@@ -39,14 +40,7 @@ public class MemberController {
         response.addCookie(nickCookie);
 
         return "choice";
-
-
     }
 
-    @GetMapping(value = "/login/error")
-    public String loginError(Model model){
-        model.addAttribute("loginErrorMsg", "아이디 또는 비밀번호를 확인해주세요");
-        return "/loginForm";
-    }
 
 }

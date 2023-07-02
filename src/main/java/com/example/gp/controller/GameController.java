@@ -1,34 +1,22 @@
 package com.example.gp.controller;
 
-import com.example.gp.dto.RecordDto;
 import com.example.gp.entity.Record;
 import com.example.gp.entity.Word;
-import com.example.gp.repository.RecordRepository;
-import com.example.gp.service.AdminService;
 import com.example.gp.service.GameService;
 import com.example.gp.service.RecordService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-import java.io.File;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.ArrayList;
 import java.util.List;
 
 @Controller
 @Slf4j
 public class GameController {
-
 
     @Autowired
     GameService gameService;
@@ -36,11 +24,14 @@ public class GameController {
     @Autowired
     RecordService recordService;
 
-    @GetMapping("/game")
+    //사자성어 게임
+    @GetMapping("/game1")
     public String gameView(Model model, HttpServletRequest request){
+        //사자성어 문제 가져오기
         List<Word> words = gameService.findAll();
         model.addAttribute("words", words);
 
+        //쿠키에서 닉네임 가져오기
         Cookie[] cookies = request.getCookies();
         if(cookies != null){
             for(Cookie cookie : cookies){
@@ -50,15 +41,20 @@ public class GameController {
                 }
             }
         }
-
-        return "game/gameView";
+        return "game/game1";
     }
 
+    //게임 기록
     @PostMapping ("/record/add")
     public String addRecord(@RequestBody Record record){
-        System.out.println("recordDto = " + record);
+        //기록 저장
         recordService.save(record);
 
+        return "choice";
+    }
+
+    @GetMapping("/choice")
+    public String choice(){
         return "choice";
     }
 
