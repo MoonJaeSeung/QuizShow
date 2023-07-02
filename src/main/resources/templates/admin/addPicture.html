@@ -1,14 +1,17 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout}">
 <head>
     <title>Add Celebrity</title>
 </head>
-<body>
+<th:block layout:fragment="content">
 <h1>Add Celebrity</h1>
 <form action="#" th:action="@{/celeb/add}"  method="post" enctype="multipart/form-data">
     <p>Name: <input type="text" name="name" id="name" /></p>
     <input type="file" class="custom-file-input" id="itemImgFile" name="itemImgFile"/>
     <p><input type="submit" value="Submit" /></p>
 </form>
-</body>
+</th:block>
+
 </html>
