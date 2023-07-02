@@ -1,9 +1,10 @@
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{layouts/layout1}">
+      layout:decorate="~{layouts/layout}">
 <head>
     <meta charset="utf-8">
     <title>Guess the Word</title>
+    <th:block layout:fragment="css">
     <style>
 
         @keyframes shake {
@@ -75,6 +76,7 @@
         }
 
     </style>
+    </th:block>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>

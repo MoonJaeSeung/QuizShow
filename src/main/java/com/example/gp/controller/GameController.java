@@ -24,6 +24,12 @@ public class GameController {
     @Autowired
     RecordService recordService;
 
+    //게임 선택
+    @GetMapping("/choice")
+    public String choice(){
+        return "choice";
+    }
+
     //사자성어 게임
     @GetMapping("/game1")
     public String gameView(Model model, HttpServletRequest request){
@@ -53,10 +59,7 @@ public class GameController {
         return "choice";
     }
 
-    @GetMapping("/choice")
-    public String choice(){
-        return "choice";
-    }
+
 
     @GetMapping("/record")
     public String viewRecord(@RequestParam("value") int gameNum,Model model){

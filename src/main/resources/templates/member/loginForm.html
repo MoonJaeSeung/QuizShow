@@ -1,58 +1,84 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{layouts/layout1}">
+      layout:decorate="~{layouts/layout}">
 <head>
     <title>퀴즈맞추기 시작화면</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Dongle:wght@300&display=swap');
+    <th:block layout:fragment="css">
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Dongle:wght@300&display=swap');
 
-        h1 {
-            color: #333;
-        }
+            h1 {
+                color: #333;
+            }
 
-        .nickname-input {
-            width: 300px;
-            padding: 15px;
-            font-size: 20px;
-            border: none;
-            border-radius: 50px;
-            transition: all 0.3s ease-in-out;
-            outline: none;
-            box-shadow: 0 16px 28px 0 rgba(0,0,0,0.1), 0 25px 50px 0 rgba(0,0,0,0.1);
-        }
+            .nickname-input {
+                width: 300px;
+                padding: 15px;
+                font-size: 20px;
+                border: none;
+                border-radius: 50px;
+                transition: all 0.3s ease-in-out;
+                outline: none;
+                box-shadow: 0 16px 28px 0 rgba(0, 0, 0, 0.1), 0 25px 50px 0 rgba(0, 0, 0, 0.1);
+                margin-bottom: 10px;
+            }
 
-        .nickname-input:focus {
-            box-shadow: 0 6px 10px 0 rgba(0,0,0,0.1), 0 1px 18px 0 rgba(0,0,0,0.1);
-        }
+            .nickname-input {
+                box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.1), 0 1px 18px 0 rgba(0, 0, 0, 0.1);
+            }
 
-        .password-input {
-            display: none;
-            width: 300px;
-            padding: 15px;
-            font-size: 20px;
-        }
+            .password-input {
+                display: none;
+                width: 300px;
+                padding: 15px;
+                font-size: 20px;
+                border: none;
+                border-radius: 50px;
+                transition: all 0.3s ease-in-out;
+                outline: none;
+                box-shadow: 0 16px 28px 0 rgba(0, 0, 0, 0.1), 0 25px 50px 0 rgba(0, 0, 0, 0.1);
 
-        .game-button{
-            font-family: 'Dongle', sans-serif;
-            font-size: 40px;
-        }
-    </style>
+            }
+
+            password-input:focus{
+                box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.1), 0 1px 18px 0 rgba(0, 0, 0, 0.1);
+            }
+
+            .game-button {
+                width: 100px;
+                display: flex;
+                height: 60px;
+                font-family: 'Dongle', sans-serif;
+                font-size: 40px;
+                align-items: center;
+                justify-content: center;
+            }
+
+
+            form{
+                display: grid;
+                justify-items: center;
+            }
+        </style>
+    </th:block>
 </head>
 <body>
 <th:block layout:fragment="content">
     <div class="container">
         <form role="form" action="/login" method="post" class="form-style">
-            <input type="text" class="nickname-input" id="nick" name="nick" placeholder="닉네임을 입력하세요">
-            <input type="password" class="password-input" id="password" name="password" placeholder="비밀번호를 입력하세요">
+
+                <input type="text" class="nickname-input" id="nick" name="nick" placeholder="닉네임을 입력하세요">
+                <input type="password" class="password-input" id="password" name="password" placeholder="비밀번호를 입력하세요">
+
             <button class="game-button" type="submit">시작</button>
         </form>
     </div>
     <script th:inline="javascript">
-        var nicknameInput = document.getElementById('username');
+        var nicknameInput = document.getElementById('nick');
         var passwordInput = document.getElementById('password');
 
-        nicknameInput.addEventListener('input', function() {
+        nicknameInput.addEventListener('input', function () {
             if (nicknameInput.value === 'admin') {
                 passwordInput.style.display = 'block';
             } else {
