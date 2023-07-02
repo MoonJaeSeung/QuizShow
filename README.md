@@ -1,6 +1,8 @@
 
-### 가독성을 위해 노션으로 봐주시면 감사하겠습니다
-노션 링크 :  https://www.notion.so/Project-QuizShow-b49dc7c1b6af4e328fbb8d3872e5d281
+### 가독성을 위해 노션으로 봐주시면 감사하겠습니다(노션으로 봐야 훨씬 편하게 보실 수 있습니다)
+[Project - QuizShow ](https://www.notion.so/Project-QuizShow-b49dc7c1b6af4e328fbb8d3872e5d281?pvs=21) <br>
+
+[30초 V1](https://www.notion.so/30-V1-aac81e2f51d7459a896276e2f528b225?pvs=21)
 
 
 <br><br><br>
