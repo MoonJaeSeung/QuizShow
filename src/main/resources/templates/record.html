@@ -12,7 +12,6 @@
     <tr>
       <th>닉네임</th>
       <th>점수</th>
-      <th>게임 이름</th>
     </tr>
     </thead>
     <tbody>
@@ -20,7 +19,6 @@
     <tr th:each="record : ${records}">
       <td th:text="${record.nick}"></td>
       <td th:text="${record.score}"></td>
-      <td th:text="${record.game}"></td>
     </tr>
     </tbody>
   </table>

@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -21,7 +22,15 @@ public class RecordService {
         recordRepository.save(record);
     }
 
-    public List<Record> findAllByGame(int i) {
-        return recordRepository.findAllByGame(i);
+    public List<Record> find10ByGame(int i) {
+        List<Record> allByGame = recordRepository.find10ByGame(i);
+        List<Record> top10 = new ArrayList<>();
+        for(int n=0; n<allByGame.size(); n++){
+            top10.add(allByGame.get(n));
+            if(top10.size() == 10){
+                return top10;
+            }
+        }
+        return top10;
     }
 }

@@ -64,7 +64,7 @@ public class GameController {
 
     @GetMapping("/record")
     public String viewRecord(@RequestParam("value") int gameNum,Model model){
-        List<Record> records = recordService.findAllByGame(gameNum);
+        List<Record> records = recordService.find10ByGame(gameNum);
         model.addAttribute("records",records);
         return "record";
     }
