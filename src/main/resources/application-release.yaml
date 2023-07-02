@@ -3,8 +3,8 @@
 spring:
   datasource:
     url: jdbc:mariadb://quiz2.cj6w8kog5kvm.ap-northeast-2.rds.amazonaws.com:3307/gp?serverTimezone=Asia/Seoul
-    username: moon2
-    password: fn2812sl
+    username: ${username}
+    password: ${password}
     driver-class-name: org.mariadb.jdbc.Driver
   jpa:
     database-platform: org.hibernate.dialect.MariaDBDialect
