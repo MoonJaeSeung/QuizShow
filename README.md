@@ -1,10 +1,11 @@
-### **C O N T A C T**
 
-- Email | wotmdskfk32@naver.com
-- Phone | 📞 010.5766.8843
+### 가독성을 위해 노션으로 봐주시면 감사하겠습니다
+노션 링크 :  https://www.notion.so/Project-QuizShow-b49dc7c1b6af4e328fbb8d3872e5d281
 
-- Github | https://github.com/MoonJaeSeung
-- Blog | https://iwin.tistory.com/
+
+<br><br><br>
+
+
 
 ## **S T A C K**
 
@@ -58,6 +59,9 @@ Github · Git action
 
 ## **주요 기능**
 
+- 회원 정보 입력
+- 사자성어 게임
+- 게임 순위
 
 
 ## **Deep Dive**
@@ -107,3 +111,19 @@ Github · Git action
 
 
 [git upload시 AWS_RDS 민감 정보 노출](https://iwin.tistory.com/116)
+
+
+---
+
+### **C O N T A C T**
+
+- Email | wotmdskfk32@naver.com
+- Phone | 📞 010.5766.8843
+
+- Github | https://github.com/MoonJaeSeung
+- Blog | https://iwin.tistory.com/
+
+
+
+
+
