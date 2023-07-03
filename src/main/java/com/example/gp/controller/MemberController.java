@@ -47,9 +47,17 @@ public class MemberController {
     @GetMapping(value = "/join")
     public String joinMember(MemberFormDto memberFormDto,Model model){
         model.addAttribute("memberFormDto", new MemberFormDto());
-        return "/member/joinForm";
+        return "/member/testForm";
+//        return "/member/joinForm";
     }
 
+
+    //회원 가입 화면
+    @GetMapping(value = "/test")
+    public String test(){
+        return "/member/testForm";
+//        return "/member/joinForm";
+    }
 
     //임시회원으로 로그인
     @PostMapping(value="/login")
