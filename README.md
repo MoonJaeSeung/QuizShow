@@ -15,7 +15,7 @@
 - STACK
 - 프로젝트 원칙
 - 주요기능
-- 고찰
+- DeepDive
 - TroubleShooting
 
 
