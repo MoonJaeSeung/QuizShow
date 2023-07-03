@@ -1,8 +1,9 @@
 package com.example.gp.controller;
 
-import com.example.gp.JwtTokenProvider;
+import com.example.gp.security.JwtTokenProvider;
 import com.example.gp.dto.MemberFormDto;
 import com.example.gp.entity.Member;
+import com.example.gp.security.PasswordEncoder;
 import com.example.gp.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -70,7 +71,8 @@ public class MemberController {
     @PostMapping(value="/register")
     public String register(@Valid MemberFormDto memberFormDto, BindingResult bindingResult, Model model){
         try {
-            Member member = Member.createMember(memberFormDto);
+            String encodedPassword = PasswordEncoder.encode(memberFormDto.getPassword());
+            Member member = Member.createMember(memberFormDto, encodedPassword);
             memberService.save(member);
         } catch(IllegalStateException e){
             model.addAttribute("errorMessage",e.getMessage());
@@ -88,16 +90,17 @@ public class MemberController {
         }
 
         try {
-            String username = memberFormDto.getNick();
+            String nick = memberFormDto.getNick();
             String password = memberFormDto.getPassword();
 
             //사용자 검증
-            Member member = memberService.login(username, password);
+            Member member = memberService.login(nick, password);
 
-            String token = jwtTokenProvider.createToken(username);
-            Cookie jwtCookie = new Cookie("jwt", token);
-            jwtCookie.setMaxAge(3600);
-            response.addCookie(jwtCookie);
+            String token = jwtTokenProvider.createToken(nick);
+            // 닉네임 쿠키 생성
+            Cookie nickCookie = new Cookie("nick", nick);
+            nickCookie.setMaxAge(3600);
+            response.addCookie(nickCookie);
 
         } catch(IllegalStateException e){
             model.addAttribute("errorMessage",e.getMessage());

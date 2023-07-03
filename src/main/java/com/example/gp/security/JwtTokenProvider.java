@@ -1,4 +1,4 @@
-package com.example.gp;
+package com.example.gp.security;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;

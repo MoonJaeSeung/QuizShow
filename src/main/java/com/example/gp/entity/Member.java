@@ -31,10 +31,10 @@ public class Member {
         this.role = role;
     }
 
-    public static Member createMember(MemberFormDto memberFormDto){
+    public static Member createMember(MemberFormDto memberFormDto, String encodedPassword){
         Member member = new Member();
         member.setNick(memberFormDto.getNick());
-        member.setPassword(memberFormDto.getPassword());
+        member.setPassword(encodedPassword);
         member.setRole(Role.USER);
         return member;
     }
