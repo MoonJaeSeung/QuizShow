@@ -4,6 +4,9 @@ import com.example.gp.entity.Record;
 import com.example.gp.entity.Word;
 import com.example.gp.service.GameService;
 import com.example.gp.service.RecordService;
+import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.Jws;
+import io.jsonwebtoken.Jwts;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -37,17 +40,38 @@ public class GameController {
         List<Word> words = gameService.findAll();
         model.addAttribute("words", words);
 
-        //쿠키에서 닉네임 가져오기
+        extracted(model, request);
+
+        return "game/game1";
+    }
+
+
+    //쿠키를 통해 nick 가져오기
+    private static void extracted(Model model, HttpServletRequest request) {
         Cookie[] cookies = request.getCookies();
+        //쿠키에서 jwt 토큰 가져오기
         if(cookies != null){
             for(Cookie cookie : cookies){
-                if (cookie.getName().equals("nick")) {
+                if(cookie.getName().equals("jwt")) {
+                    String jwtToken = cookie.getValue();
+
+                    //서명 검증과 파싱을 동시에 수행
+                    Jws<Claims> claimsJws = Jwts.parser()
+                            .setSigningKey("mySecretKey")
+                            .parseClaimsJws(jwtToken);
+
+                    Claims claims = claimsJws.getBody();
+
+                    String nick = claims.getSubject();
+                    System.out.println("nick = " + nick);
+                    model.addAttribute("nick", nick);
+                }// 임시회원 nick 가져오기
+                else if (cookie.getName().equals("nick")) {
                     String nick = cookie.getValue();
                     model.addAttribute("nick", nick);
                 }
             }
         }
-        return "game/game1";
     }
 
     //게임 기록

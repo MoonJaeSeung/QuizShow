@@ -98,8 +98,8 @@ public class MemberController {
 
             String token = jwtTokenProvider.createToken(nick);
             // 닉네임 쿠키 생성
-            Cookie nickCookie = new Cookie("nick", nick);
-            nickCookie.setMaxAge(3600);
+            Cookie nickCookie = new Cookie("jwt", token);
+            nickCookie.setMaxAge(3600);  //쿠키 유효시간 설정
             response.addCookie(nickCookie);
 
         } catch(IllegalStateException e){

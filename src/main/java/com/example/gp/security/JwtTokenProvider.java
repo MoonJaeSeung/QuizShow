@@ -14,8 +14,8 @@ public class JwtTokenProvider {
     private final String secretKey = "mySecretKey";
     private final long validitySeconds = 3600000; // 1시간
 
-    public String createToken(String username){
-        Claims claims = Jwts.claims().setSubject(username);
+    public String createToken(String nick){
+        Claims claims = Jwts.claims().setSubject(nick);
         Date now = new Date();
         Date validity = new Date(now.getTime() + validitySeconds);
 
