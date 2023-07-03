@@ -36,20 +36,34 @@ public class MemberController {
         model.addAttribute("memberFormDto", new MemberFormDto());
         return "member/nickForm";
     }
-    //회원으로 로그인 화면
+    //회원가입 화면
     @GetMapping(value="/login2")
-    public String loginMember(MemberFormDto memberFormDto,Model model){
+    public String joinMember(MemberFormDto memberFormDto,Model model){
+        model.addAttribute("memberFormDto", new MemberFormDto());
+        return "member/joinForm";
+    }
+
+    @GetMapping(value="/login4")
+    public String loginByMember(MemberFormDto memberFormDto,Model model){
         model.addAttribute("memberFormDto", new MemberFormDto());
         return "member/loginForm";
     }
 
-    //회원 가입 화면
-    @GetMapping(value = "/join")
-    public String joinMember(MemberFormDto memberFormDto,Model model){
-        model.addAttribute("memberFormDto", new MemberFormDto());
-        return "/member/testForm";
+//    //회원 가입 화면
+//    @GetMapping(value = "/login3")
+//    public String joinMember(MemberFormDto memberFormDto,Model model){
+//        model.addAttribute("memberFormDto", new MemberFormDto());
 //        return "/member/joinForm";
-    }
+////        return "/member/joinForm";
+//    }
+
+//    //회원 가입 화면
+//    @GetMapping(value = "/join")
+//    public String joinMember(MemberFormDto memberFormDto,Model model){
+//        model.addAttribute("memberFormDto", new MemberFormDto());
+//        return "/member/testForm";
+////        return "/member/joinForm";
+//    }
 
 
     //회원 가입 화면
@@ -88,6 +102,8 @@ public class MemberController {
         }
         return "member/loginForm";
     }
+
+
 
     //공식 회원으로 로그인
     @PostMapping(value="/login2")

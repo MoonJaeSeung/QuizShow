@@ -39,11 +39,10 @@ jobs:
           distribution: 'temurin'
 
       # 단계: application-database.yaml 파일을 생성합니다
-      - name: make application-database.yaml
+      - name: make application.yaml
         run: |
           cd ./src/main/resources
-          touch ./application-database.yaml
-          echo "${{ secrets.DATABASE }}" >> ./application-database.yaml
+          echo "${{ secrets.APPLICATION_YAML }}" | base64 -d > application.yaml
         shell: bash
 
       # 단계: gradlew에 실행 권한을 추가합니다

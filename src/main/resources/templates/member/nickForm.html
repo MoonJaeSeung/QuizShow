@@ -29,35 +29,9 @@
                 box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.1), 0 1px 18px 0 rgba(0, 0, 0, 0.1);
             }
 
-            .password-input {
-                display: none;
-                width: 300px;
-                padding: 15px;
-                font-size: 20px;
-                border: none;
-                border-radius: 50px;
-                transition: all 0.3s ease-in-out;
-                outline: none;
-                box-shadow: 0 16px 28px 0 rgba(0, 0, 0, 0.1), 0 25px 50px 0 rgba(0, 0, 0, 0.1);
-
-            }
-
-            password-input:focus {
-                box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.1), 0 1px 18px 0 rgba(0, 0, 0, 0.1);
-            }
 
             .game-button {
                 width: 100px;
-                display: flex;
-                height: 60px;
-                font-family: 'Dongle', sans-serif;
-                font-size: 40px;
-                align-items: center;
-                justify-content: center;
-            }
-
-            .game-button2 {
-                width: 300px;
                 display: flex;
                 height: 60px;
                 font-family: 'Dongle', sans-serif;
@@ -80,13 +54,13 @@
         <form role="form" action="/login" method="post" class="form-style">
             <div style="color: #c5baff;">임시회원으로 이용하시려면</div>
             <div style="color: #c5baff; font-size: 30px; font-weight: bold">↓</div>
-            <input type="text" class="nickname-input" id="nick" name="nick" placeholder="닉네임을 입력하세요">
+            <input type="text" class="nickname-input" id="nick" name="nick" style="text-align: center" placeholder="닉네임을 입력하세요">
             <span class="validation-error" th:if="${errors != null}" th:text="${errors.get(0)}"></span>
 
             <button class="game-button" type="submit">시작</button>
         </form>
         <a class="atag" href="/login2" >회원으로 이용</a>
-        <a class="atag" href="/login2" >뭐지?</a>
+
     </div>
 </th:block>
 
