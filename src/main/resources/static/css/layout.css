@@ -13,10 +13,13 @@ body {
 }
 
 .game-button {
+    width: 100px;
+    display: flex;
+    height: 60px;
     font-family: 'Dongle', sans-serif;
+    font-size: 40px;
     margin: 10px;
     padding: 10px 20px;
-    font-size: 16px;
     background: linear-gradient(90deg, #dcd5ff, #d1c8ff);
     color: #ffffff;
     border: none;
@@ -25,6 +28,8 @@ body {
     border-radius: 30px;
     box-shadow: 0 10px 20px rgba(0,0,0,0.1);
     transition: all 0.5s ease-in-out;
+    align-items: center;
+    justify-content: center;
 }
 
 .game-button:hover {
@@ -35,6 +40,6 @@ body {
 
 a.atag{
     text-decoration: none;
-    color:#d1c8ff;
+    color: #c5baff;
     padding:10px;
 }

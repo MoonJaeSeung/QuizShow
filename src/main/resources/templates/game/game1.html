@@ -31,13 +31,13 @@
 
             body {
                 font-family: 'Dongle', sans-serif;
-                font-size: 40px;
+                font-size: 70px;
                 text-align: center;
             }
 
 
             #wordContainer {
-                margin-top: 50px;
+
 
             }
 
@@ -56,7 +56,6 @@
             }
 
             input[type="text"] {
-                padding: 5px;
                 font-size: 16px;
                 border-radius: 3px;
                 border: 1px solid #ccc;
@@ -64,7 +63,7 @@
             }
 
             #guessForm button[type="submit"] {
-                margin-top: 10px;
+
             }
 
             button[type="submit"]:hover {
@@ -73,7 +72,7 @@
 
             #errorContainer {
                 margin-top: 20px;
-                font-size: 16px;
+                font-size: 40px;
             }
 
             #completionMessage {
@@ -90,7 +89,7 @@
 <th:block layout:fragment="content">
     <div class="container">
         <div id="timer" style="font-size: 70px; "></div> <!-- 타이머 표시-->
-        <br>
+
 
         <div id="wordContainer" style="font-size: 50px">
             <!-- 문제 출제 공간 -->
@@ -101,8 +100,8 @@
         <!-- A div for displaying error messages -->
         <div id="errorContainer" style="color: red;"></div>
 
-        <a href="/game" class="atag"> 다시 하기 </a>
-        <a href="/record?value=1" class="atag">기록 확인</a>
+        <a href="/game1" class="atag" style="font-size: 60px"> 다시 하기 </a>
+        <a href="/record?value=1" class="atag" style="font-size: 60px">기록 확인</a>
 
         <th:block layout:fragment="script">
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -132,11 +131,11 @@
                         var hiddenPart = word.fullWord.substring(2); // Get the rest of the word
 
                         var formHtml = '<form id="guessForm">' +
-                            '<label for="guess" style="font-size: 100px">' + revealedPart + ' __</label><br>' +
+                            '<label for="guess" style="font-size: 100px">' + revealedPart + ' __</label>' +
                             '<input type="hidden" id="wordId" value="' + word.id + '">' +
                             '<input type="hidden" id="hiddenPart" value="' + hiddenPart + '">' +
-                            '<input type="text" id="guess" required><br>' +
-                            '<button class="game-button" type="submit">E n t e r</button>' +
+                            '<input type="text" id="guess" style="font-size: 40px" required>' +
+                            '<button class="game-button" type="submit">push</button>' +
                             '</form>';
 
                         // set the form HTML in the wordContainer
@@ -200,7 +199,7 @@
                 }
 
 
-                var timeLimit = 7; // 제한 시간
+                var timeLimit = 150; // 제한 시간
                 var timeLeft = timeLimit; // 남은 시간
 
 
@@ -257,7 +256,7 @@
 
 
                 function navigateToGame() {
-                    window.location.href = "/game";
+                    window.location.href = "/game1";
                 }
 
                 function navigateToRecord() {

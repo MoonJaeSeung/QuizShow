@@ -1,10 +1,8 @@
 package com.example.gp.entity;
 
 import com.example.gp.constant.Role;
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import com.example.gp.dto.MemberFormDto;
+import lombok.*;
 
 import javax.persistence.*;
 
@@ -12,6 +10,7 @@ import javax.persistence.*;
 @Entity
 @ToString
 @Getter
+@Setter
 public class Member {
 
     @Id
@@ -30,5 +29,13 @@ public class Member {
         this.nick = nick;
         this.password = password;
         this.role = role;
+    }
+
+    public static Member createMember(MemberFormDto memberFormDto){
+        Member member = new Member();
+        member.setNick(memberFormDto.getNick());
+        member.setPassword(memberFormDto.getPassword());
+        member.setRole(Role.USER);
+        return member;
     }
 }

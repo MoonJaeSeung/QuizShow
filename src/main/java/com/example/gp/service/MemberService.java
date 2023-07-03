@@ -19,10 +19,12 @@ public class MemberService {
     @Autowired
     private final MemberRepository memberRepository;
 
-
-
     public List<Member> getAllMembers() {
         return memberRepository.findAll();
+    }
+
+    public void save(Member member) {
+        memberRepository.save(member);
     }
 }
 
