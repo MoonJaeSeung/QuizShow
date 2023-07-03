@@ -1,13 +1,22 @@
 
 ### 가독성을 위해 노션으로 봐주시면 감사하겠습니다(노션으로 봐야 훨씬 편하게 보실 수 있습니다)
-[Project - QuizShow ](https://www.notion.so/Project-QuizShow-b49dc7c1b6af4e328fbb8d3872e5d281?pvs=21) <br>
+[프로젝트 preview ](https://www.notion.so/Project-QuizShow-b49dc7c1b6af4e328fbb8d3872e5d281?pvs=21) <br>
 
-[30초 V1](https://www.notion.so/30-V1-aac81e2f51d7459a896276e2f528b225?pvs=21)
+[프로젝트 구현](https://www.notion.so/30-V1-aac81e2f51d7459a896276e2f528b225?pvs=21)
 
 
 <br><br><br>
 
 
+## 목차
+- 프로젝트 소개
+- 아키텍처
+- 프로젝트 주요 기술 및 핵심 내용
+- STACK
+- 프로젝트 원칙
+- 주요기능
+- 고찰
+- TroubleShooting
 
 
 
