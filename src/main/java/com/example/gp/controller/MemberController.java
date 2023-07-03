@@ -1,5 +1,6 @@
 package com.example.gp.controller;
 
+import com.example.gp.JwtTokenProvider;
 import com.example.gp.dto.MemberFormDto;
 import com.example.gp.entity.Member;
 import com.example.gp.service.MemberService;
@@ -24,8 +25,9 @@ import java.util.Collections;
 @Slf4j
 public class MemberController {
 
-
     private final MemberService memberService;
+
+    private final JwtTokenProvider jwtTokenProvider;
 
     // 시작 화면 · 1회용 로그인 화면
     @GetMapping(value={"/login","/"})
@@ -64,7 +66,7 @@ public class MemberController {
         return "choice";
     }
 
-    //공식 회원으로 로그인
+    //공식 회원으로 회원가입
     @PostMapping(value="/register")
     public String register(@Valid MemberFormDto memberFormDto, BindingResult bindingResult, Model model){
         try {
@@ -75,6 +77,33 @@ public class MemberController {
             return "member/joinForm";
         }
         return "member/loginForm";
+    }
+
+    //공식 회원으로 로그인
+    @PostMapping(value="/login2")
+    public String loginBymember(@Valid MemberFormDto memberFormDto, BindingResult bindingResult, Model model, HttpServletResponse response){
+
+        if(bindingResult.hasErrors()){
+            return "member/loginForm";
+        }
+
+        try {
+            String username = memberFormDto.getNick();
+            String password = memberFormDto.getPassword();
+
+            //사용자 검증
+            Member member = memberService.login(username, password);
+
+            String token = jwtTokenProvider.createToken(username);
+            Cookie jwtCookie = new Cookie("jwt", token);
+            jwtCookie.setMaxAge(3600);
+            response.addCookie(jwtCookie);
+
+        } catch(IllegalStateException e){
+            model.addAttribute("errorMessage",e.getMessage());
+            return "member/joinForm";
+        }
+        return "choice";
     }
 
 

@@ -68,7 +68,7 @@
 
 <th:block layout:fragment="content">
   <div class="container">
-    <form role="form" action="/login" method="post" class="form-style" th:object="${memberFormDto}">
+    <form role="form" action="/login2" method="post" class="form-style" th:object="${memberFormDto}">
 
       <input type="text" class="nickname-input" id="nick" name="nick" placeholder="닉네임을 입력하세요">
       <span class="validation-error" th:if="${#fields.hasErrors('nick')}" th:errors="*{nick}"></span>

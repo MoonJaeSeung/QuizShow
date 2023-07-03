@@ -26,5 +26,10 @@ public class MemberService {
     public void save(Member member) {
         memberRepository.save(member);
     }
+
+    public Member login(String nick, String password) {
+
+
+    }
 }
 
