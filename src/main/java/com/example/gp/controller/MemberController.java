@@ -30,7 +30,7 @@ public class MemberController {
 
     private final JwtTokenProvider jwtTokenProvider;
 
-    // 시작 화면 · 1회용 로그인 화면
+    // 시작 화면 · 임시회원으로 로그인 화면
     @GetMapping(value={"/login","/"})
     public String loginAsTemp(MemberFormDto memberFormDto,Model model){
         model.addAttribute("memberFormDto", new MemberFormDto());
@@ -43,35 +43,13 @@ public class MemberController {
         return "member/joinForm";
     }
 
+    //로그인 화면
     @GetMapping(value="/login4")
     public String loginByMember(MemberFormDto memberFormDto,Model model){
         model.addAttribute("memberFormDto", new MemberFormDto());
         return "member/loginForm";
     }
 
-//    //회원 가입 화면
-//    @GetMapping(value = "/login3")
-//    public String joinMember(MemberFormDto memberFormDto,Model model){
-//        model.addAttribute("memberFormDto", new MemberFormDto());
-//        return "/member/joinForm";
-////        return "/member/joinForm";
-//    }
-
-//    //회원 가입 화면
-//    @GetMapping(value = "/join")
-//    public String joinMember(MemberFormDto memberFormDto,Model model){
-//        model.addAttribute("memberFormDto", new MemberFormDto());
-//        return "/member/testForm";
-////        return "/member/joinForm";
-//    }
-
-
-    //회원 가입 화면
-    @GetMapping(value = "/test")
-    public String test(){
-        return "/member/testForm";
-//        return "/member/joinForm";
-    }
 
     //임시회원으로 로그인
     @PostMapping(value="/login")
