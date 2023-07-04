@@ -123,6 +123,8 @@ Github · Git action <br>
     
 
 
+  [AWS S3 버킷 생성](https://iwin.tistory.com/119)
+
 ## TroubleShooting
 
 &nbsp;&nbsp;[QueryDsl : compileQuerydsl 에러](https://iwin.tistory.com/110)
