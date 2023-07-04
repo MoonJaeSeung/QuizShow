@@ -10,4 +10,8 @@ public class AdminController {
     public String admin(){
         return "addCeleb";
     }
+
+    @GetMapping("/test")
+    public String test(){return "/game/game2";}
+
 }
