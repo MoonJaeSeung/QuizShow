@@ -34,7 +34,8 @@
 
 ## 아 키 텍 처
 
-![image](https://github.com/MoonJaeSeung/QuizShow/assets/108584477/d19bb12f-626c-406e-a8d6-c247c94cbf35)
+![image](https://github.com/MoonJaeSeung/QuizShow/assets/108584477/d6b032c8-bdaf-4f4c-bb90-03fe8c0ce742)
+
 
 
 ## **프로젝트 주요 기술 및 핵심 내용**
