@@ -52,7 +52,7 @@ public class GameController {
     public String gameView2(Model model,HttpServletRequest request) {
         extracted(model, request);
         return "game/game2";
-    }
+    }//
 
     @GetMapping("/game2/celeb")
     @ResponseBody
