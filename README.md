@@ -34,7 +34,8 @@
 
 ## 아 키 텍 처
 
-![image](https://github.com/MoonJaeSeung/QuizShow/assets/108584477/d19bb12f-626c-406e-a8d6-c247c94cbf35)
+![image](https://github.com/MoonJaeSeung/QuizShow/assets/108584477/d6b032c8-bdaf-4f4c-bb90-03fe8c0ce742)
+
 
 
 ## **프로젝트 주요 기술 및 핵심 내용**
@@ -123,6 +124,8 @@ Github · Git action <br>
     
 
 
+  [AWS S3 버킷 생성](https://iwin.tistory.com/119)
+
 ## TroubleShooting
 
 &nbsp;&nbsp;[QueryDsl : compileQuerydsl 에러](https://iwin.tistory.com/110)
@@ -131,7 +134,7 @@ Github · Git action <br>
 
 &nbsp;&nbsp;[CI/CD 에러](https://iwin.tistory.com/118)
 
-
+&nbsp;&nbsp;[컨트롤러에서 보낸 함수가 Java Script에서 안 받아질 경우](https://iwin.tistory.com/122)
 
 ---
 
