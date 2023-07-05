@@ -1,6 +1,6 @@
 package com.example.gp.controller;
 
-import com.example.gp.aws.S3UploadService;
+
 import com.example.gp.entity.Celeb;
 import com.example.gp.entity.Record;
 import com.example.gp.entity.Word;
