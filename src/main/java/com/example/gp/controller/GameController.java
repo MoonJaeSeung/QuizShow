@@ -29,9 +29,6 @@ public class GameController {
     @Autowired
     RecordService recordService;
 
-    @Autowired
-    S3UploadService s3UploadService;
-
     //게임 선택
     @GetMapping("/choice")
     public String choice(){
@@ -53,9 +50,6 @@ public class GameController {
     @GetMapping("/game2")
     public String gameView2(Model model,HttpServletRequest request) {
         extracted(model, request);
-        String nick = (String)model.getAttribute("nick");
-        System.out.println("nick = " + nick);
-        model.addAttribute("nick", nick);
         return "game/game2";
     }
 
@@ -137,54 +131,3 @@ public class GameController {
 }
 
 
-
-//    @PostMapping("/celeb/add")
-//    public String addCelebrity(@RequestParam("name") String name, @RequestParam("itemImgFile") MultipartFile file) throws Exception {
-//        if(!file.isEmpty()){
-//            try{
-//                //파일 이름 가지고 오기
-//                String fileName = StringUtils.cleanPath(file.getOriginalFilename());
-//
-//                // 저장 경로 설정
-//                String uploadDir = "C:/shop/items";
-//
-//                // 파일 저장 경로가 존재하지 않는다면 생성
-//                Path uploadPath = Paths.get(uploadDir);
-//                if(!Files.exists(uploadPath)){
-//                    Files.createDirectories(uploadPath);
-//                }
-//
-//                // 지정한 경로에 파일을 저장
-//                Path filePath = uploadPath.resolve(fileName);
-//                file.transferTo(filePath.toFile());
-//
-//                return "gameView";
-//
-//            }catch(Exception e){
-//
-//            }
-//        }
-//
-//        return "error";
-//    }
-//
-//    @GetMapping("/game/allPhotos")
-//    public String getAllPhotos(Model model){
-//        //경로에 있는 모든 사진을 가져오기
-//        File uploadFolder = new File("C:/shop/items");
-//        File[] files = uploadFolder.listFiles();
-//
-//        List<String> photoFileNames = new ArrayList<>();
-//
-//        // 파일 이름을 리스트에 넣기
-//        if(files != null){
-//            for(File file : files){
-//                photoFileNames.add(file.getName());
-//            }
-//        }
-//        System.out.println("photoFileNames = " + photoFileNames);
-//        model.addAttribute("photoFileNames", photoFileNames);
-//
-//        return "gameView";
-//    }
-//

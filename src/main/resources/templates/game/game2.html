@@ -130,8 +130,6 @@
                 if (userGuess === correctAnswer) {
                     wrongCount = 0;
                     CorrectGuesses++;
-                    resultMessage.textContent = "Correct!";
-                    resultMessage.style.color = "green";
                     setTimeout(function () {
                         resultMessage.textContent = "";
                         nextCeleb();
