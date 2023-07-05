@@ -134,7 +134,7 @@ Github · Git action <br>
 
 &nbsp;&nbsp;[CI/CD 에러](https://iwin.tistory.com/118)
 
-
+&nbsp;&nbsp;[컨트롤러에서 보낸 함수가 Java Script에서 안 받아질 경우](https://iwin.tistory.com/122)
 
 ---
 
