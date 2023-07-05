@@ -1,5 +1,7 @@
 package com.example.gp.controller;
 
+import com.example.gp.aws.S3UploadService;
+import com.example.gp.entity.Celeb;
 import com.example.gp.entity.Record;
 import com.example.gp.entity.Word;
 import com.example.gp.service.GameService;
@@ -27,6 +29,9 @@ public class GameController {
     @Autowired
     RecordService recordService;
 
+    @Autowired
+    S3UploadService s3UploadService;
+
     //게임 선택
     @GetMapping("/choice")
     public String choice(){
@@ -35,15 +40,28 @@ public class GameController {
 
     //사자성어 게임
     @GetMapping("/game1")
-    public String gameView(Model model, HttpServletRequest request){
+    public String gameView1(Model model, HttpServletRequest request){
         //사자성어 문제 가져오기
-        List<Word> words = gameService.findAll();
+        List<Word> words = gameService.findAllWord();
         model.addAttribute("words", words);
 
         extracted(model, request);
 
         return "game/game1";
     }
+
+    @GetMapping("/game2")
+    public String gameView2(Model model,HttpServletRequest request) {
+        extracted(model, request);
+        return "game/game2";
+    }
+
+    @GetMapping("/game2/celeb")
+    @ResponseBody
+    public List<Celeb> getCelebData() {
+        return gameService.findAllCeleb();
+    }
+
 
 
     //쿠키를 통해 nick 가져오기

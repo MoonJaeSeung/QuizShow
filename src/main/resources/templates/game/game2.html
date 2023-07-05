@@ -1,10 +1,197 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layouts/layout}">
 <head>
-    <title>Image View</title>
+    <title>연예인 이름 맞추기</title>
+    <style>
+
+        body {
+            font-family: 'Dongle', sans-serif;
+            font-size: 70px;
+            text-align: center;
+        }
+
+        #celebImage {
+            max-width: 300px;
+            max-height: 300px;
+            margin-bottom: 10px;
+        }
+        #timer {
+            font-size: 70px;
+            margin-bottom: 10px;
+        }
+
+        .shake-animation {
+            animation: shake 0.5s infinite;
+        }
+
+        @keyframes shake {
+            0% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            50% { transform: translateX(5px); }
+            75% { transform: translateX(-5px); }
+            100% { transform: translateX(0); }
+        }
+
+        .container{
+            display: flex;
+            flex-direction: column;
+        }
+
+        #guessInput{
+            font-size: 40px;
+            border-radius: 3px;
+            border: 1px solid #ccc;
+            width: 200px;
+        }
+
+    </style>
 </head>
-<body>
-<h1>Image View</h1>
-<img src="https://s3quiz.s3.ap-northeast-2.amazonaws.com/gom.jpg" />
-</body>
+<th:block layout:fragment="content">
+    <div class="container">
+        <div id="timer">Time: <span id="timerCount"></span></div>
+        <img id="celebImage" src="" alt="Celeb Image">
+        <input type="text" id="guessInput">
+        <button id="submitGuess" class="game-button">Push</button>
+        <div id="resultMessage"></div>
+        <block>
+        <a href="/game2" class="atag" style="font-size: 60px"> 다시 하기 </a>
+        <a href="/record?value=2" class="atag" style="font-size: 60px">기록 확인</a>
+        </block>
+    </div>
+
+    <th:block layout:fragment="script">
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+        <script>
+            var nick = /*[[${nick}]]*/ ''; //닉네임
+            var celebData; // 연예인 데이터를 저장할 변수
+            var currentCelebIndex = 0; // 현재 연예인 인덱스
+            var numCorrectGuesses = 0; // 맞힌 문제 수
+
+            var timerInterval;
+            var wrongCount = 0; // 틀린 횟수
+            var timeRemaining = 150; // 남은 시간 (초)
+
+            var celebImage = document.getElementById("celebImage");
+            var guessInput = document.getElementById("guessInput");
+            var submitButton = document.getElementById("submitGuess");
+            var resultMessage = document.getElementById("resultMessage");
+            var timerCount = document.getElementById("timerCount");
+
+            // 서버로부터 연예인 데이터 가져오기
+            axios.get('/game2/celeb')
+                .then(function (response) {
+                    celebData = response.data;
+                    shuffleCelebData();
+                    showCurrentCeleb();
+                })
+                .catch(function (error) {
+                    console.error(error);
+                });
+
+            // 연예인 데이터를 랜덤하게 섞기
+            function shuffleCelebData() {
+                for (var i = celebData.length - 1; i > 0; i--) {
+                    var j = Math.floor(Math.random() * (i + 1));
+                    var temp = celebData[i];
+                    celebData[i] = celebData[j];
+                    celebData[j] = temp;
+                }
+            }
+
+            // 현재 연예인 정보를 화면에 표시
+            function showCurrentCeleb() {
+                var currentCeleb = celebData[currentCelebIndex];
+                celebImage.src = currentCeleb.uri;
+                guessInput.value = "";
+                guessInput.focus();
+
+                // 타이머 시작
+                startTimer();
+                console.log(nick)
+            }
+
+            // 정답 확인 및 처리
+            function checkAnswer() {
+                var currentCeleb = celebData[currentCelebIndex];
+                var userGuess = guessInput.value.trim().toLowerCase();
+                var correctAnswer = currentCeleb.name.toLowerCase();
+
+                if (userGuess === correctAnswer) {
+                    wrongCount = 0;
+                    numCorrectGuesses++;
+                    resultMessage.textContent = "Correct!";
+                    resultMessage.style.color = "green";
+                    setTimeout(function () {
+                        resultMessage.textContent = "";
+                        nextCeleb();
+                    }, 1);
+                } else {
+                    resultMessage.textContent = "Incorrect! Try again.";
+                    resultMessage.style.color = "red";
+                    guessInput.value = "";
+                    guessInput.focus();
+                    wrongCount++;
+                }
+            }
+
+            // 다음 연예인으로 이동
+            function nextCeleb() {
+                currentCelebIndex++;
+                if (currentCelebIndex < celebData.length) {
+                    showCurrentCeleb();
+                } else {
+                    showGameResult();
+                }
+            }
+
+            // 게임 결과 표시
+            function showGameResult() {
+                celebImage.style.display = "none";
+                guessInput.style.display = "none";
+                submitButton.style.display = "none";
+                clearInterval(timerInterval);
+
+                var resultText = "Game Over! You guessed " + numCorrectGuesses + " celebrities correctly.";
+                resultMessage.textContent = resultText;
+                resultMessage.style.color = "blue";
+            }
+
+            // 타이머 시작
+            function startTimer() {
+                timerCount.textContent = timeRemaining;
+
+                timerInterval = setInterval(function () {
+                    timeRemaining--;
+                    timerCount.textContent = timeRemaining;
+
+                    if (timeRemaining === 0) {
+                        clearInterval(timerInterval);
+                        showGameResult();
+                        timerCount.textContent = "Time's up!";
+                    }
+
+                    if (timeRemaining <= 5) {
+                        timerCount.style.animation = "shake 0.5s infinite";
+                    } else {
+                        timerCount.style.animation = "";
+                    }
+                }, 1000);
+            }
+
+
+            // 정답 확인 버튼 클릭 이벤트 처리
+            submitButton.addEventListener("click", function () {
+                checkAnswer();
+            });
+
+            // 입력 필드에서 Enter 키 눌렀을 때 정답 확인 처리
+            guessInput.addEventListener("keydown", function (event) {
+                if (event.key === "Enter") {
+                    checkAnswer();
+                }
+            });
+        </script>
+    </th:block>
+</th:block>
+
 </html>

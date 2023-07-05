@@ -1,5 +1,9 @@
 package com.example.gp.aws;
 
+import com.amazonaws.services.s3.AmazonS3Client;
+import com.amazonaws.services.s3.model.ListObjectsV2Result;
+import com.amazonaws.services.s3.model.S3ObjectSummary;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
@@ -16,17 +20,26 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest
+@RequiredArgsConstructor
 @Slf4j
 class S3UploadServiceTest {
 
     @Autowired
     private S3UploadService s3UploadService;
+    private final AmazonS3Client amazonS3Client = new AmazonS3Client();
 
     @DisplayName("저장된 이미지 찾기")
     @Test
     public void findImg() {
-        String imgPath = s3UploadService.getThumbnailPath("gom.jpg");
+        String imgPath = s3UploadService.getThumbnailPath("gomasd.jpg");
         log.info(imgPath);
         Assertions.assertThat(imgPath).isNotNull();
+    }
+    @Test
+    public void listFiles() {
+        ListObjectsV2Result result = amazonS3Client.listObjectsV2("s3quiz");
+        for (S3ObjectSummary objectSummary : result.getObjectSummaries()) {
+            System.out.println(objectSummary.getKey());
+        }
     }
 }

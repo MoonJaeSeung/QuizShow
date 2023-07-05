@@ -56,11 +56,12 @@
             }
 
             input[type="text"] {
-                font-size: 16px;
+                font-size: 40px;
                 border-radius: 3px;
                 border: 1px solid #ccc;
                 width: 200px;
             }
+
 
             #guessForm button[type="submit"] {
 
@@ -116,7 +117,7 @@
                 /*<![CDATA[*/
                 var words = /*[[${words}]]*/ []; // 타임리프 모델을 통해 변수 할당
                 var correctGuesses = 0; // 맞춘 개수
-                var incorrectGuessesForCurrentWord = 0; // 틀린 횟수
+                var xcount = 0; // 틀린 횟수
                 var nick = /*[[${nick}]]*/ ''; //닉네임
 
 
@@ -157,14 +158,14 @@
                                 // if the guess is correct, increment the current word index and correctGuesses
                                 $('#currentWordIndex').val(currentWordIndex + 1);
                                 correctGuesses++;
-                                incorrectGuessesForCurrentWord = 0; // reset the count of incorrect guesses
+                                xcount = 0; // reset the count of incorrect guesses
                                 generateForm(); // generate the next form
                             } else {
-                                incorrectGuessesForCurrentWord++;
-                                if (incorrectGuessesForCurrentWord >= 2) {
+                                xcount++;
+                                if (xcount >= 2) {
                                     // if the user has guessed incorrectly twice, move to the next word
                                     $('#currentWordIndex').val(currentWordIndex + 1);
-                                    incorrectGuessesForCurrentWord = 0; // reset the count of incorrect guesses
+                                    xcount = 0; // reset the count of incorrect guesses
                                     generateForm(); // generate the next form
                                 } else {
                                     // if the guess is incorrect, show an error message, clear the input, and apply shake animation
@@ -204,7 +205,7 @@
 
 
                 function updateTimer() {
-                    $('#timer').html('남은 시간: ' + timeLeft + '초');
+                    $('#timer').html('Time: ' + timeLeft );
 
                     if (timeLeft <= 0) {
                         $('#timer').removeClass('shake-animation');
