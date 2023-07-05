@@ -48,7 +48,7 @@
 </head>
 <th:block layout:fragment="content">
     <div class="container">
-        <div id="timer">Time: <span id="timerCount"></span></div>
+        <div id="timer">Time: <span id="timerCount" class="shake-animation"></span></div>
         <img id="celebImage" src="" alt="Celeb Image">
         <input type="text" id="guessInput">
         <button id="submitGuess" class="game-button">Push</button>
@@ -207,9 +207,9 @@
                     }
 
                     if (timeRemaining <= 5) {
-                        timerCount.style.animation = "shake 0.5s infinite";
+                        timerCount.classList.add("shake-animation");
                     } else {
-                        timerCount.style.animation = "";
+                        timerCount.classList.remove("shake-animation");
                     }
                 }, 1000);
             }
