@@ -169,7 +169,7 @@
                                     generateForm(); // generate the next form
                                 } else {
                                     // if the guess is incorrect, show an error message, clear the input, and apply shake animation
-                                    $('#errorContainer').html('한번 더 틀리면 기회 없어!');
+                                    $('#errorContainer').html('한번 더 틀리면 기회 없습니다!');
                                     var guessInput = $('#guess');
                                     guessInput.addClass('shake-animation');
                                     setTimeout(function () {
@@ -222,7 +222,7 @@
 
                     clearInterval(countdown);
                     $('#errorContainer').html('');
-                    $('#timer').html('종료');
+                    $('#timer').html('Time : 종료');
                     $('#guessForm').off('submit');
 
                     // 문제란 비우기

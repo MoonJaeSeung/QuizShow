@@ -62,14 +62,16 @@
     <th:block layout:fragment="script">
         <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
         <script>
-            var nick = /*[[${nick}]]*/ ''; //닉네임
+
+            /*<![CDATA[*/
+
             var celebData; // 연예인 데이터를 저장할 변수
             var currentCelebIndex = 0; // 현재 연예인 인덱스
-            var numCorrectGuesses = 0; // 맞힌 문제 수
+            var CorrectGuesses = 0; // 맞힌 문제 수
 
             var timerInterval;
             var wrongCount = 0; // 틀린 횟수
-            var timeRemaining = 150; // 남은 시간 (초)
+            var timeRemaining = 7; // 남은 시간 (초)
 
             var celebImage = document.getElementById("celebImage");
             var guessInput = document.getElementById("guessInput");
@@ -87,6 +89,15 @@
                 .catch(function (error) {
                     console.error(error);
                 });
+
+            axios.get('/nick')
+                .then(function(response){
+                    nick = response.data;
+                    console.log(nick)
+                })
+                .catch(function(error){
+                    console.error(error);
+                })
 
             // 연예인 데이터를 랜덤하게 섞기
             function shuffleCelebData() {
@@ -118,7 +129,7 @@
 
                 if (userGuess === correctAnswer) {
                     wrongCount = 0;
-                    numCorrectGuesses++;
+                    CorrectGuesses++;
                     resultMessage.textContent = "Correct!";
                     resultMessage.style.color = "green";
                     setTimeout(function () {
@@ -126,7 +137,7 @@
                         nextCeleb();
                     }, 1);
                 } else {
-                    resultMessage.textContent = "Incorrect! Try again.";
+                    resultMessage.textContent = "한번 더 틀리면 기회 없습니다!";
                     resultMessage.style.color = "red";
                     guessInput.value = "";
                     guessInput.focus();
@@ -151,9 +162,33 @@
                 submitButton.style.display = "none";
                 clearInterval(timerInterval);
 
-                var resultText = "Game Over! You guessed " + numCorrectGuesses + " celebrities correctly.";
+                timerCount.textContent = "게임 종료"; // 변경된 부분
+
+                var resultText = nick + "님 " + CorrectGuesses + " 개 정답";
                 resultMessage.textContent = resultText;
-                resultMessage.style.color = "blue";
+                resultMessage.style.color = "black";
+            }
+            
+            //기록 저장
+            function endGame(){
+                console.log("endGame")
+                var recordDto = {
+                    nick : nick,
+                    score : CorrectGuesses,
+                    game : 2
+                };
+
+                axios.post('/record/add', recordDto, {
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                })
+                    .then(function(response) {
+                        console.log("성공");
+                    })
+                    .catch(function(error) {
+                        console.log('기록 저장에 실패했습니다.', error);
+                    });
             }
 
             // 타이머 시작
@@ -167,7 +202,8 @@
                     if (timeRemaining === 0) {
                         clearInterval(timerInterval);
                         showGameResult();
-                        timerCount.textContent = "Time's up!";
+                        timerCount.textContent = "종료";
+                        endGame();
                     }
 
                     if (timeRemaining <= 5) {
@@ -190,6 +226,7 @@
                     checkAnswer();
                 }
             });
+            /*]]>*/
         </script>
     </th:block>
 </th:block>

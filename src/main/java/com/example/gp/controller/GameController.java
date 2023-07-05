@@ -53,6 +53,9 @@ public class GameController {
     @GetMapping("/game2")
     public String gameView2(Model model,HttpServletRequest request) {
         extracted(model, request);
+        String nick = (String)model.getAttribute("nick");
+        System.out.println("nick = " + nick);
+        model.addAttribute("nick", nick);
         return "game/game2";
     }
 
@@ -60,6 +63,14 @@ public class GameController {
     @ResponseBody
     public List<Celeb> getCelebData() {
         return gameService.findAllCeleb();
+    }
+
+    @GetMapping("/nick")
+    @ResponseBody
+    public String getNick(Model model,HttpServletRequest request){
+        extracted(model, request);
+        String nick = (String)model.getAttribute("nick");
+        return nick;
     }
 
 
