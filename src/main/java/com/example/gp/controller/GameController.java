@@ -87,7 +87,6 @@ public class GameController {
                     Claims claims = claimsJws.getBody();
 
                     String nick = claims.getSubject();
-                    System.out.println("nick = " + nick);
                     model.addAttribute("nick", nick);
                 }// 임시회원 nick 가져오기
                 else if (cookie.getName().equals("nick")) {

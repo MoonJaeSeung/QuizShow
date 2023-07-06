@@ -11,10 +11,10 @@
                     transform: translateX(0);
                 }
                 10%, 30%, 50%, 70%, 90% {
-                    transform: translateX(-5px);
+                    transform: translateX(-10px);
                 }
                 20%, 40%, 60%, 80% {
-                    transform: translateX(5px);
+                    transform: translateX(10px);
                 }
                 100% {
                     transform: translateX(0);
@@ -22,8 +22,10 @@
             }
 
             .shake-animation {
-                animation: shake 0.5s infinite;
+                animation: shake 5s infinite;
             }
+
+
 
             .container {
                 display: block;
@@ -63,13 +65,7 @@
             }
 
 
-            #guessForm button[type="submit"] {
 
-            }
-
-            button[type="submit"]:hover {
-                background-color: #45a049;
-            }
 
             #errorContainer {
                 margin-top: 20px;
@@ -82,6 +78,24 @@
                 margin-top: 50px;
             }
 
+            .toast-message {
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                z-index: 9999;
+            }
+
+            #toastContainer{
+                width:50px;
+                opacity: 1;
+            }
+
+            .toast{
+                border-color: #e5d3fb91;
+            }
+
+
         </style>
     </th:block>
 
@@ -91,10 +105,10 @@
     <div class="container">
         <div id="timer" style="font-size: 70px; "></div> <!-- 타이머 표시-->
 
-
         <div id="wordContainer" style="font-size: 50px">
             <!-- 문제 출제 공간 -->
         </div>
+        <div id="toastContainer" class="toast-message"></div>
 
         <!-- This is a hidden field for storing the current word's index -->
         <input type="hidden" id="currentWordIndex" value="0">
@@ -106,6 +120,7 @@
 
         <th:block layout:fragment="script">
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
             <script th:inline="javascript">
 
                 // 페이지 로딩완료시 동작
@@ -161,6 +176,12 @@
                                 xcount = 0; // reset the count of incorrect guesses
                                 generateForm(); // generate the next form
                             } else {
+                                showErrorMessage('땡')
+                                var guessInput = $('#guess');
+                                guessInput.addClass('shake-animation');
+                                setTimeout(function () {
+                                    guessInput.removeClass('shake-animation');
+                                }, 100);
                                 xcount++;
                                 if (xcount >= 2) {
                                     // if the user has guessed incorrectly twice, move to the next word
@@ -170,11 +191,11 @@
                                 } else {
                                     // if the guess is incorrect, show an error message, clear the input, and apply shake animation
                                     $('#errorContainer').html('한번 더 틀리면 기회 없습니다!');
-                                    var guessInput = $('#guess');
-                                    guessInput.addClass('shake-animation');
-                                    setTimeout(function () {
-                                        guessInput.removeClass('shake-animation');
-                                    }, 300);
+                                    // var guessInput = $('#guess');
+                                    // guessInput.addClass('shake-animation');
+                                    // setTimeout(function () {
+                                    //     guessInput.removeClass('shake-animation');
+                                    // }, 300);
                                     guessInput.val('');
                                 }
                             }
@@ -183,6 +204,28 @@
                         // no more words, display a completion message
                         $('#wordContainer').html(nick + '<p id="completionMessage">' + correctGuesses + '개 정답!</p>');
                     }
+                }
+
+                function showErrorMessage(message) {
+                    var toastContainer = $('#toastContainer');
+                    var toastId = 'errorToast-' + new Date().getTime();
+                    // var toastId = 'errorToast-' + new Date().getTime();
+
+                    var toastHtml = '<div id="' + toastId + '" class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-bs-autohide="true" data-bs-delay="1000" border-color="blue">' +
+                        '<div class="toast-body">' +
+                        message +
+                        '</div>' +
+                        '</div>';
+
+                    toastContainer.append(toastHtml);
+
+                    var toastElement = $('#' + toastId);
+                    var toast = new bootstrap.Toast(toastElement);
+                    toast.show();
+
+                    toastElement.on('hidden.bs.toast', function () {
+                        toastElement.remove();
+                    });
                 }
 
                 // 문제 섞기
@@ -200,7 +243,7 @@
                 }
 
 
-                var timeLimit = 30; // 제한 시간
+                var timeLimit = 300; // 제한 시간
                 var timeLeft = timeLimit; // 남은 시간
 
 

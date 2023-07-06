@@ -1,61 +1,89 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layouts/layout}">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout}">
 <head>
     <title>연예인 이름 맞추기</title>
-    <style>
+    <th:block layout:fragment="css">
+        <style>
 
-        body {
-            font-family: 'Dongle', sans-serif;
-            font-size: 70px;
-            text-align: center;
-        }
+            body {
+                font-family: 'Dongle', sans-serif;
+                font-size: 70px;
+                text-align: center;
+            }
 
-        #celebImage {
-            max-width: 300px;
-            max-height: 300px;
-            margin-bottom: 10px;
-        }
-        #timer {
-            font-size: 70px;
-            margin-bottom: 10px;
-        }
+            #celebImage {
+                max-width: 300px;
+                max-height: 300px;
+                margin-bottom: 10px;
+            }
 
-        .shake-animation {
-            animation: shake 0.5s infinite;
-        }
+            #timer {
+                font-size: 70px;
+                margin-bottom: 10px;
+            }
 
-        @keyframes shake {
-            0% { transform: translateX(0); }
-            25% { transform: translateX(-5px); }
-            50% { transform: translateX(5px); }
-            75% { transform: translateX(-5px); }
-            100% { transform: translateX(0); }
-        }
 
-        .container{
-            display: flex;
-            flex-direction: column;
-        }
+            #guessInput {
+                font-size: 40px;
+                border-radius: 3px;
+                border: 1px solid #ccc;
+                width: 200px;
+            }
 
-        #guessInput{
-            font-size: 40px;
-            border-radius: 3px;
-            border: 1px solid #ccc;
-            width: 200px;
-        }
+            @keyframes shake {
+                0% {
+                    transform: translateX(0);
+                }
+                10%, 30%, 50%, 70%, 90% {
+                    transform: translateX(-10px);
+                }
+                20%, 40%, 60%, 80% {
+                    transform: translateX(10px);
+                }
+                100% {
+                    transform: translateX(0);
+                }
+            }
 
-    </style>
+            .shake-animation {
+                animation: shake 5s;
+            }
+
+
+
+            #toastContainer{
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                z-index: 9999;
+                width:50px;
+                opacity: 1;
+
+            }
+
+            .toast{
+                border-color: #e5d3fb91;
+            }
+            #resultMessage{
+                font-size:40px;
+            }
+
+        </style>
+    </th:block>
 </head>
 <th:block layout:fragment="content">
     <div class="container">
-        <div id="timer">Time: <span id="timerCount" class="shake-animation"></span></div>
+        <div id="timer" class="timer">Time: <span id="timerCount"></span></div>
         <img id="celebImage" src="" alt="Celeb Image">
+        <div id="toastContainer" className="toast-message"></div>
         <input type="text" id="guessInput">
         <button id="submitGuess" class="game-button">Push</button>
         <div id="resultMessage"></div>
         <block>
-        <a href="/game2" class="atag" style="font-size: 60px"> 다시 하기 </a>
-        <a href="/record?value=2" class="atag" style="font-size: 60px">기록 확인</a>
+            <a href="/game2" class="atag" style="font-size: 60px"> 다시 하기 </a>
+            <a href="/record?value=2" class="atag" style="font-size: 60px">기록 확인</a>
         </block>
     </div>
 
@@ -71,13 +99,107 @@
 
             var timerInterval;
             var wrongCount = 0; // 틀린 횟수
-            var timeRemaining = 7; // 남은 시간 (초)
+            var timeRemaining = 300; // 남은 시간 (초)
 
             var celebImage = document.getElementById("celebImage");
             var guessInput = document.getElementById("guessInput");
             var submitButton = document.getElementById("submitGuess");
             var resultMessage = document.getElementById("resultMessage");
             var timerCount = document.getElementById("timerCount");
+            var timer = document.getElementById("timer");
+
+
+            startTimer()
+
+            // 타이머 시작
+            function startTimer() {
+                timerCount.textContent = timeRemaining;
+
+                timerInterval = setInterval(function () {
+                    timeRemaining--;
+                    timerCount.textContent = timeRemaining;
+
+                    if (timeRemaining == 0) {
+                        clearInterval(timerInterval);
+                        timerCount.textContent ="종료"
+                        showGameResult();
+                        endGame();
+                    }
+
+                    if (timeRemaining <= 5) {
+                        timer.classList.add("shake-animation");
+                    } else {
+                        // timer.classList.remove("shake-animation");
+                    }
+                }, 1000);
+            }
+
+            // 현재 연예인 정보를 화면에 표시
+            function showCurrentCeleb() {
+                var currentCeleb = celebData[currentCelebIndex];
+                celebImage.src = currentCeleb.uri;
+                guessInput.value = "";
+                guessInput.focus();
+
+                // 타이머 시작
+                console.log(nick)
+            }
+
+            //기록 저장
+            function endGame() {
+
+                console.log("endGame")
+                var recordDto = {
+                    nick: nick,
+                    score: CorrectGuesses,
+                    game: 2
+                };
+
+                axios.post('/record/add', recordDto, {
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                })
+                    .then(function (response) {
+                        console.log("성공");
+                    })
+                    .catch(function (error) {
+                        console.log('기록 저장에 실패했습니다.', error);
+                    });
+            }
+
+            // 게임 결과 표시
+            function showGameResult() {
+                celebImage.style.display = "none";
+                guessInput.style.display = "none";
+                submitButton.style.display = "none";
+
+                var resultText = nick + "님 " + CorrectGuesses + " 개 정답";
+                resultMessage.textContent = resultText;
+                resultMessage.style.color = "black";
+            }
+
+            function showErrorMessage(message) {
+                var toastContainer = document.getElementById("toastContainer");
+                var toastId = 'errorToast-' + new Date().getTime();
+
+                var toastHtml = '<div id="' + toastId + '" class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-bs-autohide="true" data-bs-delay="1000">' +
+                    '<div class="toast-body">' +
+                    message +
+                    '</div>' +
+                    '</div>';
+
+                toastContainer.innerHTML = toastHtml;
+
+                var toastElement = document.getElementById(toastId);
+                var toast = new bootstrap.Toast(toastElement);
+                toast.show();
+
+                toastElement.addEventListener('hidden.bs.toast', function () {
+                    toastElement.remove();
+                });
+            }
+
 
             // 서버로부터 연예인 데이터 가져오기
             axios.get('/game2/celeb')
@@ -90,12 +212,13 @@
                     console.error(error);
                 });
 
+            //닉네임 가져오기
             axios.get('/nick')
-                .then(function(response){
+                .then(function (response) {
                     nick = response.data;
                     console.log(nick)
                 })
-                .catch(function(error){
+                .catch(function (error) {
                     console.error(error);
                 })
 
@@ -109,17 +232,7 @@
                 }
             }
 
-            // 현재 연예인 정보를 화면에 표시
-            function showCurrentCeleb() {
-                var currentCeleb = celebData[currentCelebIndex];
-                celebImage.src = currentCeleb.uri;
-                guessInput.value = "";
-                guessInput.focus();
 
-                // 타이머 시작
-                startTimer();
-                console.log(nick)
-            }
 
             // 정답 확인 및 처리
             function checkAnswer() {
@@ -135,6 +248,7 @@
                         nextCeleb();
                     }, 1);
                 } else {
+                    showErrorMessage("꽝")
                     resultMessage.textContent = "한번 더 틀리면 기회 없습니다!";
                     resultMessage.style.color = "red";
                     guessInput.value = "";
@@ -151,65 +265,6 @@
                 } else {
                     showGameResult();
                 }
-            }
-
-            // 게임 결과 표시
-            function showGameResult() {
-                celebImage.style.display = "none";
-                guessInput.style.display = "none";
-                submitButton.style.display = "none";
-                clearInterval(timerInterval);
-
-                timerCount.textContent = "게임 종료"; // 변경된 부분
-
-                var resultText = nick + "님 " + CorrectGuesses + " 개 정답";
-                resultMessage.textContent = resultText;
-                resultMessage.style.color = "black";
-            }
-            
-            //기록 저장
-            function endGame(){
-                console.log("endGame")
-                var recordDto = {
-                    nick : nick,
-                    score : CorrectGuesses,
-                    game : 2
-                };
-
-                axios.post('/record/add', recordDto, {
-                    headers: {
-                        'Content-Type': 'application/json'
-                    }
-                })
-                    .then(function(response) {
-                        console.log("성공");
-                    })
-                    .catch(function(error) {
-                        console.log('기록 저장에 실패했습니다.', error);
-                    });
-            }
-
-            // 타이머 시작
-            function startTimer() {
-                timerCount.textContent = timeRemaining;
-
-                timerInterval = setInterval(function () {
-                    timeRemaining--;
-                    timerCount.textContent = timeRemaining;
-
-                    if (timeRemaining === 0) {
-                        clearInterval(timerInterval);
-                        showGameResult();
-                        timerCount.textContent = "종료";
-                        endGame();
-                    }
-
-                    if (timeRemaining <= 5) {
-                        timerCount.classList.add("shake-animation");
-                    } else {
-                        timerCount.classList.remove("shake-animation");
-                    }
-                }, 1000);
             }
 
 
