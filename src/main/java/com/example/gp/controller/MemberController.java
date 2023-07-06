@@ -53,7 +53,7 @@ public class MemberController {
 
     //임시회원으로 로그인
     @PostMapping(value="/login")
-    public String login(@RequestParam("nick") String nick, Model model, HttpServletResponse response){
+    public String loginByTemp(@RequestParam("nick") String nick, Model model, HttpServletResponse response){
 
         if(StringUtils.isBlank(nick)){
             model.addAttribute("errors", Collections.singletonList("이름에 공백은 불가합니다"));
