@@ -44,7 +44,7 @@ public class MemberController {
     }
 
     //로그인 화면
-    @GetMapping(value="/login4")
+    @GetMapping(value="/login3")
     public String loginByMember(MemberFormDto memberFormDto,Model model){
         model.addAttribute("memberFormDto", new MemberFormDto());
         return "member/loginForm";
@@ -110,6 +110,4 @@ public class MemberController {
         }
         return "choice";
     }
-
-
 }
