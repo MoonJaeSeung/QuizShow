@@ -22,15 +22,15 @@ public class RecordService {
         recordRepository.save(record);
     }
 
-    public List<Record> find10ByGame(int i) {
+    public List<Record> find5ByGame(int i) {
         List<Record> allByGame = recordRepository.find10ByGame(i);
-        List<Record> top10 = new ArrayList<>();
+        List<Record> top5 = new ArrayList<>();
         for(int n=0; n<allByGame.size(); n++){
-            top10.add(allByGame.get(n));
-            if(top10.size() == 10){
-                return top10;
+            top5.add(allByGame.get(n));
+            if(top5.size() == 5){
+                return top5;
             }
         }
-        return top10;
+        return top5;
     }
 }

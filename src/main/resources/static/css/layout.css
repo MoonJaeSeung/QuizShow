@@ -14,7 +14,7 @@ body {
 }
 
 .game-button {
-    width: 100px;
+    width: 35vw;
     display: flex;
     height: 60px;
     font-family: 'Dongle', sans-serif;

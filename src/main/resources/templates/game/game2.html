@@ -99,7 +99,7 @@
 
             var timerInterval;
             var wrongCount = 0; // 틀린 횟수
-            var timeRemaining = 300; // 남은 시간 (초)
+            var timeRemaining = 30; // 남은 시간 (초)
 
             var celebImage = document.getElementById("celebImage");
             var guessInput = document.getElementById("guessInput");
@@ -141,8 +141,6 @@
                 guessInput.value = "";
                 guessInput.focus();
 
-                // 타이머 시작
-                console.log(nick)
             }
 
             //기록 저장
@@ -174,7 +172,7 @@
                 guessInput.style.display = "none";
                 submitButton.style.display = "none";
 
-                var resultText = nick + "님 " + CorrectGuesses + " 개 정답";
+                var resultText = CorrectGuesses + " 개 정답";
                 resultMessage.textContent = resultText;
                 resultMessage.style.color = "black";
             }
@@ -222,6 +220,7 @@
                     console.error(error);
                 })
 
+
             // 연예인 데이터를 랜덤하게 섞기
             function shuffleCelebData() {
                 for (var i = celebData.length - 1; i > 0; i--) {
@@ -254,12 +253,17 @@
                     guessInput.value = "";
                     guessInput.focus();
                     wrongCount++;
+                    if(wrongCount >= 2){
+                        nextCeleb();
+                    }
                 }
             }
 
             // 다음 연예인으로 이동
             function nextCeleb() {
+                wrongCount = 0;
                 currentCelebIndex++;
+                resultMessage.textContent =""
                 if (currentCelebIndex < celebData.length) {
                     showCurrentCeleb();
                 } else {

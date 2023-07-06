@@ -110,8 +110,9 @@ public class GameController {
 
     @GetMapping("/record")
     public String viewRecord(@RequestParam("value") int gameNum,Model model){
-        List<Record> records = recordService.find10ByGame(gameNum); //게임종류별 기록 top10 가져오기
+        List<Record> records = recordService.find5ByGame(gameNum); //게임종류별 기록 top10 가져오기
         model.addAttribute("records",records);
+        model.addAttribute("gameNum", gameNum); // 게임 번호를 모델에 추가
         return "record";
     }
 

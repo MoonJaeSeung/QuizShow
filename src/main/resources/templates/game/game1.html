@@ -202,7 +202,7 @@
                         });
                     } else {
                         // no more words, display a completion message
-                        $('#wordContainer').html(nick + '<p id="completionMessage">' + correctGuesses + '개 정답!</p>');
+                        $('#wordContainer').html('<p id="completionMessage">' + correctGuesses + '개 정답!</p>');
                     }
                 }
 
@@ -243,7 +243,7 @@
                 }
 
 
-                var timeLimit = 300; // 제한 시간
+                var timeLimit = 7; // 제한 시간
                 var timeLeft = timeLimit; // 남은 시간
 
 
@@ -272,7 +272,7 @@
                     $('#wordContainer').html('');
 
                     // display a message indicating that the game has ended
-                    var completionMessage = '<p class="text1" id="completionMessage" style="font-size: 50px">' + nick + '님, 시간 종료! <br>' +
+                    var completionMessage = '<p class="text1" id="completionMessage" style="font-size: 50px">' +
                         correctGuesses + '개 정답!</p>';
 
                     $('#wordContainer').append(completionMessage);
