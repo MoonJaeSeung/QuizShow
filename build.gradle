@@ -34,7 +34,7 @@ dependencies {
     annotationProcessor 'org.projectlombok:lombok'
     testAnnotationProcessor 'org.projectlombok:lombok'
     implementation 'org.springframework.boot:spring-boot-starter-validation'
-    implementation 'org.springframework.cloud:spring-cloud-starter-aws:2.2.1.RELEASE'
+//    implementation 'org.springframework.cloud:spring-cloud-starter-aws:2.2.1.RELEASE'
 
 
     // Querydsl dependencies
@@ -58,8 +58,7 @@ dependencies {
     implementation ('io.jsonwebtoken:jjwt-jackson:0.11.2') {
         exclude module: 'jjwt-api' //since we manually import the api (better practice)
     }
-    //aws
-    implementation 'software.amazon.awssdk:s3:2.17.79'
+
 }
 
 //querydsl 추가 시작
