@@ -76,6 +76,19 @@
             }
 
         </style>
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+        <script>
+            // 서버로부터 연예인 데이터 가져오기
+            axios.get('/game2/celeb')
+                .then(function (response) {
+                    celebData = response.data;
+                    shuffleCelebData();
+                    showCurrentCeleb();
+                })
+                .catch(function (error) {
+                    console.error(error);
+                });
+        </script>
     </th:block>
 </head>
 <th:block layout:fragment="content">
@@ -92,9 +105,22 @@
         </block>
     </div>
 
+
+
     <th:block layout:fragment="script">
         <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
         <script>
+
+            // // 서버로부터 연예인 데이터 가져오기
+            // axios.get('/game2/celeb')
+            //     .then(function (response) {
+            //         celebData = response.data;
+            //         shuffleCelebData();
+            //         showCurrentCeleb();
+            //     })
+            //     .catch(function (error) {
+            //         console.error(error);
+            //     });
 
             /*<![CDATA[*/
 
@@ -204,16 +230,7 @@
             }
 
 
-            // 서버로부터 연예인 데이터 가져오기
-            axios.get('/game2/celeb')
-                .then(function (response) {
-                    celebData = response.data;
-                    shuffleCelebData();
-                    showCurrentCeleb();
-                })
-                .catch(function (error) {
-                    console.error(error);
-                });
+
 
             //닉네임 가져오기
             axios.get('/nick')
