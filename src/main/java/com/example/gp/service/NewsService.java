@@ -24,47 +24,31 @@ public class NewsService {
 
         List<NewsDto> newsList = new ArrayList<>();
 
-        String url = "https://news.naver.com/main/list.naver?mode=LS2D&mid=shm&sid2=265&sid1=" + category;
-        Document doc = Jsoup.connect(url).get();
+
+        for(int i=1;i<=3;i++) {
+            String url = "https://news.naver.com/main/main.naver?mode=LSD&mid=shm&sid1=" + category + "&page=" + i;
+            Document doc = Jsoup.connect(url).get();
 
 
+            Elements items = doc.select("li.sh_item");
+            for (Element item : items) {
+                String title = item.select("a.sh_text_headline").text();
+                String imgUrl = item.select("img").attr("src");
+                String articleUrl = item.select("a.sh_thumb_link").attr("href");
 
-        for (int j = 1; j < 3; j++) {
-            String url2 = "https://news.naver.com/main/list.naver?mode=LS2D&mid=shm&sid2=265&sid1=" + category + "&page=" + j;
-            Document doc2 = Jsoup.connect(url2).get();
-            Elements elements = doc2.getElementsByAttributeValue("class", "list_body newsflash_body");
-
-            Element element = elements.get(0);
-            Elements photoElements = element.getElementsByAttributeValue("class", "photo");
-
-
-
-            for (int i = 0; i < photoElements.size(); i++) {
-                Element articleElement = photoElements.get(i);
-                Elements aElements = articleElement.select("a");
-                Element aElement = aElements.get(0);
-
-                String articleUrl = aElement.attr("href");        // 기사링크
-                Element imgElement = aElement.select("img").get(0);
-                String imgUrl = imgElement.attr("src");            // 사진링크
-                String title = imgElement.attr("alt");            // 기사제목
-
-                NewsDto newsDto = new NewsDto();
-                newsDto.setTitle(title);
-                newsDto.setPhoto(imgUrl);
-                newsDto.setUrl(articleUrl);
-
+                NewsDto newsDto = new NewsDto(title, imgUrl, articleUrl);
                 newsList.add(newsDto);
 
-                           // 기사내용
-                System.out.println("title = " + title);
-                System.out.println("imgUrl = " + imgUrl);
-                System.out.println("articleUrl = " + articleUrl);
+
+                System.out.println("Title: " + title);
+                System.out.println("Image URL: " + imgUrl);
+                System.out.println("Article URL: " + articleUrl);
             }
-            System.out.println(j + "page 크롤링 종료");
         }
         return newsList;
+
     }
 
 }
+
 

@@ -8,6 +8,11 @@ import lombok.ToString;
 @Setter
 @Getter
 public class NewsDto {
+    public NewsDto(String title, String photo, String url) {
+        this.title = title;
+        this.photo = photo;
+        this.url = url;
+    }
 
     // 분야
     private String category;
