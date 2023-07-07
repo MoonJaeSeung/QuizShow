@@ -55,7 +55,6 @@
             text-decoration: underline;
         }
 
-        /* 모달 스타일을 정의합니다. */
         .modal {
             display: none; /* 초기에는 숨겨진 상태로 설정합니다. */
             position: fixed;
@@ -69,19 +68,58 @@
         }
 
         .modal-content {
+            font-family: 'Dongle', sans-serif;
+            font-size: 40px;
             background-color: #fff;
             margin: 15% auto;
             padding: 20px;
             border: 1px solid #888;
             width: 80%;
             max-width: 600px;
+            height: 40vw;
+            display: grid;
+            /* 모달창에 애니메이션 추가 */
+            animation-name: modalOpen;
+            animation-duration: 0.4s;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        }
+
+        /* 애니메이션 추가 */
+        @keyframes modalOpen {
+            from {opacity: 0}
+            to {opacity: 1}
         }
 
         .game-input {
+            font-size: 30px;
             width: 100%;
             margin-bottom: 10px;
             padding: 5px;
-            font-size: 16px;
+            /* Input 디자인 */
+            border: 2px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            transition: 0.5s;
+        }
+
+        .game-input:focus {
+            border: 2px solid #555;
+        }
+
+        #submitButton {
+            /* Button 디자인 */
+            background-color: #c5baff;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.5s;
+        }
+
+        #submitButton:hover {
+            background-color: #b1a2ff;
         }
 
         .timer {
@@ -95,12 +133,25 @@
 </head>
 <th:block layout:fragment="content">
     <div class="timer" id="timer"></div>
+
+    <!-- 모달 창을 정의합니다. -->
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <!-- 모달 내용을 추가합니다. -->
+            <h3>퀴즈</h3>
+            <p><span id="newsTitle"></span></p>
+            <input id="gameInput" class="game-input" type="text" placeholder="빈칸을 채워주세요">
+            <button id="submitButton">제출</button>
+        </div>
+    </div>
+
     <div class="container">
 
         <div th:each="newsItem, status : ${#numbers.sequence(0, 14)}">
             <h3>
                 <a th:href="${news[status.index].url}" target="_blank">
-                    <span th:text="${status.index + 1} + ${news[status.index].title}"></span>
+                    <span th:text="${status.index + 1 + ', ' + news[status.index].title}"></span>
+
                 </a>
             </h3>
             <img th:src="${news[status.index].photo}" alt="News Photo"/>
@@ -108,16 +159,7 @@
         </div>
     </div>
 
-    <!-- 모달 창을 정의합니다. -->
-    <div id="myModal" class="modal">
-        <div class="modal-content">
-            <!-- 모달 내용을 추가합니다. -->
-            <h3>모달 창</h3>
-            <p><span id="newsTitle"></span></p>
-            <input id="gameInput" class="game-input" type="text" placeholder="빈칸을 채워주세요">
-            <button id="submitButton">제출</button>
-        </div>
-    </div>
+
 
     <script>
         // JavaScript 코드를 작성합니다.
@@ -125,7 +167,7 @@
             var modal = document.getElementById("myModal");
             var timerElement = document.querySelector("#timer");
             var randomIndex = Math.floor(Math.random() * 15); // 0부터 14까지의 랜덤한 인덱스 생성
-            var timeLeft = 1;
+            var timeLeft = 30;
             var timerInterval;
 
             // 타이머 시작
@@ -140,22 +182,27 @@
             }, 1000);
 
             function showModal() {
-                var startButton = document.querySelector("button");
-                var modalContent = document.querySelector(".modal-content");
                 var newsTitle = document.querySelector("#newsTitle");
                 var gameInput = document.querySelector("#gameInput");
                 var submitButton = document.querySelector("#submitButton");
 
                 var tenthNewsTitle = document.querySelector(".container").children[randomIndex].querySelector("span").textContent;
                 var words = tenthNewsTitle.split(" "); // 기사 제목을 단어로 분할
+
+                words = words.map(word => {
+                    return word.replace(/['"\[\]\.\·\:]/g, " ");
+                });
+
                 var blankIndex = Math.floor(Math.random() * words.length); // 랜덤한 위치의 단어 인덱스 선택
                 var correctAnswer = words[blankIndex];
-                words[blankIndex] = "_"; // 랜덤한 위치의 단어를 공백으로 대체
+                var size = correctAnswer.length;
+                words[blankIndex] = "_ ".repeat(size); // 랜덤한 위치의 단어를 공백으로 대체
                 var hiddenText = words.join(" "); // 빈칸으로 대체된 제목 생성
+
+                hiddenText = hiddenText.replace(/[\.\:\[\]\,]|(\.\.\.)/g, " ");
+
                 newsTitle.textContent = hiddenText;
 
-                //뒷배경 흐릿하게 만들기
-                document.body.style.filter = 'blur(5px)';
                 modal.style.display = 'block';
 
                 submitButton.addEventListener("click", function () {
