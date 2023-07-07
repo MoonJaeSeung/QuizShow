@@ -76,7 +76,8 @@
             border: 1px solid #888;
             width: 80%;
             max-width: 600px;
-            height: 40vw;
+            height: 20vw;
+            /*height: 40vw;*/
             display: grid;
             /* 모달창에 애니메이션 추가 */
             animation-name: modalOpen;
@@ -130,6 +131,12 @@
         }
     </style>
 
+    <script>
+        function refreshPage(){
+            location.reload();
+        }
+    </script>
+
 </head>
 <th:block layout:fragment="content">
     <div class="timer" id="timer"></div>
@@ -147,10 +154,11 @@
 
     <div class="container">
 
+        <button onclick="refreshPage()" class="game-button" id="refresh" hidden="hidden" style="margin-bottom: 20px">다시 하기</button>
         <div th:each="newsItem, status : ${#numbers.sequence(0, 14)}">
             <h3>
                 <a th:href="${news[status.index].url}" target="_blank">
-                    <span th:text="${status.index + 1 + ', ' + news[status.index].title}"></span>
+                    <span th:text="${news[status.index].title}"></span>
 
                 </a>
             </h3>
@@ -167,7 +175,7 @@
             var modal = document.getElementById("myModal");
             var timerElement = document.querySelector("#timer");
             var randomIndex = Math.floor(Math.random() * 15); // 0부터 14까지의 랜덤한 인덱스 생성
-            var timeLeft = 30;
+            var timeLeft = 1;
             var timerInterval;
 
             // 타이머 시작
@@ -181,25 +189,24 @@
                 }
             }, 1000);
 
+
             function showModal() {
-                var newsTitle = document.querySelector("#newsTitle");
                 var gameInput = document.querySelector("#gameInput");
                 var submitButton = document.querySelector("#submitButton");
+                var reset = document.querySelector("#reset");
 
-                var tenthNewsTitle = document.querySelector(".container").children[randomIndex].querySelector("span").textContent;
-                var words = tenthNewsTitle.split(" "); // 기사 제목을 단어로 분할
+                var NewsTitle = document.querySelector(".container").children[randomIndex].querySelector("span").textContent;
+                NewsTitle = NewsTitle.replace(/[\,\"\.\"\[\]\:]/g, " ");
 
-                words = words.map(word => {
-                    return word.replace(/['"\[\]\.\·\:]/g, " ");
-                });
+                var words = NewsTitle.split(" "); // 기사 제목을 단어로 분할
 
                 var blankIndex = Math.floor(Math.random() * words.length); // 랜덤한 위치의 단어 인덱스 선택
                 var correctAnswer = words[blankIndex];
                 var size = correctAnswer.length;
                 words[blankIndex] = "_ ".repeat(size); // 랜덤한 위치의 단어를 공백으로 대체
                 var hiddenText = words.join(" "); // 빈칸으로 대체된 제목 생성
+                hiddenText = hiddenText.replace(/[\.\:\[\]\,]\·|(\.\.\.)/g, " ");
 
-                hiddenText = hiddenText.replace(/[\.\:\[\]\,]|(\.\.\.)/g, " ");
 
                 newsTitle.textContent = hiddenText;
 
@@ -207,10 +214,10 @@
 
                 submitButton.addEventListener("click", function () {
                     var userAnswer = gameInput.value.trim(); // 입력값 앞뒤의 공백 제거
-                    var blankIndex = tenthNewsTitle.indexOf("_"); // 빈칸의 위치 찾기
-                    // var correctAnswer = tenthNewsTitle.substring(blankIndex + 1); // 정답 생성
+                    var blankIndex = NewsTitle.indexOf("_"); // 빈칸의 위치 찾기
+                    // var correctAnswer = NewsTitle.substring(blankIndex + 1); // 정답 생성
 
-                    document.body.style.filter = 'none';  //뒷배경 선명하게 만들기
+
 
                     if (userAnswer === correctAnswer) {
                         alert("정답입니다!");
@@ -220,6 +227,7 @@
 
                     modal.style.display = "none";
                     gameInput.value = "";
+                    document.getElementById("refresh").removeAttribute("hidden");
                 });
             }
 
@@ -227,6 +235,7 @@
                 if (event.target == modal) {
                     document.body.style.filter = 'none'; //뒷배경 선명하게 만들기
                     modal.style.display = "none";
+                    document.getElementById("refresh").removeAttribute("hidden");
                 }
             }
         });
