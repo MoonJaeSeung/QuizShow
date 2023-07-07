@@ -8,6 +8,10 @@
     <style>
       @import url('https://fonts.googleapis.com/css2?family=Dongle:wght@300&display=swap');
 
+      body{
+
+      }
+
       .container{
         display: flex;
         flex-direction: column;
@@ -62,24 +66,26 @@
         display: grid;
         justify-items: center;
       }
+
+
     </style>
   </th:block>
 </head>
 
 <th:block layout:fragment="content">
   <div class="container">
-    <form role="form" action="/login2" method="post" class="form-style" th:object="${memberFormDto}">
+    <form role="form" action="/join" method="post" class="form-style" th:object="${memberFormDto}">
 
       <input type="text" class="nickname-input" id="nick" name="nick" placeholder="닉네임을 입력하세요">
       <span class="validation-error" th:if="${#fields.hasErrors('nick')}" th:errors="*{nick}"></span>
 
-      <input type="password" class="password-input" id="password" name="password" placeholder="비밀번호를 입력하세요">
+      <input type="password" class="password-input" id="password" name="password" placeholder="비밀번호를 입력하세요"><br>
+      <div th:text="${errorMessage}" style="font-size: 30px"></div>
 
       <button class="game-button" type="submit">시작</button>
     </form>
-<!--    <a class="atag" href="/join" >회원가입</a>-->
-<!--    <a class="atag" href="/test" >회원가입</a>-->
     <a class="atag" href="/" >임시회원으로 이용</a>
+    <a class="atag" href="/join" >회원가입</a>
   </div>
 
   <script th:inline="javascript">

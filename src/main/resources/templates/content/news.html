@@ -3,32 +3,23 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:box-shadow="http://www.w3.org/1999/xhtml"
       layout:decorate="~{layouts/layout}">
 <head>
-  <title>퀴즈맞추기 게임 선택</title>
+  <title>최신 뉴스</title>
   <style>
-    .container {
+
+    .container{
       display: flex;
       flex-direction: column;
     }
 
-    a.game-button {
-      width: 40vw;
-      height: 117px;
-      margin: 30px;
-    }
-
 
   </style>
-  <script>
-
-  </script>
 </head>
 <th:block layout:fragment="content">
 
   <div class="container">
-    <a th:href="@{/game1}" class="game-button">사자성어</a>
-    <a th:href="@{/game2}" class="game-button">인물 퀴즈</a>
-    <a th:href="@{/news}" class="game-button">최신 뉴스</a>
-
+    <a th:href="@{/newsDetail?category=101}" class="game-button">정치</a>
+    <a th:href="@{/newsDetail?category=102}" class="game-button">경제</a>
+    <a th:href="@{/newsDetail?category=103}" class="game-button">사회</a>
   </div>
 </th:block>
 </html>

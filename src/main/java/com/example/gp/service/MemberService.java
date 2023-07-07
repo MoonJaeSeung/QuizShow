@@ -31,7 +31,7 @@ public class MemberService {
         memberRepository.save(member);
     }
 
-    public Member login(String nick, String rawPassword) {
+    public Member login(String nick, String rawPassword) throws IllegalArgumentException{
         Member member = memberRepository.findByNick(nick);
         if(member == null){
             throw new IllegalArgumentException("존재하지 않는 유저입니다.");

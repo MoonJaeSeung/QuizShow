@@ -37,7 +37,7 @@ public class MemberController {
         return "member/nickForm";
     }
     //회원가입 화면
-    @GetMapping(value="/login2")
+    @GetMapping(value="/join")
     public String joinMember(MemberFormDto memberFormDto,Model model){
         model.addAttribute("memberFormDto", new MemberFormDto());
         return "member/joinForm";
@@ -84,7 +84,7 @@ public class MemberController {
 
 
     //공식 회원으로 로그인
-    @PostMapping(value="/login2")
+    @PostMapping(value="/join")
     public String loginBymember(@Valid MemberFormDto memberFormDto, BindingResult bindingResult, Model model, HttpServletResponse response){
 
         if(bindingResult.hasErrors()){
@@ -98,15 +98,20 @@ public class MemberController {
             //사용자 검증
             Member member = memberService.login(nick, password);
 
+            if(member ==null){
+                model.addAttribute("error", "존재하지 않는 유저입니다");
+                return "member/loginForm";
+            }
+
             String token = jwtTokenProvider.createToken(nick);
             // 닉네임 쿠키 생성
             Cookie nickCookie = new Cookie("jwt", token);
             nickCookie.setMaxAge(3600);  //쿠키 유효시간 설정
             response.addCookie(nickCookie);
 
-        } catch(IllegalStateException e){
+        } catch(IllegalArgumentException e){
             model.addAttribute("errorMessage",e.getMessage());
-            return "member/joinForm";
+            return "member/loginForm";
         }
         return "choice";
     }

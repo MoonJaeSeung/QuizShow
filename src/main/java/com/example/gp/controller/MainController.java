@@ -1,10 +1,12 @@
 package com.example.gp.controller;
 
 
+import com.example.gp.dto.NewsDto;
 import com.example.gp.entity.Celeb;
 import com.example.gp.entity.Record;
 import com.example.gp.entity.Word;
 import com.example.gp.service.GameService;
+import com.example.gp.service.NewsService;
 import com.example.gp.service.RecordService;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jws;
@@ -17,18 +19,23 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import java.io.IOException;
 import java.util.List;
 
 
 @Controller
 @Slf4j
-public class GameController {
+public class MainController {
 
     @Autowired
     GameService gameService;
 
     @Autowired
     RecordService recordService;
+
+    @Autowired
+    NewsService newsService;
+
 
     //게임 선택
     @GetMapping("/choice")
@@ -45,14 +52,14 @@ public class GameController {
 
         extracted(model, request);
 
-        return "game/game1";
+        return "content/game1";
     }
-
+    // 인물 퀴즈
     @GetMapping("/game2")
     public String gameView2(Model model,HttpServletRequest request) {
         extracted(model, request);
-        return "game/game2";
-    }//
+        return "content/game2";
+    }
 
     @GetMapping("/game2/celeb")
     @ResponseBody
@@ -66,6 +73,21 @@ public class GameController {
         extracted(model, request);
         String nick = (String)model.getAttribute("nick");
         return nick;
+    }
+
+    @GetMapping("/news")
+    public String news(Model model,HttpServletRequest request) {
+        extracted(model, request);
+        return "content/news";
+    }
+
+    @GetMapping("/newsDetail")
+    public String newsDetail(@RequestParam("category") int category,Model model) throws IOException {
+        log.info("before");
+        List<NewsDto> news = newsService.getNews(category);
+        log.info("after");
+        model.addAttribute("news", news);
+        return "content/newsDetail";
     }
 
 
