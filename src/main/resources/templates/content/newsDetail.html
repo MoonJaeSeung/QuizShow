@@ -88,8 +88,12 @@
 
         /* 애니메이션 추가 */
         @keyframes modalOpen {
-            from {opacity: 0}
-            to {opacity: 1}
+            from {
+                opacity: 0
+            }
+            to {
+                opacity: 1
+            }
         }
 
         .game-input {
@@ -132,16 +136,44 @@
         }
 
 
+        .desc {
+            font-family: 'Dongle', sans-serif;
+            font-size: 40px;
+            display: flex;
+            justify-content: center;
+
+
+        }
     </style>
 
     <script>
-        function refreshPage(){
+        function refreshPage() {
             location.reload();
         }
     </script>
 
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var timerElement = document.querySelector("#timer");
+            var timeLeft = 5;
+            var timerInterval;
+
+            timerInterval = setInterval(function () {
+                if (timeLeft > 1) {
+                    timeLeft--;
+                    timerElement.textContent = "Time: " + timeLeft;
+                } else {
+                    clearInterval(timerInterval);
+                    timerElement.textContent = "Time : 종료"
+                }
+            }, 1000);
+        });
+    </script>
+
 </head>
 <th:block layout:fragment="content">
+
+
     <div class="timer" id="timer"></div>
 
     <!-- 모달 창을 정의합니다. -->
@@ -154,10 +186,13 @@
             <button id="submitButton">제출</button>
         </div>
     </div>
-
+    <div class="desc">기사 제목을 빠르게 스캔해주세요</div>
     <div class="container">
 
-        <button onclick="refreshPage()" class="game-button" id="refresh" hidden="hidden" style="margin-bottom: 20px">다시 하기</button>
+        <button onclick="refreshPage()" class="game-button" id="refresh" hidden="hidden" style="margin-bottom: 20px">다시
+            하기
+        </button>
+
         <div th:each="newsItem, status : ${#numbers.sequence(0, 14)}">
             <h3>
                 <a th:href="${news[status.index].url}" target="_blank">
@@ -171,78 +206,74 @@
     </div>
 
 
-
-    <script>
-        // JavaScript 코드를 작성합니다.
-        document.addEventListener("DOMContentLoaded", function () {
-            var modal = document.getElementById("myModal");
-            var timerElement = document.querySelector("#timer");
-            var randomIndex = Math.floor(Math.random() * 15); // 0부터 14까지의 랜덤한 인덱스 생성
-            var timeLeft = 20;
-            var timerInterval;
-
-            // 타이머 시작
-            timerInterval = setInterval(function () {
-                if (timeLeft > 0) {
-                    timeLeft--;
-                    timerElement.textContent = "Time: " + timeLeft;
-                } else {
-                    clearInterval(timerInterval);
-                    showModal();
-                }
-            }, 1000);
-
-
-            function showModal() {
-                var gameInput = document.querySelector("#gameInput");
-                var submitButton = document.querySelector("#submitButton");
-                var reset = document.querySelector("#reset");
-
-                var NewsTitle = document.querySelector(".container").children[randomIndex].querySelector("span").textContent;
-                NewsTitle = NewsTitle.replace(/[\,\"\.\‘\'\-\`\"\[\]\:]|\.\.\./g, " ");
-
-                var words = NewsTitle.split(" "); // 기사 제목을 단어로 분할
-
-                var blankIndex = Math.floor(Math.random() * words.length); // 랜덤한 위치의 단어 인덱스 선택
-                var correctAnswer = words[blankIndex];
-                var size = correctAnswer.length;
-                words[blankIndex] = "_ ".repeat(size); // 랜덤한 위치의 단어를 공백으로 대체
-                var hiddenText = words.join(" "); // 빈칸으로 대체된 제목 생성
-                // hiddenText = hiddenText.replace(/[\.\:\[\]\,]\·|(\.\.\.)/g, " ");
-
-
-                newsTitle.textContent = hiddenText;
-
-                modal.style.display = 'block';
-
-                submitButton.addEventListener("click", function () {
-                    var userAnswer = gameInput.value.trim(); // 입력값 앞뒤의 공백 제거
-                    var blankIndex = NewsTitle.indexOf("_"); // 빈칸의 위치 찾기
-                    // var correctAnswer = NewsTitle.substring(blankIndex + 1); // 정답 생성
+    <th:block layout:fragment="script">
+        <script>
 
 
 
-                    if (userAnswer === correctAnswer) {
-                        alert("정답입니다!");
+
+
+            // JavaScript 코드를 작성합니다.
+            document.addEventListener("DOMContentLoaded", function () {
+                var modal = document.getElementById("myModal");
+                var timerElement = document.querySelector("#timer");
+                var randomIndex = Math.floor(Math.random() * 15); // 0부터 14까지의 랜덤한 인덱스 생성
+                var timeLeft = 5;
+                var timerInterval;
+
+                // 타이머 시작
+                timerInterval = setInterval(function () {
+                    if (timeLeft > 1) {
+                        timeLeft--;
+                        timerElement.textContent = "Time: " + timeLeft;
                     } else {
-                        alert("틀렸습니다. 정답은 '" + correctAnswer + "'입니다.");
+                        clearInterval(timerInterval);
+                        timerElement.textContent = "Time : 종료"
+                        showModal();
                     }
+                }, 1000);
 
-                    modal.style.display = "none";
-                    gameInput.value = "";
-                    document.getElementById("refresh").removeAttribute("hidden");
-                });
-            }
 
-            window.onclick = function (event) {
-                if (event.target == modal) {
-                    document.body.style.filter = 'none'; //뒷배경 선명하게 만들기
-                    modal.style.display = "none";
-                    document.getElementById("refresh").removeAttribute("hidden");
+                function showModal() {
+                    var gameInput = document.querySelector("#gameInput");
+                    var submitButton = document.querySelector("#submitButton");
+                    var NewsTitle = document.querySelector(".container").children[randomIndex].querySelector("span").textContent;
+                    NewsTitle = NewsTitle.replace(/[\,\"\.\‘\'\-\`\"\[\]\:]|\.\.\./g, " ");
+
+                    var words = NewsTitle.split(" "); // 기사 제목을 단어로 분할
+                    var blankIndex = Math.floor(Math.random() * words.length); // 랜덤한 위치의 단어 인덱스 선택
+                    var correctAnswer = words[blankIndex];
+                    var size = correctAnswer.length;
+                    words[blankIndex] = "_ ".repeat(size); // 랜덤한 위치의 단어를 공백으로 대체
+                    var hiddenText = words.join(" "); // 빈칸으로 대체된 제목 생성
+
+                    newsTitle.textContent = hiddenText;
+                    modal.style.display = 'block';
+
+                    submitButton.addEventListener("click", function () {
+                        var userAnswer = gameInput.value.trim(); // 입력값 앞뒤의 공백 제거
+
+                        if (userAnswer === correctAnswer) {
+                            alert("정답입니다!");
+                        } else {
+                            alert("틀렸습니다. 정답은 '" + correctAnswer + "'입니다.");
+                        }
+
+                        modal.style.display = "none";
+                        gameInput.value = "";
+                        document.getElementById("refresh").removeAttribute("hidden");
+                    });
                 }
-            }
-        });
-    </script>
+
+                window.onclick = function (event) {
+                    if (event.target == modal) {
+                        modal.style.display = "none";
+                        document.getElementById("refresh").removeAttribute("hidden");
+                    }
+                }
+            });
+        </script>
+    </th:block>
 
 </th:block>
 </html>
