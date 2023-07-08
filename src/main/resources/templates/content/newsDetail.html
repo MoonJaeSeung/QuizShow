@@ -248,7 +248,7 @@
                     var gameInput = document.querySelector("#gameInput");
                     var submitButton = document.querySelector("#submitButton");
                     var NewsTitle = document.querySelector(".container").children[randomIndex].querySelector("span").textContent;
-                    NewsTitle = NewsTitle.replace(/[\,\"\.\‘\'\-\`\"\[\]\:]|\.\.\./g, " ");
+                    NewsTitle = NewsTitle.replace(/[\,\"\.\(\)\‘\'\-\`\"\[\]\:]|\.\.\./g, " ");
 
                     var words = NewsTitle.split(" "); // 기사 제목을 단어로 분할
                     var blankIndex = Math.floor(Math.random() * words.length); // 랜덤한 위치의 단어 인덱스 선택
