@@ -141,8 +141,15 @@
             font-size: 40px;
             display: flex;
             justify-content: center;
+            text-align: center;
 
 
+        }
+
+        #refresh{
+            display: flex;
+            justify-content: center;
+            width: 300px;
         }
     </style>
 
@@ -186,12 +193,15 @@
             <button id="submitButton">제출</button>
         </div>
     </div>
-    <div class="desc">기사 제목을 빠르게 스캔해주세요</div>
+    <div class="desc">기사 제목을 빠르게 스캔해주세요 <br> 실시간 뉴스</div>
+    <div style="display: flex; justify-content: center">
+    <button onclick="refreshPage()" class="game-button" id="refresh" hidden="hidden" style="margin-bottom: 20px">다시
+        하기
+    </button>
+    </div>
     <div class="container">
 
-        <button onclick="refreshPage()" class="game-button" id="refresh" hidden="hidden" style="margin-bottom: 20px">다시
-            하기
-        </button>
+
 
         <div th:each="newsItem, status : ${#numbers.sequence(0, 14)}">
             <h3>
@@ -218,7 +228,7 @@
                 var modal = document.getElementById("myModal");
                 var timerElement = document.querySelector("#timer");
                 var randomIndex = Math.floor(Math.random() * 15); // 0부터 14까지의 랜덤한 인덱스 생성
-                var timeLeft = 5;
+                var timeLeft = 2;
                 var timerInterval;
 
                 // 타이머 시작

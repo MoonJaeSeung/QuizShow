@@ -39,10 +39,6 @@ public class NewsService {
                 NewsDto newsDto = new NewsDto(title, imgUrl, articleUrl);
                 newsList.add(newsDto);
 
-
-                System.out.println("Title: " + title);
-                System.out.println("Image URL: " + imgUrl);
-                System.out.println("Article URL: " + articleUrl);
             }
         }
         return newsList;
