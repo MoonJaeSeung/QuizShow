@@ -31,11 +31,11 @@ public class MemberController {
     private final JwtTokenProvider jwtTokenProvider;
 
     // 시작 화면 · 임시회원으로 로그인 화면
-    @GetMapping(value={"/login","/"})
-    public String loginAsTemp(MemberFormDto memberFormDto,Model model){
-        model.addAttribute("memberFormDto", new MemberFormDto());
-        return "member/nickForm";
-    }
+//    @GetMapping(value={"/login","/"})
+//    public String loginAsTemp(MemberFormDto memberFormDto,Model model){
+//        model.addAttribute("memberFormDto", new MemberFormDto());
+//        return "member/nickForm";
+//    }
     //회원가입 화면
     @GetMapping(value="/join")
     public String joinMember(MemberFormDto memberFormDto,Model model){

@@ -24,14 +24,13 @@
 </head>
 <th:block layout:fragment="content">
 
+  <th:block th:replace="chat::chatFragment"></th:block>
+
   <div class="container">
     <a th:href="@{/game1}" class="game-button">사자성어</a>
     <a th:href="@{/game2}" class="game-button">인물 퀴즈</a>
-    <a th:href="@{/news}" class="game-button">최신 뉴스</a>
+    <a th:href="@{/news}" class="game-button">암기력 테스트</a>
 
   </div>
 </th:block>
 </html>
-<!--나는 할 수 있다..-->
-<!--나는 할 수 있다..-->
-<!--나는 할 수 있다..-->
