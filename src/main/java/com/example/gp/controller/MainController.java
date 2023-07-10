@@ -23,6 +23,8 @@ import java.io.IOException;
 import java.util.List;
 
 
+// restAPI 설계는 RestMainController에서 수행
+
 @Controller
 @Slf4j
 public class MainController {
@@ -151,6 +153,10 @@ public class MainController {
         Word savedWord = gameService.addWord(word);
         return "/admin/addWord";
     }
+
+
+
+
 }
 
 //와우

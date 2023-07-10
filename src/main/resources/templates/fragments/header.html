@@ -37,6 +37,8 @@
                 font-family: 'Dongle', sans-serif;
             }
         </style>
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
 
     </head>
     <header>
@@ -44,6 +46,22 @@
             30초
         </a>
         <a class="sub" href="/" >회원으로 이용하기</a>
+
+        <script>
+            window.onload = function() {
+                console.log("sex")
+                // axios.get('/getNick')
+                //     .then(response => {
+                //         nick = response.data.nick;
+                //         // nick 값을 사용하여 필요한 작업 수행
+                //         console.log(nick + "sex");
+                //     })
+                //     .catch(error =>{
+                //         console.error(error);
+                //     });
+            };
+
+        </script>
     </header>
 </th:block>
 </html>

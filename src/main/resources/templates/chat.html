@@ -3,15 +3,14 @@
     <html>
     <head>
         <title>Hello WebSocket!!</title>
-        <link href="/main.css" rel="stylesheet">
+        <link href="/css/main.css" rel="stylesheet">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <script src="/webjars/sockjs-client/sockjs.min.js"></script>
         <script src="/webjars/stomp-websocket/stomp.min.js"></script>
-        <script src="/app.js"></script>
+        <script src="/js/app.js"></script>
         <style>
             .game-button {
-                max-width: 25vw;
-                margin-top: 30px;
+                width: 30vw;
             }
 
             .conversation-container {
@@ -42,21 +41,16 @@
         </style>
     </head>
     <body>
-    <noscript><h2 style="color: #ff0000">Seems your browser doesn't support Javascript! Websocket relies on Javascript
-        being
-        enabled. Please enable
-        Javascript and reload this page!</h2></noscript>
+    <noscript><h2 style="color: #ff0000">고객님의 브라우저는 javaScript를 지원하지 않습니다. Chrome으로 이용 부탁드립니다</h2></noscript>
     <div id="main-content" class="container">
         <div class="row">
             <form>
                 <button id="connect" hidden="hidden" class="game-button" type="submit">연결</button>
                 <button id="disconnect" hidden="hidden" class="game-button" type="submit" disabled="disabled">연결 끊기</button>
             </form>
-            <form class="form-inline">
-                <input type="text" id="name" class="form-control" placeholder="메세지 입력">
-                <block class="block">
-                <button id="send" class="game-button" type="submit">Push</button>
-                </block>
+            <form class="form-inline" style="display: flex; justify-content: center; flex-direction: column; align-items: center">
+                <input type="text" id="message" class="form-control" placeholder="메세지 입력" style="width: 350px">
+                <button id="send" class="game-button" type="submit" style="width: 80px">Push</button>
             </form>
         </div>
         <div class="row conversation-container">
