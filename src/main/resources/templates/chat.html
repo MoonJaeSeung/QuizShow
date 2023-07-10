@@ -10,7 +10,8 @@
         <script src="/app.js"></script>
         <style>
             .game-button {
-
+                max-width: 25vw;
+                margin-top: 30px;
             }
 
             .conversation-container {
@@ -22,6 +23,22 @@
                 table-layout: fixed;
                 width: 100%;
             }
+
+            #main-content{
+                max-width: 550px;
+            }
+
+            .block{
+                display: flex;
+                justify-content: center;
+            }
+
+            #greetings{
+                box-shadow: white;
+                background-color: white;
+            }
+
+
         </style>
     </head>
     <body>
@@ -37,14 +54,16 @@
             </form>
             <form class="form-inline">
                 <input type="text" id="name" class="form-control" placeholder="메세지 입력">
-                <button id="send" class="game-button" type="submit">Send</button>
+                <block class="block">
+                <button id="send" class="game-button" type="submit">Push</button>
+                </block>
             </form>
         </div>
         <div class="row conversation-container">
             <table id="conversation" class="table table-striped conversation-table">
                 <thead>
                 <tr>
-                    <th>Greetings</th>
+                    <th>실시간 채팅</th>
                 </tr>
                 </thead>
                 <tbody id="greetings">

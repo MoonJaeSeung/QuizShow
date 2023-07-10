@@ -37,7 +37,7 @@ function sendName() {
 }
 
 function showGreeting(message) {
-    $("#greetings").append("<tr><td>" + message + "</td></tr>");
+    $("#greetings").append("<tr><td style='background-color: #f7f4ff; box-shadow: white'>" + message + "</td></tr>");
 }
 
 $(function () {
