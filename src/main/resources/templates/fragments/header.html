@@ -36,19 +36,43 @@
                 color: #c5baff;
                 font-family: 'Dongle', sans-serif;
             }
+
+
+            .logout{
+                position: fixed;
+                top: 5px;
+                left: 5px;
+                font-size: 30px;
+                text-decoration: none;
+                color: #c5baff;
+                font-family: 'Dongle', sans-serif;
+            }
+
         </style>
         <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
         <script>
             document.addEventListener("DOMContentLoaded", async (event) => {
                 const cookieValue = await getCookieValue();
                 const mainLink = document.querySelector('.main');
+                const logoutButton = document.querySelector('.logout');
+                const subButton = document.querySelector('.sub');
+
                 console.log(cookieValue);
 
                 if (cookieValue) {
                     mainLink.href = "/choice";
+                    logoutButton.style.display = "block"; // 로그아웃 버튼 표시
+                    subButton.style.display = "none"; // 회원으로 이용하기 버튼 숨김
                 } else {
                     mainLink.href = "/";
+                    logoutButton.style.display = "none"; // 로그아웃 버튼 숨김
+                    subButton.style.display = "block"; // 회원으로 이용하기 버튼 표시
                 }
+
+                logoutButton.addEventListener('click', function() {
+                    deleteCookie('jwt');
+                    deleteCookie('nick');
+                });
             });
 
             async function getCookieValue() {
@@ -63,6 +87,12 @@
                 return nick;
             }
 
+            //쿠키 삭제 함수
+            function deleteCookie(cookieName) {
+                // 쿠키의 만료 시간을 현재 시간보다 이전으로 설정하여 삭제
+                document.cookie = cookieName + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+            }
+
         </script>
 
     </head>
@@ -71,7 +101,7 @@
             30초
         </a>
         <a class="sub" href="/" >회원으로 이용하기</a>
-
+        <a class="logout" href="/">로그아웃</a>
 
     </header>
 </th:block>
