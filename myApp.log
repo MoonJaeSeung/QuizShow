@@ -1,0 +1,135 @@
+2023-07-12 01:48:52.525  INFO 15128 --- [restartedMain] com.example.gp.GpApplication             : Starting GpApplication using Java 17.0.7 on DESKTOP-1GP1RVK with PID 15128 (C:\Users\h\Desktop\PJ\GP\out\production\classes started by moon2 in C:\Users\h\Desktop\PJ\GP)
+2023-07-12 01:48:52.530  INFO 15128 --- [restartedMain] com.example.gp.GpApplication             : No active profile set, falling back to 1 default profile: "default"
+2023-07-12 01:48:53.043  INFO 15128 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-07-12 01:48:53.043  INFO 15128 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-07-12 01:48:54.993  INFO 15128 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-07-12 01:48:55.228  INFO 15128 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 216 ms. Found 4 JPA repository interfaces.
+2023-07-12 01:48:56.718  INFO 15128 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2023-07-12 01:48:56.741  INFO 15128 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-07-12 01:48:56.742  INFO 15128 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.70]
+2023-07-12 01:48:57.098  INFO 15128 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-07-12 01:48:57.099  INFO 15128 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 4054 ms
+2023-07-12 01:48:57.439  INFO 15128 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-07-12 01:48:57.731  INFO 15128 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.14.Final
+2023-07-12 01:48:58.480  INFO 15128 --- [restartedMain] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2023-07-12 01:48:58.999  INFO 15128 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-07-12 01:48:59.582  INFO 15128 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-07-12 01:48:59.666  INFO 15128 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MariaDBDialect
+2023-07-12 01:49:01.871  INFO 15128 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-07-12 01:49:01.895  INFO 15128 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-07-12 01:49:03.359  WARN 15128 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-07-12 01:49:05.691  INFO 15128 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2023-07-12 01:49:05.758  INFO 15128 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2023-07-12 01:49:05.761  INFO 15128 --- [restartedMain] o.s.m.s.b.SimpleBrokerMessageHandler     : Starting...
+2023-07-12 01:49:05.761  INFO 15128 --- [restartedMain] o.s.m.s.b.SimpleBrokerMessageHandler     : BrokerAvailabilityEvent[available=true, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@6fadeac7]]
+2023-07-12 01:49:05.762  INFO 15128 --- [restartedMain] o.s.m.s.b.SimpleBrokerMessageHandler     : Started.
+2023-07-12 01:49:05.774  INFO 15128 --- [restartedMain] com.example.gp.GpApplication             : Started GpApplication in 14.379 seconds (JVM running for 17.396)
+2023-07-12 01:50:03.293  INFO 15128 --- [MessageBroker-1] o.s.w.s.c.WebSocketMessageBrokerStats    : WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 1, active threads = 1, queued tasks = 0, completed tasks = 0]
+2023-07-12 01:59:07.266  INFO 15128 --- [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 1 deletion, 0 modifications)
+2023-07-12 01:59:07.328  INFO 15128 --- [Thread-5] o.s.m.s.b.SimpleBrokerMessageHandler     : Stopping...
+2023-07-12 01:59:07.329  INFO 15128 --- [Thread-5] o.s.m.s.b.SimpleBrokerMessageHandler     : BrokerAvailabilityEvent[available=false, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@6fadeac7]]
+2023-07-12 01:59:07.331  INFO 15128 --- [Thread-5] o.s.m.s.b.SimpleBrokerMessageHandler     : Stopped.
+2023-07-12 01:59:07.355  INFO 15128 --- [Thread-5] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2023-07-12 01:59:07.391  INFO 15128 --- [Thread-5] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-07-12 01:59:07.405  INFO 15128 --- [Thread-5] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-07-12 01:59:07.490  INFO 15128 --- [Thread-5] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2023-07-12 01:59:07.763  INFO 15128 --- [restartedMain] com.example.gp.GpApplication             : Starting GpApplication using Java 17.0.7 on DESKTOP-1GP1RVK with PID 15128 (C:\Users\h\Desktop\PJ\GP\out\production\classes started by moon2 in C:\Users\h\Desktop\PJ\GP)
+2023-07-12 01:59:07.764  INFO 15128 --- [restartedMain] com.example.gp.GpApplication             : No active profile set, falling back to 1 default profile: "default"
+2023-07-12 01:59:08.739  INFO 15128 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-07-12 01:59:08.850  INFO 15128 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 110 ms. Found 4 JPA repository interfaces.
+2023-07-12 01:59:09.102  INFO 15128 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2023-07-12 01:59:09.102  INFO 15128 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-07-12 01:59:09.103  INFO 15128 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.70]
+2023-07-12 01:59:09.270  INFO 15128 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-07-12 01:59:09.271  INFO 15128 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1503 ms
+2023-07-12 01:59:09.353  INFO 15128 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-07-12 01:59:09.388  INFO 15128 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
+2023-07-12 01:59:09.465  INFO 15128 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
+2023-07-12 01:59:09.467  INFO 15128 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MariaDBDialect
+2023-07-12 01:59:09.601  INFO 15128 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-07-12 01:59:09.601  INFO 15128 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-07-12 01:59:09.887  WARN 15128 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-07-12 01:59:10.970  INFO 15128 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2023-07-12 01:59:10.988  INFO 15128 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2023-07-12 01:59:10.989  INFO 15128 --- [restartedMain] o.s.m.s.b.SimpleBrokerMessageHandler     : Starting...
+2023-07-12 01:59:10.989  INFO 15128 --- [restartedMain] o.s.m.s.b.SimpleBrokerMessageHandler     : BrokerAvailabilityEvent[available=true, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@15314bca]]
+2023-07-12 01:59:10.990  INFO 15128 --- [restartedMain] o.s.m.s.b.SimpleBrokerMessageHandler     : Started.
+2023-07-12 01:59:10.994  INFO 15128 --- [restartedMain] com.example.gp.GpApplication             : Started GpApplication in 3.368 seconds (JVM running for 622.616)
+2023-07-12 01:59:10.996  INFO 15128 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2023-07-12 01:59:11.196  INFO 15128 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-07-12 01:59:11.197  INFO 15128 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2023-07-12 01:59:11.198  INFO 15128 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2023-07-12 01:59:13.148  WARN 15128 --- [http-nio-8080-exec-1] n.n.u.t.l.fragments.FragmentProcessor    : You don't need to put the layout:fragment/data-layout-fragment attribute into the <head> section - the decoration process will automatically copy the <head> section of your content templates into your layout page.
+2023-07-12 01:59:13.863  INFO 15128 --- [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (1 addition, 0 deletions, 0 modifications)
+2023-07-12 01:59:13.908  INFO 15128 --- [Thread-7] o.s.m.s.b.SimpleBrokerMessageHandler     : Stopping...
+2023-07-12 01:59:13.960  INFO 15128 --- [Thread-7] o.s.m.s.b.SimpleBrokerMessageHandler     : BrokerAvailabilityEvent[available=false, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@15314bca]]
+2023-07-12 01:59:13.964  INFO 15128 --- [Thread-7] o.s.m.s.b.SimpleBrokerMessageHandler     : Stopped.
+2023-07-12 01:59:13.983  INFO 15128 --- [Thread-7] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2023-07-12 01:59:13.984  INFO 15128 --- [Thread-7] o.a.c.c.C.[Tomcat].[localhost].[/]       : Destroying Spring FrameworkServlet 'dispatcherServlet'
+2023-07-12 01:59:13.996  INFO 15128 --- [Thread-7] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-07-12 01:59:13.996  INFO 15128 --- [Thread-7] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown initiated...
+2023-07-12 01:59:14.084  INFO 15128 --- [Thread-7] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown completed.
+2023-07-12 01:59:14.388  INFO 15128 --- [restartedMain] com.example.gp.GpApplication             : Starting GpApplication using Java 17.0.7 on DESKTOP-1GP1RVK with PID 15128 (C:\Users\h\Desktop\PJ\GP\out\production\classes started by moon2 in C:\Users\h\Desktop\PJ\GP)
+2023-07-12 01:59:14.389  INFO 15128 --- [restartedMain] com.example.gp.GpApplication             : No active profile set, falling back to 1 default profile: "default"
+2023-07-12 01:59:15.457  INFO 15128 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-07-12 01:59:15.575  INFO 15128 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 117 ms. Found 4 JPA repository interfaces.
+2023-07-12 01:59:15.778  INFO 15128 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2023-07-12 01:59:15.778  INFO 15128 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-07-12 01:59:15.778  INFO 15128 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.70]
+2023-07-12 01:59:15.923  INFO 15128 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-07-12 01:59:15.925  INFO 15128 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1531 ms
+2023-07-12 01:59:16.006  INFO 15128 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-07-12 01:59:16.043  INFO 15128 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Starting...
+2023-07-12 01:59:16.105  INFO 15128 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Start completed.
+2023-07-12 01:59:16.106  INFO 15128 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MariaDBDialect
+2023-07-12 01:59:16.249  INFO 15128 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-07-12 01:59:16.249  INFO 15128 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-07-12 01:59:16.532  WARN 15128 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-07-12 01:59:17.632  INFO 15128 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2023-07-12 01:59:17.651  INFO 15128 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2023-07-12 01:59:17.652  INFO 15128 --- [restartedMain] o.s.m.s.b.SimpleBrokerMessageHandler     : Starting...
+2023-07-12 01:59:17.652  INFO 15128 --- [restartedMain] o.s.m.s.b.SimpleBrokerMessageHandler     : BrokerAvailabilityEvent[available=true, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@7176c7e0]]
+2023-07-12 01:59:17.652  INFO 15128 --- [restartedMain] o.s.m.s.b.SimpleBrokerMessageHandler     : Started.
+2023-07-12 01:59:17.657  INFO 15128 --- [restartedMain] com.example.gp.GpApplication             : Started GpApplication in 3.462 seconds (JVM running for 629.279)
+2023-07-12 01:59:17.659  INFO 15128 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2023-07-12 01:59:24.572  INFO 15128 --- [http-nio-8080-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-07-12 01:59:24.572  INFO 15128 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2023-07-12 01:59:24.573  INFO 15128 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2023-07-12 01:59:56.145  INFO 15128 --- [http-nio-8080-exec-6] c.example.gp.controller.MainController   : test
+2023-07-12 02:00:16.539  INFO 15128 --- [MessageBroker-3] o.s.w.s.c.WebSocketMessageBrokerStats    : WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 2 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(2)-CONNECTED(2)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 8, active threads = 0, queued tasks = 0, completed tasks = 15], outboundChannel[pool size = 3, active threads = 0, queued tasks = 0, completed tasks = 3], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 11]
+2023-07-12 02:05:12.197  INFO 15128 --- [http-nio-8080-exec-9] c.example.gp.controller.MainController   : test
+2023-07-12 02:05:16.124  INFO 15128 --- [http-nio-8080-exec-1] c.example.gp.controller.MainController   : test
+2023-07-12 02:30:16.555  INFO 15128 --- [MessageBroker-4] o.s.w.s.c.WebSocketMessageBrokerStats    : WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 4 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(4)-CONNECTED(4)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 33], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 7], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 443]
+2023-07-12 02:33:37.320  INFO 15128 --- [SpringApplicationShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler     : Stopping...
+2023-07-12 02:33:37.321  INFO 15128 --- [SpringApplicationShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler     : BrokerAvailabilityEvent[available=false, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@7176c7e0]]
+2023-07-12 02:33:37.321  INFO 15128 --- [SpringApplicationShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler     : Stopped.
+2023-07-12 02:33:37.962  INFO 15128 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-07-12 02:33:38.157  INFO 15128 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Shutdown initiated...
+2023-07-12 02:33:38.232  INFO 15128 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Shutdown completed.
+2023-07-12 02:33:46.618  INFO 13692 --- [restartedMain] com.example.gp.GpApplication             : Starting GpApplication using Java 17.0.7 on DESKTOP-1GP1RVK with PID 13692 (C:\Users\h\Desktop\PJ\GP\out\production\classes started by moon2 in C:\Users\h\Desktop\PJ\GP)
+2023-07-12 02:33:46.621  INFO 13692 --- [restartedMain] com.example.gp.GpApplication             : No active profile set, falling back to 1 default profile: "default"
+2023-07-12 02:33:47.174  INFO 13692 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-07-12 02:33:47.175  INFO 13692 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-07-12 02:33:49.132  INFO 13692 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-07-12 02:33:49.335  INFO 13692 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 183 ms. Found 4 JPA repository interfaces.
+2023-07-12 02:33:50.835  INFO 13692 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2023-07-12 02:33:50.863  INFO 13692 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-07-12 02:33:50.864  INFO 13692 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.70]
+2023-07-12 02:33:51.213  INFO 13692 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-07-12 02:33:51.214  INFO 13692 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 4038 ms
+2023-07-12 02:33:51.533  INFO 13692 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-07-12 02:33:51.719  INFO 13692 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.14.Final
+2023-07-12 02:33:52.190  INFO 13692 --- [restartedMain] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2023-07-12 02:33:52.514  INFO 13692 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-07-12 02:33:52.689  INFO 13692 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-07-12 02:33:52.745  INFO 13692 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MariaDBDialect
+2023-07-12 02:33:54.471  INFO 13692 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-07-12 02:33:54.494  INFO 13692 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-07-12 02:33:55.892  WARN 13692 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-07-12 02:33:58.098  INFO 13692 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2023-07-12 02:33:58.167  INFO 13692 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2023-07-12 02:33:58.169  INFO 13692 --- [restartedMain] o.s.m.s.b.SimpleBrokerMessageHandler     : Starting...
+2023-07-12 02:33:58.170  INFO 13692 --- [restartedMain] o.s.m.s.b.SimpleBrokerMessageHandler     : BrokerAvailabilityEvent[available=true, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@c9db00f]]
+2023-07-12 02:33:58.171  INFO 13692 --- [restartedMain] o.s.m.s.b.SimpleBrokerMessageHandler     : Started.
+2023-07-12 02:33:58.183  INFO 13692 --- [restartedMain] com.example.gp.GpApplication             : Started GpApplication in 12.63 seconds (JVM running for 14.545)
+2023-07-12 02:34:55.832  INFO 13692 --- [MessageBroker-1] o.s.w.s.c.WebSocketMessageBrokerStats    : WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 1, active threads = 1, queued tasks = 0, completed tasks = 0]
