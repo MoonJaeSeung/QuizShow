@@ -14,8 +14,9 @@ public class GreetingController {
 	public Greeting greeting(HelloMessage message) throws Exception {
 		String nickname = message.getNick(); //닉네임 가져오기
 		String time = message.getTime();
-		String greetingMessage = nickname + " : " + HtmlUtils.htmlEscape(message.getMessage() + "  -  " + time);
-//		Thread.sleep(500); // simulated delay
+		String greetingMessage = "<div class='message'><span class='nick'>" + nickname + "</span> : <span class='text'>"
+				+ HtmlUtils.htmlEscape(message.getMessage()) + "</span> <span class='time'>  " + time + "</span></div>";
+		// Thread.sleep(500); // simulated delay
 		return new Greeting(greetingMessage);
 	}
 
