@@ -38,7 +38,32 @@
             }
         </style>
         <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+        <script>
+            document.addEventListener("DOMContentLoaded", async (event) => {
+                const cookieValue = await getCookieValue();
+                const mainLink = document.querySelector('.main');
+                console.log(cookieValue);
 
+                if (cookieValue) {
+                    mainLink.href = "/choice";
+                } else {
+                    mainLink.href = "/";
+                }
+            });
+
+            async function getCookieValue() {
+                let nick;
+                try {
+                    const response = await axios.get('/getNick');
+                    nick = response.data.nick;
+                    console.log(nick + " sex");
+                } catch (error) {
+                    console.error(error);
+                }
+                return nick;
+            }
+
+        </script>
 
     </head>
     <header>
@@ -47,21 +72,7 @@
         </a>
         <a class="sub" href="/" >회원으로 이용하기</a>
 
-        <script>
-            window.onload = function() {
-                console.log("sex")
-                // axios.get('/getNick')
-                //     .then(response => {
-                //         nick = response.data.nick;
-                //         // nick 값을 사용하여 필요한 작업 수행
-                //         console.log(nick + "sex");
-                //     })
-                //     .catch(error =>{
-                //         console.error(error);
-                //     });
-            };
 
-        </script>
     </header>
 </th:block>
 </html>

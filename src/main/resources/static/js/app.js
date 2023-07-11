@@ -38,7 +38,7 @@ window.onload = function() {
         .then(response => {
             nick = response.data.nick;
             // nick 값을 사용하여 필요한 작업 수행
-            console.log(nick);
+
         })
         .catch(error =>{
             console.error(error);

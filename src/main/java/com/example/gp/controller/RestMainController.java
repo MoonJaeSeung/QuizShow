@@ -41,7 +41,6 @@ public class RestMainController {
 
                     JSONObject responseJson = new JSONObject();
                     responseJson.put("nick", nick);
-                    log.info(nick);
 
                     return ResponseEntity.ok(responseJson.toString());
                 }// 임시회원 nick 가져오기
@@ -52,7 +51,6 @@ public class RestMainController {
                     JSONObject responseJson = new JSONObject();
                     responseJson.put("nick", nick);
 
-                    log.info(nick);
                     return ResponseEntity.ok(responseJson.toString());
                 }
             }
