@@ -42,6 +42,7 @@ public class MainController {
     //게임 선택
     @GetMapping("/choice")
     public String choice(){
+        log.info("test");
         return "choice";
     }
 
