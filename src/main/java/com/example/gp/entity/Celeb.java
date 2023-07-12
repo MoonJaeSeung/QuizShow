@@ -1,5 +1,6 @@
 package com.example.gp.entity;
 
+
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
@@ -22,4 +23,6 @@ public class Celeb {
     private String name;
 
     private String uri;
+
+    private char sex;
 }

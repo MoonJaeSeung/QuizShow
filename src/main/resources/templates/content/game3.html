@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Click Game</title>
+  <style>
+    #game-area {
+      position: relative;
+      width: 500px;
+      height: 500px;
+      border: 1px solid black;
+    }
+
+    .circle {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 50px;
+      height: 50px;
+      background-color: red;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+<h1>Click Game</h1>
+<p>Click the circles to score points!</p>
+<div id="game-area"></div>
+<p>Score: <span id="score">0</span></p>
+
+<script>
+  var gameArea = document.getElementById("game-area");
+  var scoreDisplay = document.getElementById("score");
+  var score = 0;
+
+  gameArea.addEventListener("click", function(event) {
+    if (event.target.classList.contains("circle")) {
+      event.target.remove();
+      score++;
+      scoreDisplay.textContent = score;
+    }
+  });
+
+  function createCircle() {
+    var circle = document.createElement("div");
+    circle.classList.add("circle");
+
+    var maxX = gameArea.offsetWidth - circle.offsetWidth;
+    var maxY = gameArea.offsetHeight - circle.offsetHeight;
+
+    var randomX = Math.floor(Math.random() * maxX);
+    var randomY = Math.floor(Math.random() * maxY);
+
+    circle.style.top = randomY + "px";
+    circle.style.left = randomX + "px";
+
+    gameArea.appendChild(circle);
+  }
+
+  setInterval(createCircle, 1000);
+</script>
+</body>
+</html>

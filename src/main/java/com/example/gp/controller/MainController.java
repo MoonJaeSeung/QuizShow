@@ -42,7 +42,6 @@ public class MainController {
     //게임 선택
     @GetMapping("/choice")
     public String choice(){
-        log.info("test");
         return "choice";
     }
 
@@ -59,24 +58,12 @@ public class MainController {
     }
     // 인물 퀴즈
     @GetMapping("/game2")
-    public String gameView2(Model model,HttpServletRequest request) {
+    public String gameView2(@RequestParam("sex") int sex, Model model,HttpServletRequest request) {
         extracted(model, request);
-        return "content/game2";
+        return "content/game2Menu";
     }
 
-    @GetMapping("/game2/celeb")
-    @ResponseBody
-    public List<Celeb> getCelebData() {
-        return gameService.findAllCeleb();
-    }
 
-    @GetMapping("/nick")
-    @ResponseBody
-    public String getNick(Model model,HttpServletRequest request){
-        extracted(model, request);
-        String nick = (String)model.getAttribute("nick");
-        return nick;
-    }
 
     @GetMapping("/news")
     public String news(Model model,HttpServletRequest request) {
@@ -86,14 +73,10 @@ public class MainController {
 
     @GetMapping("/newsDetail")
     public String newsDetail(@RequestParam("category") int category,Model model) throws IOException {
-        log.info("before");
         List<NewsDto> news = newsService.getNews(category);
-        log.info("after");
         model.addAttribute("news", news);
         return "content/newsDetail";
     }
-
-
 
     //쿠키를 통해 nick 가져오기
     private static void extracted(Model model, HttpServletRequest request) {
@@ -151,7 +134,7 @@ public class MainController {
     public String addWord(@RequestParam("fullWord") String fullWord){
 
         Word word = new Word(fullWord);
-        Word savedWord = gameService.addWord(word);
+        gameService.addWord(word);
         return "/admin/addWord";
     }
 

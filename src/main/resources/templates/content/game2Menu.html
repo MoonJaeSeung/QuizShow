@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:box-shadow="http://www.w3.org/1999/xhtml"
+      layout:decorate="~{layouts/layout}">
+<head>
+  <title>최신 뉴스</title>
+  <style>
+
+    .container{
+      display: flex;
+      flex-direction: column;
+    }
+
+
+  </style>
+</head>
+<th:block layout:fragment="content">
+
+  <div class="container">
+    <a th:href="@{/game2?sex=1}" class="game-button">남자 연예인</a>
+    <a th:href="@{/game2?sex=2}" class="game-button">여자 연예인</a>
+
+  </div>
+</th:block>
+</html>
