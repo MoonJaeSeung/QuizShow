@@ -14,11 +14,13 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -67,9 +69,13 @@ public class RestMainController {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
     }
 
-    @GetMapping("/game2/celeb")
-    public List<Celeb> getCelebData() {
-        return gameService.findAllCeleb();
+
+    @GetMapping("game2/celeb")
+    public List<Celeb> getCelebsByGender(@RequestParam("sex") int sex) {
+        List<Celeb> celebs = new ArrayList<>();
+        celebs = gameService.findCeleb(sex);
+
+        return celebs;
     }
 
     @GetMapping("/nick")

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:box-shadow="http://www.w3.org/1999/xhtml"
+      layout:decorate="~{layouts/layout}">
+<head>
+    <title>Click Game</title>
+    <style>
+
+        body{
+            font-family: 'Dongle', sans-serif;
+        }
+
+        #game-area {
+            position: relative;
+            width: 500px;
+            height: 500px;
+            border: 1px solid black;
+        }
+
+        .circle {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 50px;
+            height: 50px;
+            background-color: #ece7ff;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+        .time{
+            font-family: 'Dongle', sans-serif;
+            text-align: center;
+            font-size: 70px;
+            margin-bottom: 10px;
+        }
+
+        .score{
+            font-family: 'Dongle', sans-serif;
+            text-align: center;
+            font-size: 70px;
+            margin-bottom: 10px;
+        }
+
+        #game-over-message{
+            background-color: white;
+            font-size: 100px;
+        }
+    </style>
+</head>
+<th:block layout:fragment="content">
+    <div class="container">
+
+        <p class="time">Time : <span class="time" id="time"></span></p>
+        <div id="game-area" style="display: flex; align-items: center; justify-content: center;">
+            <div id="game-over-message" style="display: none; z-index: 1; background-color: white; padding: 20px; border-radius: 5px; text-align: center;">
+                <h2 id="final-score" style="font-size: 100px"></h2>
+                <button onclick="location.reload()">다시하기</button>
+            </div>
+        </div>
+
+        <block>
+            <a href="/game4" class="atag" style="font-size: 60px"> 다시 하기 </a>
+            <a href="/record?value=4" class="atag" style="font-size: 60px">기록 확인</a>
+        </block>
+    </div>
+</th:block>
+<th:block layout:fragment="script">
+    <script>
+
+        var nick;
+        var gameArea;
+        var scoreDisplay;
+        var timeDisplay;
+        var score = 0;
+        var timeLeft = 3;
+        var timer;
+        var circleTimer;  // New variable to store reference to the setInterval that creates circles
+
+        document.addEventListener('DOMContentLoaded', (event) => {
+            gameArea = document.getElementById("game-area");
+            scoreDisplay = document.getElementById("score");
+            timeDisplay = document.getElementById("time");
+
+            gameArea.addEventListener("click", handleCircleClick);
+            startTimer();
+            circleTimer = setInterval(createCircle, 1000);  // Store reference in circleTimer
+        });
+
+
+        function handleCircleClick(event) {
+            if (event.target.classList.contains("circle")) {
+                event.target.remove();
+                score++;
+                scoreDisplay.textContent = score;
+            }
+        }
+
+        gameArea.addEventListener("click", handleCircleClick);
+
+        function createCircle() {
+            var circle = document.createElement("div");
+            circle.classList.add("circle");
+
+            // Generate a random RGB color
+            var randomColor = 'rgb(' +
+                Math.floor(Math.random() * 256) + ',' +  // Red
+                Math.floor(Math.random() * 256) + ',' +  // Green
+                Math.floor(Math.random() * 256) + ')';   // Blue
+
+            circle.style.backgroundColor = randomColor;  // Set the circle's background color to the random color
+
+            var maxX = gameArea.offsetWidth - circle.offsetWidth;
+            var maxY = gameArea.offsetHeight - circle.offsetHeight;
+
+            var randomX = Math.floor(Math.random() * maxX);
+            var randomY = Math.floor(Math.random() * maxY);
+
+            circle.style.top = randomY + "px";
+            circle.style.left = randomX + "px";
+
+            gameArea.appendChild(circle);
+        }
+        function startTimer() {
+            timer = setInterval(function () {
+                timeLeft--;
+                timeDisplay.textContent = timeLeft;
+
+                if (timeLeft === 0) {
+                    clearInterval(timer);
+                    clearInterval(circleTimer);  // Stop the circle creation when time is up
+                    gameArea.removeEventListener("click", handleCircleClick);
+                    endGame();
+                }
+            }, 1000);
+        }
+
+        //닉네임 가져오기
+        axios.get('/nick')
+            .then(function (response) {
+                nick = response.data;
+                console.log(nick)
+            })
+            .catch(function (error) {
+                console.error(error);
+            })
+
+        //기록 저장
+        function endGame() {
+
+            document.getElementById('game-over-message').style.display = 'block';
+            document.getElementById('final-score').textContent = '점수: ' + score;
+
+            console.log("endGame")
+            var recordDto = {
+                nick: nick,
+                score: score,
+                game: 4
+            };
+
+            axios.post('/record/add', recordDto, {
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+                .then(function (response) {
+                    console.log("성공");
+                })
+                .catch(function (error) {
+                    console.log('기록 저장에 실패했습니다.', error);
+                });
+        }
+
+    </script>
+</th:block>
+</html>

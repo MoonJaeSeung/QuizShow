@@ -57,6 +57,7 @@
         }
 
     </style>
+
 </head>
 <body>
 <th:block layout:fragment="content">
@@ -64,11 +65,18 @@
         <block th:switch="${gameNum}">
             <th:block th:case="1">
                 <h3><a href="/record?value=2" class="atag">인물 퀴즈</a></h3>
-                <h2><a href="/record?value=1" class="atag" style="color:black; font-size:6vw;">사자성어</a></h2>
+                <h2><a href="/record?value=1" class="atag" style="color:black; font-size:6vw;" >사자성어</a></h2>
+                <h3><a href="/record?value=4" class="atag">스피드 클릭</a></h3>
             </th:block>
             <th:block th:case="2">
                 <h2><a href="/record?value=2" class="atag" style="color:black; font-size:6vw;">인물 퀴즈</a></h2>
                 <h3><a href="/record?value=1" class="atag">사자성어</a></h3>
+                <h3><a href="/record?value=4" class="atag">스피드 클릭</a></h3>
+            </th:block>
+            <th:block th:case="4">
+                <h3><a href="/record?value=2" class="atag">인물 퀴즈</a></h3>
+                <h3><a href="/record?value=1" class="atag">사자성어</a></h3>
+                <h2><a href="/record?value=4" class="atag" style="color:black; font-size:6vw;">스피드 클릭</a></h2>
             </th:block>
         </block>
         <table class="table">
@@ -88,6 +96,9 @@
             </tr>
             </tbody>
         </table>
+
+        <a class="game-button" href="/game2">다시하기</a>
+        <a class="game-button" href="javascript:history.back()">뒤로가기</a>
     </div>
 </th:block>
 </body>

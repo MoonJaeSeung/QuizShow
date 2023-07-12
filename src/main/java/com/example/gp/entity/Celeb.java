@@ -24,5 +24,5 @@ public class Celeb {
 
     private String uri;
 
-    private char sex;
+    private int sex;
 }

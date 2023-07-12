@@ -32,6 +32,11 @@ public class GameService {
         return all;
     }
 
+    public List<Celeb> findCeleb(int sex) {
+        List<Celeb> celeb = celebRepository.findAllBySex(sex);
+        return celeb;
+    }
+
     public Word addWord(Word word) {
         Word save = wordRepository.save(word);
         return save;
@@ -41,6 +46,7 @@ public class GameService {
         Word findWord = wordRepository.findWordById(wordId);
         return findWord;
     }
+
 
 
 }

@@ -3,12 +3,17 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:box-shadow="http://www.w3.org/1999/xhtml"
       layout:decorate="~{layouts/layout}">
 <head>
-  <title>최신 뉴스</title>
+  <title>인물 퀴즈</title>
   <style>
 
     .container{
       display: flex;
       flex-direction: column;
+    }
+
+    .game-button{
+      width:51vw;
+      height:197px
     }
 
 
@@ -17,9 +22,8 @@
 <th:block layout:fragment="content">
 
   <div class="container">
-    <a th:href="@{/game2?sex=1}" class="game-button">남자 연예인</a>
-    <a th:href="@{/game2?sex=2}" class="game-button">여자 연예인</a>
-
+    <a th:href="@{/game2/view?sex=1}" class="game-button">남자 연예인</a>
+    <a th:href="@{/game2/view?sex=2}" class="game-button">여자 연예인</a>
   </div>
 </th:block>
 </html>

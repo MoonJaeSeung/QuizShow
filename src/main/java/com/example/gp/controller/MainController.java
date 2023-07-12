@@ -2,7 +2,6 @@ package com.example.gp.controller;
 
 
 import com.example.gp.dto.NewsDto;
-import com.example.gp.entity.Celeb;
 import com.example.gp.entity.Record;
 import com.example.gp.entity.Word;
 import com.example.gp.service.GameService;
@@ -58,9 +57,16 @@ public class MainController {
     }
     // 인물 퀴즈
     @GetMapping("/game2")
-    public String gameView2(@RequestParam("sex") int sex, Model model,HttpServletRequest request) {
+    public String game2Menu(Model model,HttpServletRequest request) {
         extracted(model, request);
         return "content/game2Menu";
+    }
+
+    @GetMapping("game2/view")
+    public String game2View(@RequestParam("sex")int sex, Model model) {
+        int gender = sex;
+        model.addAttribute("gender", gender);
+        return "content/game2";
     }
 
 
@@ -68,14 +74,19 @@ public class MainController {
     @GetMapping("/news")
     public String news(Model model,HttpServletRequest request) {
         extracted(model, request);
-        return "content/news";
+        return "content/game3Menu";
     }
 
     @GetMapping("/newsDetail")
     public String newsDetail(@RequestParam("category") int category,Model model) throws IOException {
         List<NewsDto> news = newsService.getNews(category);
         model.addAttribute("news", news);
-        return "content/newsDetail";
+        return "content/game3";
+    }
+
+    @GetMapping("/game4")
+    public String game4(){
+        return "content/game4";
     }
 
     //쿠키를 통해 nick 가져오기
