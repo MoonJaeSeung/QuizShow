@@ -45,6 +45,26 @@
             background-color: white;
             font-size: 100px;
         }
+
+        @keyframes shake {
+            0% {
+                transform: translateX(0);
+            }
+            10%, 30%, 50%, 70%, 90% {
+                transform: translateX(-10px);
+            }
+            20%, 40%, 60%, 80% {
+                transform: translateX(10px);
+            }
+            100% {
+                transform: translateX(0);
+            }
+        }
+
+        .shake-animation {
+            animation: shake 5s;
+        }
+
     </style>
 </head>
 <th:block layout:fragment="content">
@@ -72,18 +92,20 @@
         var scoreDisplay;
         var timeDisplay;
         var score = 0;
-        var timeLeft = 3;
+        var timeLeft = 7;
         var timer;
         var circleTimer;  // New variable to store reference to the setInterval that creates circles
+        var time;
 
         document.addEventListener('DOMContentLoaded', (event) => {
             gameArea = document.getElementById("game-area");
             scoreDisplay = document.getElementById("score");
             timeDisplay = document.getElementById("time");
+            time = document.getElementsByClassName("time");
 
             gameArea.addEventListener("click", handleCircleClick);
             startTimer();
-            circleTimer = setInterval(createCircle, 1000);  // Store reference in circleTimer
+            circleTimer = setInterval(createCircle, 500);  // Store reference in circleTimer
         });
 
 
@@ -124,6 +146,12 @@
             timer = setInterval(function () {
                 timeLeft--;
                 timeDisplay.textContent = timeLeft;
+
+                if(timeLeft <= 5 ){
+                    for(var i = 0; i < time.length; i++) {
+                        time[i].classList.add("shake-animation");
+                    }
+                }
 
                 if (timeLeft === 0) {
                     clearInterval(timer);

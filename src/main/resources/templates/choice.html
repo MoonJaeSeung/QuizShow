@@ -4,35 +4,37 @@
       layout:decorate="~{layouts/layout}">
 
 <head>
-  <title>퀴즈맞추기 게임 선택</title>
-  <style>
-    .container {
-      display: flex;
-      flex-direction: column;
-    }
+    <title>퀴즈맞추기 게임 선택</title>
+    <style>
+        .container {
+            display: flex;
+            flex-direction: column;
+        }
 
-    a.game-button {
-      width: 40vw;
-      height: 117px;
-      margin: 30px;
-    }
+        a.game-button {
+            width: 40vw;
+            height: 117px;
+            margin: 30px;
+        }
 
 
-  </style>
+    </style>
 
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
 </head>
 <th:block layout:fragment="content">
+    <block>
 
-  <th:block th:replace="chat::chatFragment"></th:block>
 
-  <div class="container">
-    <a th:href="@{/game1}" class="game-button">사자성어</a>
-    <a th:href="@{/game2}" class="game-button">인물 퀴즈</a>
-    <a th:href="@{/news}" class="game-button">암기력</a>
-    <a th:href="@{/game4}" class="game-button">스피드 클릭</a>
+        <div class="container" style="padding-bottom: 50px">
+            <a th:href="@{/game1}" class="game-button">사자성어</a>
+            <a th:href="@{/game2}" class="game-button">인물 퀴즈</a>
+            <a th:href="@{/news}" class="game-button">암기력</a>
+            <a th:href="@{/game4}" class="game-button">스피드 클릭</a>
+        </div>
 
-  </div>
+        <th:block th:replace="chat::chatFragment"></th:block>
+    </block>
 </th:block>
 </html>
