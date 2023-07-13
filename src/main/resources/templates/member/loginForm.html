@@ -77,10 +77,10 @@
     <form role="form" action="/join" method="post" class="form-style" th:object="${memberFormDto}">
 
       <input type="text" class="nickname-input" id="nick" name="nick" placeholder="닉네임을 입력하세요">
-      <span class="validation-error" th:if="${#fields.hasErrors('nick')}" th:errors="*{nick}"></span>
+      <span class="validation-error" th:if="${#fields.hasErrors('nick')}" th:errors="*{nick}" style="font-family: 'Dongle', sans-serif; font-size: 30px"></span>
 
       <input type="password" class="password-input" id="password" name="password" placeholder="비밀번호를 입력하세요"><br>
-      <div th:text="${errorMessage}" style="font-size: 30px"></div>
+      <div th:text="${errorMessage}" style="font-size: 30px; font-family: 'Dongle', sans-serif"></div>
 
       <button class="game-button" type="submit">시작</button>
     </form>

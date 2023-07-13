@@ -5320,3 +5320,422 @@ java.sql.SQLException: Duplicate entry '2' for key 'UK_1b23vpw481fc28l11b4hgecb4
 2023-07-13 20:21:45.657 DEBUG 12224 --- [clientInboundChannel-7] .WebSocketAnnotationMethodMessageHandler : Invoking GreetingController#greeting[1 args]
 2023-07-13 20:21:45.658 DEBUG 12224 --- [clientInboundChannel-7] org.springframework.web.SimpLogging      : Processing MESSAGE destination=/topic/greetings session=uc5i3yso payload={"content":"<div class='message'><span class='nick'>5</span> : <span class='text...(truncated)
 2023-07-13 20:21:45.658 DEBUG 12224 --- [clientInboundChannel-7] org.springframework.web.SimpLogging      : Broadcasting to 1 sessions.
+2023-07-13 20:36:15.218  INFO 12224 --- [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 1 deletion, 0 modifications)
+2023-07-13 20:36:15.278 DEBUG 12224 --- [Thread-5] org.springframework.web.SimpLogging      : clientOutboundChannel removed SubProtocolWebSocketHandler[StompSubProtocolHandler[v10.stomp, v11.stomp, v12.stomp]]
+2023-07-13 20:36:15.278 DEBUG 12224 --- [Thread-5] s.w.s.s.t.s.WebSocketServerSockJsSession : Closing SockJS session uc5i3yso with CloseStatus[code=1001, reason=null]
+2023-07-13 20:36:15.279 DEBUG 12224 --- [Thread-5] o.s.w.s.adapter.NativeWebSocketSession   : Closing StandardWebSocketSession[id=41e2414c-e717-4f0a-539f-96a6386d6ea0, uri=ws://localhost:8083/chat/136/uc5i3yso/websocket]
+2023-07-13 20:36:15.287 DEBUG 12224 --- [Thread-5] s.w.s.h.LoggingWebSocketHandlerDecorator : WebSocketServerSockJsSession[id=uc5i3yso] closed with CloseStatus[code=1001, reason=null]
+2023-07-13 20:36:15.287 DEBUG 12224 --- [Thread-5] o.s.w.s.m.SubProtocolWebSocketHandler    : Clearing session uc5i3yso
+2023-07-13 20:36:15.289 DEBUG 12224 --- [clientInboundChannel-10] org.springframework.web.SimpLogging      : Processing DISCONNECT session=uc5i3yso
+2023-07-13 20:36:15.289 DEBUG 12224 --- [Thread-5] org.springframework.web.SimpLogging      : clientInboundChannel removed WebSocketAnnotationMethodMessageHandler[prefixes=[/app/]]
+2023-07-13 20:36:15.289  INFO 12224 --- [Thread-5] o.s.m.s.b.SimpleBrokerMessageHandler     : Stopping...
+2023-07-13 20:36:15.289  INFO 12224 --- [Thread-5] o.s.m.s.b.SimpleBrokerMessageHandler     : BrokerAvailabilityEvent[available=false, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@1ad78484]]
+2023-07-13 20:36:15.289 DEBUG 12224 --- [Thread-5] org.springframework.web.SimpLogging      : clientInboundChannel removed SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@1ad78484]
+2023-07-13 20:36:15.289 DEBUG 12224 --- [Thread-5] org.springframework.web.SimpLogging      : brokerChannel removed SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@1ad78484]
+2023-07-13 20:36:15.289  INFO 12224 --- [Thread-5] o.s.m.s.b.SimpleBrokerMessageHandler     : Stopped.
+2023-07-13 20:36:15.290 DEBUG 12224 --- [Thread-5] org.springframework.web.SimpLogging      : clientInboundChannel removed UserDestinationMessageHandler[DefaultUserDestinationResolver[prefix=/user/]]
+2023-07-13 20:36:15.290 DEBUG 12224 --- [Thread-5] org.springframework.web.SimpLogging      : brokerChannel removed UserDestinationMessageHandler[DefaultUserDestinationResolver[prefix=/user/]]
+2023-07-13 20:36:15.320  INFO 12224 --- [Thread-5] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2023-07-13 20:36:15.333  INFO 12224 --- [Thread-5] o.a.c.c.C.[Tomcat].[localhost].[/]       : Destroying Spring FrameworkServlet 'dispatcherServlet'
+2023-07-13 20:36:15.354  WARN 12224 --- [Thread-5] o.a.c.loader.WebappClassLoaderBase       : The web application [ROOT] appears to have started a thread named [MessageBroker-3] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@17.0.7/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base@17.0.7/java.util.concurrent.locks.LockSupport.park(LockSupport.java:341)
+ java.base@17.0.7/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionNode.block(AbstractQueuedSynchronizer.java:506)
+ java.base@17.0.7/java.util.concurrent.ForkJoinPool.unmanagedBlock(ForkJoinPool.java:3463)
+ java.base@17.0.7/java.util.concurrent.ForkJoinPool.managedBlock(ForkJoinPool.java:3434)
+ java.base@17.0.7/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1623)
+ java.base@17.0.7/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:1177)
+ java.base@17.0.7/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:899)
+ java.base@17.0.7/java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1062)
+ java.base@17.0.7/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1122)
+ java.base@17.0.7/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+ java.base@17.0.7/java.lang.Thread.run(Thread.java:833)
+2023-07-13 20:36:15.381  INFO 12224 --- [Thread-5] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-07-13 20:36:15.417  INFO 12224 --- [Thread-5] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-07-13 20:36:15.535  INFO 12224 --- [Thread-5] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2023-07-13 20:36:16.030  INFO 12224 --- [restartedMain] com.example.gp.GpApplication             : Starting GpApplication using Java 17.0.7 on DESKTOP-1GP1RVK with PID 12224 (C:\Users\h\Desktop\PJ\GP\out\production\classes started by moon2 in C:\Users\h\Desktop\PJ\GP)
+2023-07-13 20:36:16.030  INFO 12224 --- [restartedMain] com.example.gp.GpApplication             : No active profile set, falling back to 1 default profile: "default"
+2023-07-13 20:36:16.991  INFO 12224 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-07-13 20:36:17.111  INFO 12224 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 118 ms. Found 4 JPA repository interfaces.
+2023-07-13 20:36:17.360  INFO 12224 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8083 (http)
+2023-07-13 20:36:17.360  INFO 12224 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-07-13 20:36:17.360  INFO 12224 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.70]
+2023-07-13 20:36:17.505  INFO 12224 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-07-13 20:36:17.506  INFO 12224 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1454 ms
+2023-07-13 20:36:17.517 DEBUG 12224 --- [restartedMain] o.s.w.s.r.ResourceUrlEncodingFilter      : Filter 'resourceUrlEncodingFilter' configured for use
+2023-07-13 20:36:17.596  INFO 12224 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-07-13 20:36:17.633  INFO 12224 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
+2023-07-13 20:36:17.748  INFO 12224 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
+2023-07-13 20:36:17.749  INFO 12224 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MariaDBDialect
+2023-07-13 20:36:17.887  INFO 12224 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-07-13 20:36:17.888  INFO 12224 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-07-13 20:36:18.073  WARN 12224 --- [restartedMain] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'memberController': Resolution of declared constructors on bean Class [com.example.gp.controller.MemberController] from ClassLoader [org.springframework.boot.devtools.restart.classloader.RestartClassLoader@7b808eb4] failed; nested exception is java.lang.NoClassDefFoundError: com/example/gp/service/MemberService
+2023-07-13 20:36:18.074  INFO 12224 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-07-13 20:36:18.074  INFO 12224 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown initiated...
+2023-07-13 20:36:18.118  INFO 12224 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown completed.
+2023-07-13 20:36:18.120  INFO 12224 --- [restartedMain] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2023-07-13 20:36:18.136  INFO 12224 --- [restartedMain] ConditionEvaluationReportLoggingListener : 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2023-07-13 20:36:18.230 ERROR 12224 --- [restartedMain] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'memberController': Resolution of declared constructors on bean Class [com.example.gp.controller.MemberController] from ClassLoader [org.springframework.boot.devtools.restart.classloader.RestartClassLoader@7b808eb4] failed; nested exception is java.lang.NoClassDefFoundError: com/example/gp/service/MemberService
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.determineCandidateConstructors(AutowiredAnnotationBeanPostProcessor.java:309) ~[spring-beans-5.3.24.jar:5.3.24]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.determineConstructorsFromBeanPostProcessors(AbstractAutowireCapableBeanFactory.java:1302) ~[spring-beans-5.3.24.jar:5.3.24]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1219) ~[spring-beans-5.3.24.jar:5.3.24]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:582) ~[spring-beans-5.3.24.jar:5.3.24]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542) ~[spring-beans-5.3.24.jar:5.3.24]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335) ~[spring-beans-5.3.24.jar:5.3.24]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-5.3.24.jar:5.3.24]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333) ~[spring-beans-5.3.24.jar:5.3.24]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208) ~[spring-beans-5.3.24.jar:5.3.24]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:955) ~[spring-beans-5.3.24.jar:5.3.24]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:918) ~[spring-context-5.3.24.jar:5.3.24]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:583) ~[spring-context-5.3.24.jar:5.3.24]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:147) ~[spring-boot-2.7.7.jar:2.7.7]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:731) ~[spring-boot-2.7.7.jar:2.7.7]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:408) ~[spring-boot-2.7.7.jar:2.7.7]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:307) ~[spring-boot-2.7.7.jar:2.7.7]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1303) ~[spring-boot-2.7.7.jar:2.7.7]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1292) ~[spring-boot-2.7.7.jar:2.7.7]
+	at com.example.gp.GpApplication.main(GpApplication.java:11) ~[classes/:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49) ~[spring-boot-devtools-2.7.7.jar:2.7.7]
+Caused by: java.lang.NoClassDefFoundError: com/example/gp/service/MemberService
+	at java.base/java.lang.Class.getDeclaredConstructors0(Native Method) ~[na:na]
+	at java.base/java.lang.Class.privateGetDeclaredConstructors(Class.java:3373) ~[na:na]
+	at java.base/java.lang.Class.getDeclaredConstructors(Class.java:2555) ~[na:na]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.determineCandidateConstructors(AutowiredAnnotationBeanPostProcessor.java:304) ~[spring-beans-5.3.24.jar:5.3.24]
+	... 23 common frames omitted
+Caused by: java.lang.ClassNotFoundException: com.example.gp.service.MemberService
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641) ~[na:na]
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188) ~[na:na]
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:520) ~[na:na]
+	at java.base/java.lang.Class.forName0(Native Method) ~[na:na]
+	at java.base/java.lang.Class.forName(Class.java:467) ~[na:na]
+	at org.springframework.boot.devtools.restart.classloader.RestartClassLoader.loadClass(RestartClassLoader.java:145) ~[spring-boot-devtools-2.7.7.jar:2.7.7]
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:520) ~[na:na]
+	... 27 common frames omitted
+
+2023-07-13 20:36:22.384  INFO 12224 --- [restartedMain] com.example.gp.GpApplication             : Starting GpApplication using Java 17.0.7 on DESKTOP-1GP1RVK with PID 12224 (C:\Users\h\Desktop\PJ\GP\out\production\classes started by moon2 in C:\Users\h\Desktop\PJ\GP)
+2023-07-13 20:36:22.384  INFO 12224 --- [restartedMain] com.example.gp.GpApplication             : No active profile set, falling back to 1 default profile: "default"
+2023-07-13 20:36:23.301  INFO 12224 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-07-13 20:36:23.412  INFO 12224 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 109 ms. Found 4 JPA repository interfaces.
+2023-07-13 20:36:23.600  INFO 12224 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8083 (http)
+2023-07-13 20:36:23.600  INFO 12224 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-07-13 20:36:23.600  INFO 12224 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.70]
+2023-07-13 20:36:23.749  INFO 12224 --- [restartedMain] o.a.c.c.C.[Tomcat-1].[localhost].[/]     : Initializing Spring embedded WebApplicationContext
+2023-07-13 20:36:23.750  INFO 12224 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1362 ms
+2023-07-13 20:36:23.761 DEBUG 12224 --- [restartedMain] o.s.w.s.r.ResourceUrlEncodingFilter      : Filter 'resourceUrlEncodingFilter' configured for use
+2023-07-13 20:36:23.833  INFO 12224 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-07-13 20:36:23.868  INFO 12224 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Starting...
+2023-07-13 20:36:23.948  INFO 12224 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Start completed.
+2023-07-13 20:36:23.949  INFO 12224 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MariaDBDialect
+2023-07-13 20:36:24.109  INFO 12224 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-07-13 20:36:24.109  INFO 12224 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-07-13 20:36:24.382 DEBUG 12224 --- [restartedMain] o.s.w.s.s.s.WebSocketHandlerMapping      : Patterns [/chat/**] in 'stompWebSocketHandlerMapping'
+2023-07-13 20:36:24.399  WARN 12224 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-07-13 20:36:24.417 DEBUG 12224 --- [restartedMain] .WebSocketAnnotationMethodMessageHandler : 
+	c.e.g.c.AdminController:
+	
+2023-07-13 20:36:24.417 DEBUG 12224 --- [restartedMain] .WebSocketAnnotationMethodMessageHandler : 
+	c.e.g.c.CustomErrorController:
+	
+2023-07-13 20:36:24.418 DEBUG 12224 --- [restartedMain] .WebSocketAnnotationMethodMessageHandler : 
+	c.e.g.c.MainController:
+	
+2023-07-13 20:36:24.418 DEBUG 12224 --- [restartedMain] .WebSocketAnnotationMethodMessageHandler : 
+	c.e.g.c.MemberController:
+	
+2023-07-13 20:36:24.418 DEBUG 12224 --- [restartedMain] .WebSocketAnnotationMethodMessageHandler : 
+	c.e.g.c.RestMainController:
+	
+2023-07-13 20:36:24.419 DEBUG 12224 --- [restartedMain] .WebSocketAnnotationMethodMessageHandler : 
+	c.e.g.w.GreetingController:
+	{[MESSAGE],[/hello]}: greeting(HelloMessage)
+2023-07-13 20:36:24.462 DEBUG 12224 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2023-07-13 20:36:24.491 DEBUG 12224 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : 22 mappings in 'requestMappingHandlerMapping'
+2023-07-13 20:36:26.067 DEBUG 12224 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2023-07-13 20:36:26.078 DEBUG 12224 --- [restartedMain] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
+2023-07-13 20:36:26.257  INFO 12224 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2023-07-13 20:36:26.283  INFO 12224 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8083 (http) with context path ''
+2023-07-13 20:36:26.284 DEBUG 12224 --- [restartedMain] org.springframework.web.SimpLogging      : clientOutboundChannel added SubProtocolWebSocketHandler[StompSubProtocolHandler[v10.stomp, v11.stomp, v12.stomp]]
+2023-07-13 20:36:26.284 DEBUG 12224 --- [restartedMain] org.springframework.web.SimpLogging      : clientInboundChannel added WebSocketAnnotationMethodMessageHandler[prefixes=[/app/]]
+2023-07-13 20:36:26.296  INFO 12224 --- [restartedMain] o.s.m.s.b.SimpleBrokerMessageHandler     : Starting...
+2023-07-13 20:36:26.296 DEBUG 12224 --- [restartedMain] org.springframework.web.SimpLogging      : clientInboundChannel added SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@7998977e]
+2023-07-13 20:36:26.296 DEBUG 12224 --- [restartedMain] org.springframework.web.SimpLogging      : brokerChannel added SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@7998977e]
+2023-07-13 20:36:26.296  INFO 12224 --- [restartedMain] o.s.m.s.b.SimpleBrokerMessageHandler     : BrokerAvailabilityEvent[available=true, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@7998977e]]
+2023-07-13 20:36:26.298  INFO 12224 --- [restartedMain] o.s.m.s.b.SimpleBrokerMessageHandler     : Started.
+2023-07-13 20:36:26.299 DEBUG 12224 --- [restartedMain] org.springframework.web.SimpLogging      : clientInboundChannel added UserDestinationMessageHandler[DefaultUserDestinationResolver[prefix=/user/]]
+2023-07-13 20:36:26.299 DEBUG 12224 --- [restartedMain] org.springframework.web.SimpLogging      : brokerChannel added UserDestinationMessageHandler[DefaultUserDestinationResolver[prefix=/user/]]
+2023-07-13 20:36:26.305  INFO 12224 --- [restartedMain] com.example.gp.GpApplication             : Started GpApplication in 4.062 seconds (JVM running for 981.005)
+2023-07-13 20:36:26.314  INFO 12224 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2023-07-13 20:36:26.362  INFO 12224 --- [http-nio-8083-exec-1] o.a.c.c.C.[Tomcat-1].[localhost].[/]     : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-07-13 20:36:26.362  INFO 12224 --- [http-nio-8083-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2023-07-13 20:36:26.362 DEBUG 12224 --- [http-nio-8083-exec-1] o.s.web.servlet.DispatcherServlet        : Detected StandardServletMultipartResolver
+2023-07-13 20:36:26.362 DEBUG 12224 --- [http-nio-8083-exec-1] o.s.web.servlet.DispatcherServlet        : Detected AcceptHeaderLocaleResolver
+2023-07-13 20:36:26.362 DEBUG 12224 --- [http-nio-8083-exec-1] o.s.web.servlet.DispatcherServlet        : Detected FixedThemeResolver
+2023-07-13 20:36:26.363 DEBUG 12224 --- [http-nio-8083-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@762c1b17
+2023-07-13 20:36:26.364 DEBUG 12224 --- [http-nio-8083-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.support.SessionFlashMapManager@6f60cbf
+2023-07-13 20:36:26.364 DEBUG 12224 --- [http-nio-8083-exec-1] o.s.web.servlet.DispatcherServlet        : enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+2023-07-13 20:36:26.364  INFO 12224 --- [http-nio-8083-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2023-07-13 20:36:26.365 DEBUG 12224 --- [http-nio-8083-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/", parameters={}
+2023-07-13 20:36:26.365 DEBUG 12224 --- [http-nio-8083-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.example.gp.controller.MemberController#loginAsTemp(MemberFormDto, Model)
+2023-07-13 20:36:26.371 DEBUG 12224 --- [http-nio-8083-exec-1] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, application/signed-exchange;v=b3;q=0.7, */*;q=0.8]
+2023-07-13 20:36:27.397 DEBUG 12224 --- [http-nio-8083-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-07-13 20:36:27.419 DEBUG 12224 --- [http-nio-8083-exec-2] o.s.web.servlet.DispatcherServlet        : GET "/css/layout.css", parameters={}
+2023-07-13 20:36:27.419 DEBUG 12224 --- [http-nio-8083-exec-2] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [static/], ServletContext [/]]
+2023-07-13 20:36:27.443 DEBUG 12224 --- [http-nio-8083-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-07-13 20:36:27.508 DEBUG 12224 --- [http-nio-8083-exec-3] o.s.web.servlet.DispatcherServlet        : GET "/getNick", parameters={}
+2023-07-13 20:36:27.509 DEBUG 12224 --- [http-nio-8083-exec-3] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.example.gp.controller.RestMainController#getNickForAxios(HttpServletRequest)
+2023-07-13 20:36:27.514 DEBUG 12224 --- [http-nio-8083-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [text/plain, */*, text/plain, */*, application/json, application/*+json, application/json, application/*+json]
+2023-07-13 20:36:27.514 DEBUG 12224 --- [http-nio-8083-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Nothing to write: null body
+2023-07-13 20:36:27.514 DEBUG 12224 --- [http-nio-8083-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 404 NOT_FOUND
+2023-07-13 20:36:28.442 DEBUG 12224 --- [http-nio-8083-exec-4] o.s.web.servlet.DispatcherServlet        : GET "/join", parameters={}
+2023-07-13 20:36:28.443 DEBUG 12224 --- [http-nio-8083-exec-4] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.example.gp.controller.MemberController#joinMember(MemberFormDto, Model)
+2023-07-13 20:36:28.447 DEBUG 12224 --- [http-nio-8083-exec-4] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, application/signed-exchange;v=b3;q=0.7, */*;q=0.8]
+2023-07-13 20:36:28.487 DEBUG 12224 --- [http-nio-8083-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-07-13 20:36:28.492 DEBUG 12224 --- [http-nio-8083-exec-5] o.s.web.servlet.DispatcherServlet        : GET "/css/layout.css", parameters={}
+2023-07-13 20:36:28.493 DEBUG 12224 --- [http-nio-8083-exec-5] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [static/], ServletContext [/]]
+2023-07-13 20:36:28.502 DEBUG 12224 --- [http-nio-8083-exec-5] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-07-13 20:36:28.551 DEBUG 12224 --- [http-nio-8083-exec-6] o.s.web.servlet.DispatcherServlet        : GET "/getNick", parameters={}
+2023-07-13 20:36:28.551 DEBUG 12224 --- [http-nio-8083-exec-6] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.example.gp.controller.RestMainController#getNickForAxios(HttpServletRequest)
+2023-07-13 20:36:28.551 DEBUG 12224 --- [http-nio-8083-exec-6] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [text/plain, */*, text/plain, */*, application/json, application/*+json, application/json, application/*+json]
+2023-07-13 20:36:28.552 DEBUG 12224 --- [http-nio-8083-exec-6] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Nothing to write: null body
+2023-07-13 20:36:28.553 DEBUG 12224 --- [http-nio-8083-exec-6] o.s.web.servlet.DispatcherServlet        : Completed 404 NOT_FOUND
+2023-07-13 20:36:31.672 DEBUG 12224 --- [http-nio-8083-exec-7] o.s.web.servlet.DispatcherServlet        : POST "/register", parameters={masked}
+2023-07-13 20:36:31.673 DEBUG 12224 --- [http-nio-8083-exec-7] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.example.gp.controller.MemberController#register(MemberFormDto, BindingResult, Model)
+2023-07-13 20:36:31.742 DEBUG 12224 --- [http-nio-8083-exec-7] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, application/signed-exchange;v=b3;q=0.7, */*;q=0.8]
+2023-07-13 20:36:31.762 DEBUG 12224 --- [http-nio-8083-exec-7] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-07-13 20:36:31.774 DEBUG 12224 --- [http-nio-8083-exec-8] o.s.web.servlet.DispatcherServlet        : GET "/css/layout.css", parameters={}
+2023-07-13 20:36:31.774 DEBUG 12224 --- [http-nio-8083-exec-8] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [static/], ServletContext [/]]
+2023-07-13 20:36:31.785 DEBUG 12224 --- [http-nio-8083-exec-8] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-07-13 20:36:31.828 DEBUG 12224 --- [http-nio-8083-exec-9] o.s.web.servlet.DispatcherServlet        : GET "/getNick", parameters={}
+2023-07-13 20:36:31.828 DEBUG 12224 --- [http-nio-8083-exec-9] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.example.gp.controller.RestMainController#getNickForAxios(HttpServletRequest)
+2023-07-13 20:36:31.829 DEBUG 12224 --- [http-nio-8083-exec-9] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [text/plain, */*, text/plain, */*, application/json, application/*+json, application/json, application/*+json]
+2023-07-13 20:36:31.830 DEBUG 12224 --- [http-nio-8083-exec-9] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Nothing to write: null body
+2023-07-13 20:36:31.831 DEBUG 12224 --- [http-nio-8083-exec-9] o.s.web.servlet.DispatcherServlet        : Completed 404 NOT_FOUND
+2023-07-13 20:37:10.448 DEBUG 12224 --- [http-nio-8083-exec-2] o.s.web.servlet.DispatcherServlet        : POST "/register", parameters={masked}
+2023-07-13 20:37:10.448 DEBUG 12224 --- [http-nio-8083-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.example.gp.controller.MemberController#register(MemberFormDto, BindingResult, Model)
+2023-07-13 20:37:10.531 DEBUG 12224 --- [http-nio-8083-exec-2] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, application/signed-exchange;v=b3;q=0.7, */*;q=0.8]
+2023-07-13 20:37:10.555 DEBUG 12224 --- [http-nio-8083-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-07-13 20:37:10.605 DEBUG 12224 --- [http-nio-8083-exec-3] o.s.web.servlet.DispatcherServlet        : GET "/css/layout.css", parameters={}
+2023-07-13 20:37:10.605 DEBUG 12224 --- [http-nio-8083-exec-3] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [static/], ServletContext [/]]
+2023-07-13 20:37:10.624 DEBUG 12224 --- [http-nio-8083-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-07-13 20:37:10.708 DEBUG 12224 --- [http-nio-8083-exec-4] o.s.web.servlet.DispatcherServlet        : GET "/getNick", parameters={}
+2023-07-13 20:37:10.708 DEBUG 12224 --- [http-nio-8083-exec-4] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.example.gp.controller.RestMainController#getNickForAxios(HttpServletRequest)
+2023-07-13 20:37:10.709 DEBUG 12224 --- [http-nio-8083-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [text/plain, */*, text/plain, */*, application/json, application/*+json, application/json, application/*+json]
+2023-07-13 20:37:10.709 DEBUG 12224 --- [http-nio-8083-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Nothing to write: null body
+2023-07-13 20:37:10.709 DEBUG 12224 --- [http-nio-8083-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 404 NOT_FOUND
+2023-07-13 20:37:12.768 DEBUG 12224 --- [http-nio-8083-exec-5] o.s.web.servlet.DispatcherServlet        : POST "/register", parameters={masked}
+2023-07-13 20:37:12.769 DEBUG 12224 --- [http-nio-8083-exec-5] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.example.gp.controller.MemberController#register(MemberFormDto, BindingResult, Model)
+2023-07-13 20:37:12.822 DEBUG 12224 --- [http-nio-8083-exec-5] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, application/signed-exchange;v=b3;q=0.7, */*;q=0.8]
+2023-07-13 20:37:12.843 DEBUG 12224 --- [http-nio-8083-exec-5] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-07-13 20:37:12.862 DEBUG 12224 --- [http-nio-8083-exec-6] o.s.web.servlet.DispatcherServlet        : GET "/css/layout.css", parameters={}
+2023-07-13 20:37:12.862 DEBUG 12224 --- [http-nio-8083-exec-6] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [static/], ServletContext [/]]
+2023-07-13 20:37:12.874 DEBUG 12224 --- [http-nio-8083-exec-6] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-07-13 20:37:12.928 DEBUG 12224 --- [http-nio-8083-exec-7] o.s.web.servlet.DispatcherServlet        : GET "/getNick", parameters={}
+2023-07-13 20:37:12.929 DEBUG 12224 --- [http-nio-8083-exec-7] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.example.gp.controller.RestMainController#getNickForAxios(HttpServletRequest)
+2023-07-13 20:37:12.930 DEBUG 12224 --- [http-nio-8083-exec-7] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [text/plain, */*, text/plain, */*, application/json, application/*+json, application/json, application/*+json]
+2023-07-13 20:37:12.930 DEBUG 12224 --- [http-nio-8083-exec-7] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Nothing to write: null body
+2023-07-13 20:37:12.930 DEBUG 12224 --- [http-nio-8083-exec-7] o.s.web.servlet.DispatcherServlet        : Completed 404 NOT_FOUND
+2023-07-13 20:37:15.533 DEBUG 12224 --- [http-nio-8083-exec-10] o.s.web.servlet.DispatcherServlet        : POST "/register", parameters={masked}
+2023-07-13 20:37:15.534 DEBUG 12224 --- [http-nio-8083-exec-10] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.example.gp.controller.MemberController#register(MemberFormDto, BindingResult, Model)
+2023-07-13 20:37:15.585 DEBUG 12224 --- [http-nio-8083-exec-10] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, application/signed-exchange;v=b3;q=0.7, */*;q=0.8]
+2023-07-13 20:37:15.608 DEBUG 12224 --- [http-nio-8083-exec-10] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-07-13 20:37:15.627 DEBUG 12224 --- [http-nio-8083-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/css/layout.css", parameters={}
+2023-07-13 20:37:15.627 DEBUG 12224 --- [http-nio-8083-exec-1] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [static/], ServletContext [/]]
+2023-07-13 20:37:15.636 DEBUG 12224 --- [http-nio-8083-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-07-13 20:37:15.711 DEBUG 12224 --- [http-nio-8083-exec-2] o.s.web.servlet.DispatcherServlet        : GET "/getNick", parameters={}
+2023-07-13 20:37:15.711 DEBUG 12224 --- [http-nio-8083-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.example.gp.controller.RestMainController#getNickForAxios(HttpServletRequest)
+2023-07-13 20:37:15.711 DEBUG 12224 --- [http-nio-8083-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [text/plain, */*, text/plain, */*, application/json, application/*+json, application/json, application/*+json]
+2023-07-13 20:37:15.712 DEBUG 12224 --- [http-nio-8083-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Nothing to write: null body
+2023-07-13 20:37:15.712 DEBUG 12224 --- [http-nio-8083-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 404 NOT_FOUND
+2023-07-13 20:37:19.757 DEBUG 12224 --- [http-nio-8083-exec-3] o.s.web.servlet.DispatcherServlet        : POST "/register", parameters={masked}
+2023-07-13 20:37:19.758 DEBUG 12224 --- [http-nio-8083-exec-3] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.example.gp.controller.MemberController#register(MemberFormDto, BindingResult, Model)
+2023-07-13 20:37:19.809 DEBUG 12224 --- [http-nio-8083-exec-3] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, application/signed-exchange;v=b3;q=0.7, */*;q=0.8]
+2023-07-13 20:37:19.830 DEBUG 12224 --- [http-nio-8083-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-07-13 20:37:19.845 DEBUG 12224 --- [http-nio-8083-exec-4] o.s.web.servlet.DispatcherServlet        : GET "/css/layout.css", parameters={}
+2023-07-13 20:37:19.846 DEBUG 12224 --- [http-nio-8083-exec-4] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [static/], ServletContext [/]]
+2023-07-13 20:37:19.856 DEBUG 12224 --- [http-nio-8083-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-07-13 20:37:19.913 DEBUG 12224 --- [http-nio-8083-exec-5] o.s.web.servlet.DispatcherServlet        : GET "/getNick", parameters={}
+2023-07-13 20:37:19.913 DEBUG 12224 --- [http-nio-8083-exec-5] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.example.gp.controller.RestMainController#getNickForAxios(HttpServletRequest)
+2023-07-13 20:37:19.914 DEBUG 12224 --- [http-nio-8083-exec-5] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [text/plain, */*, text/plain, */*, application/json, application/*+json, application/json, application/*+json]
+2023-07-13 20:37:19.914 DEBUG 12224 --- [http-nio-8083-exec-5] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Nothing to write: null body
+2023-07-13 20:37:19.915 DEBUG 12224 --- [http-nio-8083-exec-5] o.s.web.servlet.DispatcherServlet        : Completed 404 NOT_FOUND
+2023-07-13 20:37:20.327 DEBUG 12224 --- [http-nio-8083-exec-6] o.s.web.servlet.DispatcherServlet        : GET "/", parameters={}
+2023-07-13 20:37:20.328 DEBUG 12224 --- [http-nio-8083-exec-6] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.example.gp.controller.MemberController#loginAsTemp(MemberFormDto, Model)
+2023-07-13 20:37:20.332 DEBUG 12224 --- [http-nio-8083-exec-6] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, application/signed-exchange;v=b3;q=0.7, */*;q=0.8]
+2023-07-13 20:37:20.353 DEBUG 12224 --- [http-nio-8083-exec-6] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-07-13 20:37:20.368 DEBUG 12224 --- [http-nio-8083-exec-7] o.s.web.servlet.DispatcherServlet        : GET "/css/layout.css", parameters={}
+2023-07-13 20:37:20.369 DEBUG 12224 --- [http-nio-8083-exec-7] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [static/], ServletContext [/]]
+2023-07-13 20:37:20.385 DEBUG 12224 --- [http-nio-8083-exec-7] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-07-13 20:37:20.427 DEBUG 12224 --- [http-nio-8083-exec-9] o.s.web.servlet.DispatcherServlet        : GET "/getNick", parameters={}
+2023-07-13 20:37:20.427 DEBUG 12224 --- [http-nio-8083-exec-9] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.example.gp.controller.RestMainController#getNickForAxios(HttpServletRequest)
+2023-07-13 20:37:20.428 DEBUG 12224 --- [http-nio-8083-exec-9] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [text/plain, */*, text/plain, */*, application/json, application/*+json, application/json, application/*+json]
+2023-07-13 20:37:20.428 DEBUG 12224 --- [http-nio-8083-exec-9] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Nothing to write: null body
+2023-07-13 20:37:20.428 DEBUG 12224 --- [http-nio-8083-exec-9] o.s.web.servlet.DispatcherServlet        : Completed 404 NOT_FOUND
+2023-07-13 20:37:21.503 DEBUG 12224 --- [http-nio-8083-exec-8] o.s.web.servlet.DispatcherServlet        : GET "/join", parameters={}
+2023-07-13 20:37:21.504 DEBUG 12224 --- [http-nio-8083-exec-8] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.example.gp.controller.MemberController#joinMember(MemberFormDto, Model)
+2023-07-13 20:37:21.507 DEBUG 12224 --- [http-nio-8083-exec-8] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, application/signed-exchange;v=b3;q=0.7, */*;q=0.8]
+2023-07-13 20:37:21.527 DEBUG 12224 --- [http-nio-8083-exec-8] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-07-13 20:37:21.546 DEBUG 12224 --- [http-nio-8083-exec-10] o.s.web.servlet.DispatcherServlet        : GET "/css/layout.css", parameters={}
+2023-07-13 20:37:21.546 DEBUG 12224 --- [http-nio-8083-exec-10] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [static/], ServletContext [/]]
+2023-07-13 20:37:21.558 DEBUG 12224 --- [http-nio-8083-exec-10] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-07-13 20:37:21.616 DEBUG 12224 --- [http-nio-8083-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/getNick", parameters={}
+2023-07-13 20:37:21.616 DEBUG 12224 --- [http-nio-8083-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.example.gp.controller.RestMainController#getNickForAxios(HttpServletRequest)
+2023-07-13 20:37:21.617 DEBUG 12224 --- [http-nio-8083-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [text/plain, */*, text/plain, */*, application/json, application/*+json, application/json, application/*+json]
+2023-07-13 20:37:21.617 DEBUG 12224 --- [http-nio-8083-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Nothing to write: null body
+2023-07-13 20:37:21.617 DEBUG 12224 --- [http-nio-8083-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 404 NOT_FOUND
+2023-07-13 20:37:22.929 DEBUG 12224 --- [http-nio-8083-exec-2] o.s.web.servlet.DispatcherServlet        : POST "/register", parameters={masked}
+2023-07-13 20:37:22.930 DEBUG 12224 --- [http-nio-8083-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.example.gp.controller.MemberController#register(MemberFormDto, BindingResult, Model)
+2023-07-13 20:37:22.983 DEBUG 12224 --- [http-nio-8083-exec-2] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, application/signed-exchange;v=b3;q=0.7, */*;q=0.8]
+2023-07-13 20:37:23.003 DEBUG 12224 --- [http-nio-8083-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-07-13 20:37:23.014 DEBUG 12224 --- [http-nio-8083-exec-3] o.s.web.servlet.DispatcherServlet        : GET "/css/layout.css", parameters={}
+2023-07-13 20:37:23.014 DEBUG 12224 --- [http-nio-8083-exec-3] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [static/], ServletContext [/]]
+2023-07-13 20:37:23.023 DEBUG 12224 --- [http-nio-8083-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-07-13 20:37:23.048 DEBUG 12224 --- [http-nio-8083-exec-4] o.s.web.servlet.DispatcherServlet        : GET "/getNick", parameters={}
+2023-07-13 20:37:23.048 DEBUG 12224 --- [http-nio-8083-exec-4] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.example.gp.controller.RestMainController#getNickForAxios(HttpServletRequest)
+2023-07-13 20:37:23.048 DEBUG 12224 --- [http-nio-8083-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [text/plain, */*, text/plain, */*, application/json, application/*+json, application/json, application/*+json]
+2023-07-13 20:37:23.049 DEBUG 12224 --- [http-nio-8083-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Nothing to write: null body
+2023-07-13 20:37:23.049 DEBUG 12224 --- [http-nio-8083-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 404 NOT_FOUND
+2023-07-13 20:37:24.405  INFO 12224 --- [MessageBroker-1] o.s.w.s.c.WebSocketMessageBrokerStats    : WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 1, active threads = 1, queued tasks = 0, completed tasks = 0]
+2023-07-13 20:38:17.730 DEBUG 12224 --- [http-nio-8083-exec-7] o.s.web.servlet.DispatcherServlet        : POST "/register", parameters={masked}
+2023-07-13 20:38:17.731 DEBUG 12224 --- [http-nio-8083-exec-7] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.example.gp.controller.MemberController#register(MemberFormDto, BindingResult, Model)
+2023-07-13 20:38:17.781 DEBUG 12224 --- [http-nio-8083-exec-7] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, application/signed-exchange;v=b3;q=0.7, */*;q=0.8]
+2023-07-13 20:38:17.802 DEBUG 12224 --- [http-nio-8083-exec-7] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-07-13 20:38:17.817 DEBUG 12224 --- [http-nio-8083-exec-9] o.s.web.servlet.DispatcherServlet        : GET "/css/layout.css", parameters={}
+2023-07-13 20:38:17.818 DEBUG 12224 --- [http-nio-8083-exec-9] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [static/], ServletContext [/]]
+2023-07-13 20:38:17.827 DEBUG 12224 --- [http-nio-8083-exec-9] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-07-13 20:38:17.912 DEBUG 12224 --- [http-nio-8083-exec-8] o.s.web.servlet.DispatcherServlet        : GET "/getNick", parameters={}
+2023-07-13 20:38:17.912 DEBUG 12224 --- [http-nio-8083-exec-8] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.example.gp.controller.RestMainController#getNickForAxios(HttpServletRequest)
+2023-07-13 20:38:17.913 DEBUG 12224 --- [http-nio-8083-exec-8] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [text/plain, */*, text/plain, */*, application/json, application/*+json, application/json, application/*+json]
+2023-07-13 20:38:17.913 DEBUG 12224 --- [http-nio-8083-exec-8] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Nothing to write: null body
+2023-07-13 20:38:17.913 DEBUG 12224 --- [http-nio-8083-exec-8] o.s.web.servlet.DispatcherServlet        : Completed 404 NOT_FOUND
+2023-07-13 20:38:21.570 DEBUG 12224 --- [http-nio-8083-exec-10] o.s.web.servlet.DispatcherServlet        : POST "/register", parameters={masked}
+2023-07-13 20:38:21.572 DEBUG 12224 --- [http-nio-8083-exec-10] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.example.gp.controller.MemberController#register(MemberFormDto, BindingResult, Model)
+2023-07-13 20:38:21.629 DEBUG 12224 --- [http-nio-8083-exec-10] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, application/signed-exchange;v=b3;q=0.7, */*;q=0.8]
+2023-07-13 20:38:21.653 DEBUG 12224 --- [http-nio-8083-exec-10] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-07-13 20:38:21.674 DEBUG 12224 --- [http-nio-8083-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/css/layout.css", parameters={}
+2023-07-13 20:38:21.676 DEBUG 12224 --- [http-nio-8083-exec-1] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [static/], ServletContext [/]]
+2023-07-13 20:38:21.684 DEBUG 12224 --- [http-nio-8083-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-07-13 20:38:21.738 DEBUG 12224 --- [http-nio-8083-exec-2] o.s.web.servlet.DispatcherServlet        : GET "/getNick", parameters={}
+2023-07-13 20:38:21.738 DEBUG 12224 --- [http-nio-8083-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.example.gp.controller.RestMainController#getNickForAxios(HttpServletRequest)
+2023-07-13 20:38:21.739 DEBUG 12224 --- [http-nio-8083-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [text/plain, */*, text/plain, */*, application/json, application/*+json, application/json, application/*+json]
+2023-07-13 20:38:21.739 DEBUG 12224 --- [http-nio-8083-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Nothing to write: null body
+2023-07-13 20:38:21.739 DEBUG 12224 --- [http-nio-8083-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 404 NOT_FOUND
+2023-07-13 20:38:23.862 DEBUG 12224 --- [http-nio-8083-exec-3] o.s.web.servlet.DispatcherServlet        : GET "/login3", parameters={}
+2023-07-13 20:38:23.863 DEBUG 12224 --- [http-nio-8083-exec-3] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.example.gp.controller.MemberController#loginByMember(MemberFormDto, Model)
+2023-07-13 20:38:23.866 DEBUG 12224 --- [http-nio-8083-exec-3] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, application/signed-exchange;v=b3;q=0.7, */*;q=0.8]
+2023-07-13 20:38:23.891 DEBUG 12224 --- [http-nio-8083-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-07-13 20:38:23.908 DEBUG 12224 --- [http-nio-8083-exec-5] o.s.web.servlet.DispatcherServlet        : GET "/css/layout.css", parameters={}
+2023-07-13 20:38:23.910 DEBUG 12224 --- [http-nio-8083-exec-5] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [static/], ServletContext [/]]
+2023-07-13 20:38:23.924 DEBUG 12224 --- [http-nio-8083-exec-5] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-07-13 20:38:24.077 DEBUG 12224 --- [http-nio-8083-exec-6] o.s.web.servlet.DispatcherServlet        : GET "/getNick", parameters={}
+2023-07-13 20:38:24.078 DEBUG 12224 --- [http-nio-8083-exec-6] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.example.gp.controller.RestMainController#getNickForAxios(HttpServletRequest)
+2023-07-13 20:38:24.079 DEBUG 12224 --- [http-nio-8083-exec-6] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [text/plain, */*, text/plain, */*, application/json, application/*+json, application/json, application/*+json]
+2023-07-13 20:38:24.079 DEBUG 12224 --- [http-nio-8083-exec-6] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Nothing to write: null body
+2023-07-13 20:38:24.080 DEBUG 12224 --- [http-nio-8083-exec-6] o.s.web.servlet.DispatcherServlet        : Completed 404 NOT_FOUND
+2023-07-13 20:38:28.924 DEBUG 12224 --- [http-nio-8083-exec-7] o.s.web.servlet.DispatcherServlet        : POST "/join", parameters={masked}
+2023-07-13 20:38:28.925 DEBUG 12224 --- [http-nio-8083-exec-7] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.example.gp.controller.MemberController#loginBymember(MemberFormDto, BindingResult, Model, HttpServletResponse)
+2023-07-13 20:38:28.958 DEBUG 12224 --- [http-nio-8083-exec-7] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, application/signed-exchange;v=b3;q=0.7, */*;q=0.8]
+2023-07-13 20:38:28.983 DEBUG 12224 --- [http-nio-8083-exec-7] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-07-13 20:38:29.015 DEBUG 12224 --- [http-nio-8083-exec-9] o.s.web.servlet.DispatcherServlet        : GET "/css/layout.css", parameters={}
+2023-07-13 20:38:29.016 DEBUG 12224 --- [http-nio-8083-exec-9] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [static/], ServletContext [/]]
+2023-07-13 20:38:29.026 DEBUG 12224 --- [http-nio-8083-exec-9] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-07-13 20:38:29.082 DEBUG 12224 --- [http-nio-8083-exec-8] o.s.web.servlet.DispatcherServlet        : GET "/getNick", parameters={}
+2023-07-13 20:38:29.083 DEBUG 12224 --- [http-nio-8083-exec-8] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.example.gp.controller.RestMainController#getNickForAxios(HttpServletRequest)
+2023-07-13 20:38:29.084 DEBUG 12224 --- [http-nio-8083-exec-8] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [text/plain, */*, text/plain, */*, application/json, application/*+json, application/json, application/*+json]
+2023-07-13 20:38:29.084 DEBUG 12224 --- [http-nio-8083-exec-8] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Nothing to write: null body
+2023-07-13 20:38:29.084 DEBUG 12224 --- [http-nio-8083-exec-8] o.s.web.servlet.DispatcherServlet        : Completed 404 NOT_FOUND
+2023-07-13 20:38:30.095 DEBUG 12224 --- [http-nio-8083-exec-10] o.s.web.servlet.DispatcherServlet        : POST "/join", parameters={masked}
+2023-07-13 20:38:30.097 DEBUG 12224 --- [http-nio-8083-exec-10] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.example.gp.controller.MemberController#loginBymember(MemberFormDto, BindingResult, Model, HttpServletResponse)
+2023-07-13 20:38:30.100 DEBUG 12224 --- [http-nio-8083-exec-10] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, application/signed-exchange;v=b3;q=0.7, */*;q=0.8]
+2023-07-13 20:38:30.121 DEBUG 12224 --- [http-nio-8083-exec-10] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-07-13 20:38:30.135 DEBUG 12224 --- [http-nio-8083-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/css/layout.css", parameters={}
+2023-07-13 20:38:30.136 DEBUG 12224 --- [http-nio-8083-exec-1] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [static/], ServletContext [/]]
+2023-07-13 20:38:30.147 DEBUG 12224 --- [http-nio-8083-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-07-13 20:38:30.216 DEBUG 12224 --- [http-nio-8083-exec-2] o.s.web.servlet.DispatcherServlet        : GET "/getNick", parameters={}
+2023-07-13 20:38:30.216 DEBUG 12224 --- [http-nio-8083-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.example.gp.controller.RestMainController#getNickForAxios(HttpServletRequest)
+2023-07-13 20:38:30.217 DEBUG 12224 --- [http-nio-8083-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [text/plain, */*, text/plain, */*, application/json, application/*+json, application/json, application/*+json]
+2023-07-13 20:38:30.217 DEBUG 12224 --- [http-nio-8083-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Nothing to write: null body
+2023-07-13 20:38:30.217 DEBUG 12224 --- [http-nio-8083-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 404 NOT_FOUND
+2023-07-13 20:39:01.638 DEBUG 12224 --- [http-nio-8083-exec-5] o.s.web.servlet.DispatcherServlet        : POST "/join", parameters={masked}
+2023-07-13 20:39:01.640 DEBUG 12224 --- [http-nio-8083-exec-5] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.example.gp.controller.MemberController#loginBymember(MemberFormDto, BindingResult, Model, HttpServletResponse)
+2023-07-13 20:39:01.644 DEBUG 12224 --- [http-nio-8083-exec-5] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, application/signed-exchange;v=b3;q=0.7, */*;q=0.8]
+2023-07-13 20:39:01.673 DEBUG 12224 --- [http-nio-8083-exec-5] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-07-13 20:39:01.709 DEBUG 12224 --- [http-nio-8083-exec-6] o.s.web.servlet.DispatcherServlet        : GET "/css/layout.css", parameters={}
+2023-07-13 20:39:01.710 DEBUG 12224 --- [http-nio-8083-exec-6] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [static/], ServletContext [/]]
+2023-07-13 20:39:01.722 DEBUG 12224 --- [http-nio-8083-exec-6] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-07-13 20:39:01.764 DEBUG 12224 --- [http-nio-8083-exec-7] o.s.web.servlet.DispatcherServlet        : GET "/getNick", parameters={}
+2023-07-13 20:39:01.764 DEBUG 12224 --- [http-nio-8083-exec-7] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.example.gp.controller.RestMainController#getNickForAxios(HttpServletRequest)
+2023-07-13 20:39:01.766 DEBUG 12224 --- [http-nio-8083-exec-7] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [text/plain, */*, text/plain, */*, application/json, application/*+json, application/json, application/*+json]
+2023-07-13 20:39:01.766 DEBUG 12224 --- [http-nio-8083-exec-7] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Nothing to write: null body
+2023-07-13 20:39:01.766 DEBUG 12224 --- [http-nio-8083-exec-7] o.s.web.servlet.DispatcherServlet        : Completed 404 NOT_FOUND
+2023-07-13 20:39:20.070 DEBUG 12224 --- [http-nio-8083-exec-10] o.s.web.servlet.DispatcherServlet        : POST "/join", parameters={masked}
+2023-07-13 20:39:20.071 DEBUG 12224 --- [http-nio-8083-exec-10] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.example.gp.controller.MemberController#loginBymember(MemberFormDto, BindingResult, Model, HttpServletResponse)
+2023-07-13 20:39:20.076 DEBUG 12224 --- [http-nio-8083-exec-10] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, application/signed-exchange;v=b3;q=0.7, */*;q=0.8]
+2023-07-13 20:39:20.114 DEBUG 12224 --- [http-nio-8083-exec-10] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-07-13 20:39:20.123 DEBUG 12224 --- [http-nio-8083-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/css/layout.css", parameters={}
+2023-07-13 20:39:20.124 DEBUG 12224 --- [http-nio-8083-exec-1] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [static/], ServletContext [/]]
+2023-07-13 20:39:20.132 DEBUG 12224 --- [http-nio-8083-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-07-13 20:39:20.186 DEBUG 12224 --- [http-nio-8083-exec-2] o.s.web.servlet.DispatcherServlet        : GET "/getNick", parameters={}
+2023-07-13 20:39:20.186 DEBUG 12224 --- [http-nio-8083-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.example.gp.controller.RestMainController#getNickForAxios(HttpServletRequest)
+2023-07-13 20:39:20.189 DEBUG 12224 --- [http-nio-8083-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [text/plain, */*, text/plain, */*, application/json, application/*+json, application/json, application/*+json]
+2023-07-13 20:39:20.189 DEBUG 12224 --- [http-nio-8083-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Nothing to write: null body
+2023-07-13 20:39:20.189 DEBUG 12224 --- [http-nio-8083-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 404 NOT_FOUND
+2023-07-13 20:59:51.236 DEBUG 12224 --- [http-nio-8083-exec-6] o.s.web.servlet.DispatcherServlet        : GET "/", parameters={}
+2023-07-13 20:59:51.239 DEBUG 12224 --- [http-nio-8083-exec-6] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.example.gp.controller.MemberController#loginAsTemp(MemberFormDto, Model)
+2023-07-13 20:59:51.257 DEBUG 12224 --- [http-nio-8083-exec-6] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, application/signed-exchange;v=b3;q=0.7, */*;q=0.8]
+2023-07-13 20:59:51.289 DEBUG 12224 --- [http-nio-8083-exec-6] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-07-13 20:59:51.307 DEBUG 12224 --- [http-nio-8083-exec-7] o.s.web.servlet.DispatcherServlet        : GET "/css/layout.css", parameters={}
+2023-07-13 20:59:51.310 DEBUG 12224 --- [http-nio-8083-exec-7] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [static/], ServletContext [/]]
+2023-07-13 20:59:51.323 DEBUG 12224 --- [http-nio-8083-exec-7] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-07-13 20:59:51.429 DEBUG 12224 --- [http-nio-8083-exec-9] o.s.web.servlet.DispatcherServlet        : GET "/getNick", parameters={}
+2023-07-13 20:59:51.429 DEBUG 12224 --- [http-nio-8083-exec-9] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.example.gp.controller.RestMainController#getNickForAxios(HttpServletRequest)
+2023-07-13 20:59:51.431 DEBUG 12224 --- [http-nio-8083-exec-9] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [text/plain, */*, text/plain, */*, application/json, application/*+json, application/json, application/*+json]
+2023-07-13 20:59:51.432 DEBUG 12224 --- [http-nio-8083-exec-9] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Nothing to write: null body
+2023-07-13 20:59:51.432 DEBUG 12224 --- [http-nio-8083-exec-9] o.s.web.servlet.DispatcherServlet        : Completed 404 NOT_FOUND
+2023-07-13 20:59:55.980 DEBUG 12224 --- [http-nio-8083-exec-8] o.s.web.servlet.DispatcherServlet        : POST "/login", parameters={masked}
+2023-07-13 20:59:55.981 DEBUG 12224 --- [http-nio-8083-exec-8] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.example.gp.controller.MemberController#loginByTemp(String, Model, HttpServletResponse)
+2023-07-13 20:59:56.037 DEBUG 12224 --- [http-nio-8083-exec-8] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, application/signed-exchange;v=b3;q=0.7, */*;q=0.8]
+2023-07-13 20:59:56.081 DEBUG 12224 --- [http-nio-8083-exec-8] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-07-13 20:59:56.109 DEBUG 12224 --- [http-nio-8083-exec-10] o.s.web.servlet.DispatcherServlet        : GET "/css/layout.css", parameters={}
+2023-07-13 20:59:56.110 DEBUG 12224 --- [http-nio-8083-exec-10] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [static/], ServletContext [/]]
+2023-07-13 20:59:56.118 DEBUG 12224 --- [http-nio-8083-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/css/main.css", parameters={}
+2023-07-13 20:59:56.118 DEBUG 12224 --- [http-nio-8083-exec-1] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [static/], ServletContext [/]]
+2023-07-13 20:59:56.121 DEBUG 12224 --- [http-nio-8083-exec-4] o.s.web.servlet.DispatcherServlet        : GET "/js/app.js", parameters={}
+2023-07-13 20:59:56.121 DEBUG 12224 --- [http-nio-8083-exec-4] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [static/], ServletContext [/]]
+2023-07-13 20:59:56.121 DEBUG 12224 --- [http-nio-8083-exec-2] o.s.web.servlet.DispatcherServlet        : GET "/webjars/sockjs-client/sockjs.min.js", parameters={}
+2023-07-13 20:59:56.124 DEBUG 12224 --- [http-nio-8083-exec-3] o.s.web.servlet.DispatcherServlet        : GET "/webjars/stomp-websocket/stomp.min.js", parameters={}
+2023-07-13 20:59:56.125 DEBUG 12224 --- [http-nio-8083-exec-2] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+2023-07-13 20:59:56.128 DEBUG 12224 --- [http-nio-8083-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-07-13 20:59:56.124 DEBUG 12224 --- [http-nio-8083-exec-3] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+2023-07-13 20:59:56.132 DEBUG 12224 --- [http-nio-8083-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-07-13 20:59:56.134 DEBUG 12224 --- [http-nio-8083-exec-10] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-07-13 20:59:56.148 DEBUG 12224 --- [http-nio-8083-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-07-13 20:59:56.148 DEBUG 12224 --- [http-nio-8083-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-07-13 20:59:56.194 DEBUG 12224 --- [http-nio-8083-exec-5] o.s.web.servlet.DispatcherServlet        : GET "/getNick", parameters={}
+2023-07-13 20:59:56.195 DEBUG 12224 --- [http-nio-8083-exec-5] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.example.gp.controller.RestMainController#getNickForAxios(HttpServletRequest)
+2023-07-13 20:59:56.197 DEBUG 12224 --- [http-nio-8083-exec-5] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [text/plain, */*, text/plain, */*, application/json, application/*+json, application/json, application/*+json]
+2023-07-13 20:59:56.197 DEBUG 12224 --- [http-nio-8083-exec-5] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing ["{"nick":"1"}"]
+2023-07-13 20:59:56.198 DEBUG 12224 --- [http-nio-8083-exec-5] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-07-13 20:59:56.308 DEBUG 12224 --- [http-nio-8083-exec-6] o.s.web.servlet.DispatcherServlet        : GET "/chat/info?t=1689249596305", parameters={masked}
+2023-07-13 20:59:56.309 DEBUG 12224 --- [http-nio-8083-exec-6] o.s.w.s.s.s.WebSocketHandlerMapping      : Mapped to org.springframework.web.socket.sockjs.support.SockJsHttpRequestHandler@4661b3f8
+2023-07-13 20:59:56.309 DEBUG 12224 --- [http-nio-8083-exec-6] o.s.w.s.s.t.h.DefaultSockJsService       : Processing transport request: GET http://localhost:8083/chat/info?t=1689249596305
+2023-07-13 20:59:56.310 DEBUG 12224 --- [http-nio-8083-exec-6] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-07-13 20:59:56.317 DEBUG 12224 --- [http-nio-8083-exec-9] o.s.web.servlet.DispatcherServlet        : GET "/chat/053/f0ew4rig/websocket", parameters={}
+2023-07-13 20:59:56.317 DEBUG 12224 --- [http-nio-8083-exec-9] o.s.w.s.s.s.WebSocketHandlerMapping      : Mapped to org.springframework.web.socket.sockjs.support.SockJsHttpRequestHandler@4661b3f8
+2023-07-13 20:59:56.317 DEBUG 12224 --- [http-nio-8083-exec-7] o.s.web.servlet.DispatcherServlet        : GET "/getNick", parameters={}
+2023-07-13 20:59:56.318 DEBUG 12224 --- [http-nio-8083-exec-7] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.example.gp.controller.RestMainController#getNickForAxios(HttpServletRequest)
+2023-07-13 20:59:56.319 DEBUG 12224 --- [http-nio-8083-exec-7] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [text/plain, */*, text/plain, */*, application/json, application/*+json, application/json, application/*+json]
+2023-07-13 20:59:56.319 DEBUG 12224 --- [http-nio-8083-exec-7] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing ["{"nick":"1"}"]
+2023-07-13 20:59:56.319 DEBUG 12224 --- [http-nio-8083-exec-9] o.s.w.s.s.t.h.DefaultSockJsService       : Processing transport request: GET http://localhost:8083/chat/053/f0ew4rig/websocket
+2023-07-13 20:59:56.319 DEBUG 12224 --- [http-nio-8083-exec-7] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-07-13 20:59:56.335 DEBUG 12224 --- [http-nio-8083-exec-9] o.s.web.servlet.DispatcherServlet        : Completed 101 SWITCHING_PROTOCOLS
+2023-07-13 20:59:56.338 DEBUG 12224 --- [http-nio-8083-exec-9] s.w.s.h.LoggingWebSocketHandlerDecorator : New WebSocketServerSockJsSession[id=f0ew4rig]
+2023-07-13 20:59:56.349 DEBUG 12224 --- [clientInboundChannel-2] org.springframework.web.SimpLogging      : Processing CONNECT session=f0ew4rig
+2023-07-13 20:59:56.356 DEBUG 12224 --- [clientInboundChannel-5] org.springframework.web.SimpLogging      : Processing SUBSCRIBE /topic/greetings id=sub-0 session=f0ew4rig

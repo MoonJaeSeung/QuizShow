@@ -28,6 +28,11 @@ public class MemberService {
     }
 
     public void save(Member member) {
+        Member findNick = memberRepository.findByNick(member.getNick());
+        if(findNick != null){
+            throw new IllegalStateException("이미 사용중인 아이디입니다.");
+        }
+
         memberRepository.save(member);
     }
 

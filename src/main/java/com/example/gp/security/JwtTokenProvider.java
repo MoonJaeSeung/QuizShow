@@ -5,6 +5,7 @@ import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import java.util.Date;
@@ -15,8 +16,11 @@ import java.util.Date;
 @Slf4j
 public class JwtTokenProvider {
 
-    private final String secretKey = "mySecretKey";
-    private final long validitySeconds = 3600000; // 1시간
+    @Value("${jwt.secretKey}")
+    private String secretKey;
+
+    @Value("${jwt.validitySeconds}")
+    private long validitySeconds;
 
     public String createToken(String nick){
         Claims claims = Jwts.claims().setSubject(nick);
