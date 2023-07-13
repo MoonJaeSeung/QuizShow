@@ -53,6 +53,7 @@ jobs:
       - name: Build with Gradle
         env:
           JWT_SECRETKEY: ${{ secrets.JWT_SECRETKEY }}
+          VALIDITYSECONDS: ${{ secrets.VALIDITYSECONDS}}
         run: ./gradlew bootJar
 
       # 테스트를 통해 실행에 문제 없는지 확인
