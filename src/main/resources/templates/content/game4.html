@@ -92,7 +92,7 @@
         var scoreDisplay;
         var timeDisplay;
         var score = 0;
-        var timeLeft = 7;
+        var timeLeft = 30;
         var timer;
         var circleTimer;  // New variable to store reference to the setInterval that creates circles
         var time;
@@ -105,7 +105,7 @@
 
             gameArea.addEventListener("click", handleCircleClick);
             startTimer();
-            circleTimer = setInterval(createCircle, 500);  // Store reference in circleTimer
+            circleTimer = setInterval(createCircle, 370);  // Store reference in circleTimer
         });
 
 

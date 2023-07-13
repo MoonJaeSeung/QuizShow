@@ -1,14 +1,18 @@
 package com.example.gp.security;
 
 import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
 import java.util.Date;
 
 
+
 @Component
+@Slf4j
 public class JwtTokenProvider {
 
     private final String secretKey = "mySecretKey";
@@ -31,7 +35,12 @@ public class JwtTokenProvider {
         try{
             Jwts.parser().setSigningKey(secretKey).parseClaimsJws(token);
             return true;
-        }catch(Exception e){
+        }catch (ExpiredJwtException e){
+            log.error("Token is expired",e);
+            return false;
+        }
+        catch(Exception e){
+            log.error("validateToken failed with exception: ", e);
             return false;
         }
     }
