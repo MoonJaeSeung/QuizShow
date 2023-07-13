@@ -51,6 +51,8 @@ jobs:
 
       # Gradle로 프로젝트를 빌드합니다
       - name: Build with Gradle
+        env:
+          JWT_SECRETKEY: ${{ secrets.JWT_SECRETKEY }}
         run: ./gradlew bootJar
 
       # 테스트를 통해 실행에 문제 없는지 확인

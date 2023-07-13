@@ -56,6 +56,8 @@ function sendMessage() {
     const minutes = now.getMinutes().toString().padStart(2, '0');
     const seconds = now.getSeconds().toString().padStart(2, '0');
     const currentTime = `${hours}:${minutes}:${seconds}`;
+    let input = document.getElementById("message");
+
 
     const messageData = {
         'nick': nick,
@@ -64,6 +66,7 @@ function sendMessage() {
     };
 
     stompClient.send("/app/hello", {}, JSON.stringify(messageData));
+    input.value="";
 }
 
 function showGreeting(message) {
