@@ -171,6 +171,8 @@
             animation: shake 5s;
         }
 
+
+
     </style>
 
     <script>
@@ -185,7 +187,7 @@
 <th:block layout:fragment="content">
 
 
-    <div class="timer" id="timer"></div>
+    <div id="timer" class="timer">Time: <span id="timerCount"></span></div>
 
     <!-- 모달 창을 정의합니다. -->
     <div id="myModal" class="modal">
@@ -194,7 +196,9 @@
             <h3>퀴즈</h3>
             <p><span id="newsTitle"></span></p>
             <input id="gameInput" class="game-input" type="text" placeholder="빈칸을 채워주세요">
+            <block style="display: flex; justify-content: center">
             <button id="submitButton">제출</button>
+            </block>
         </div>
     </div>
     <div class="desc">시선을 기사 제목에 집중하세요! <br>기사 제목 빈칸을 채워 넣는 미션에 도전해 보세요.<br> <span style="font-size: 30px">실시간 뉴스</span></div>
@@ -223,34 +227,39 @@
     <th:block layout:fragment="script">
         <script>
 
-
+            var timerInterval;
+            var timeRemaining = 6; // 남은 시간 (초)
 
 
 
             // JavaScript 코드를 작성합니다.
             document.addEventListener("DOMContentLoaded", function () {
                 var modal = document.getElementById("myModal");
-                var timerElement = document.querySelector("#timer");
                 var randomIndex = Math.floor(Math.random() * 15); // 0부터 14까지의 랜덤한 인덱스 생성
-                var timeLeft = 15;
-                var timerInterval;
+
+                startTimer()
 
                 // 타이머 시작
-                timerInterval = setInterval(function () {
+                function startTimer() {
+                    timerCount.textContent = timeRemaining;
 
-                    if(timeLeft < 7){
-                        timer.classList.add("shake-animation")
-                    }
+                    timerInterval = setInterval(function () {
+                        timeRemaining--;
+                        timerCount.textContent = timeRemaining;
 
-                    if (timeLeft > 1) {
-                        timeLeft--;
-                        timerElement.textContent = "Time: " + timeLeft;
-                    } else {
-                        clearInterval(timerInterval);
-                        timerElement.textContent = "Time : 종료"
-                        showModal();
-                    }
-                }, 1000);
+                        if (timeRemaining == 0) {
+                            clearInterval(timerInterval);
+                            timerCount.textContent ="종료"
+                            showModal()
+                        }
+
+                        if (timeRemaining <= 5) {
+                            timer.classList.add("shake-animation");
+                        } else {
+
+                        }
+                    }, 1000);
+                }
 
 
                 function showModal() {
@@ -283,6 +292,10 @@
                         gameInput.value = "";
                         document.getElementById("refresh").removeAttribute("hidden");
                     });
+                }
+
+                function endGame(){
+                    showModal();
                 }
 
                 window.onclick = function (event) {

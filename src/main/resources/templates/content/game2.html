@@ -66,7 +66,7 @@
             .toast{
                 border-color: #e5d3fb91;
             }
-            #resultMessage{
+            #errorContainer{
                 font-size:40px;
             }
 
@@ -75,24 +75,17 @@
                 flex-direction: column;
             }
 
+            .game-button {
+                width: 200px; /* 버튼의 너비 */
+                height: 200px; /* 버튼의 높이 */
+                border-radius: 50%; /* 원형으로 만들기 위해 50%로 설정 */
+                background-color: #ece7ff; /* 버튼의 배경색 */
+                color: #fff; /* 버튼의 텍스트 색상 */
+                /* 추가적인 스타일링 속성을 적용할 수 있습니다 */
+            }
+
         </style>
         <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-        <script>
-
-            var gender = [[${gender}]];
-            console.log("Gender:", gender);
-
-            // 서버로부터 연예인 데이터 가져오기
-            axios.get('/game2/celeb?sex=' + gender)
-                .then(function (response) {
-                    celebData = response.data;
-                    shuffleCelebData();
-                    showCurrentCeleb();
-                })
-                .catch(function (error) {
-                    console.error(error);
-                });
-        </script>
     </th:block>
 </head>
 <th:block layout:fragment="content">
@@ -102,7 +95,7 @@
         <div id="toastContainer" className="toast-message"></div>
         <input type="text" id="guessInput">
         <button id="submitGuess" class="game-button">Push</button>
-        <div id="resultMessage"></div>
+        <div id="errorContainer"></div>
         <block>
             <a href="/game2" class="atag" style="font-size: 60px"> 다시 하기 </a>
             <a href="/record?value=2" class="atag" style="font-size: 60px">기록 확인</a>
@@ -124,14 +117,29 @@
 
             var timerInterval;
             var wrongCount = 0; // 틀린 횟수
-            var timeRemaining = 5; // 남은 시간 (초)
+            var timeRemaining = 30; // 남은 시간 (초)
 
             var celebImage = document.getElementById("celebImage");
             var guessInput = document.getElementById("guessInput");
             var submitButton = document.getElementById("submitGuess");
-            var resultMessage = document.getElementById("resultMessage");
+            var errorContainer = document.getElementById("errorContainer");
             var timerCount = document.getElementById("timerCount");
             var timer = document.getElementById("timer");
+
+            var gender = [[${gender}]];
+            console.log("Gender:", gender);
+
+            // 서버로부터 연예인 데이터 가져오기
+            axios.get('/celebs?sex=' + gender)
+                .then(function (response) {
+                    celebData = response.data;
+                    shuffleCelebData();
+                    showCurrentCeleb();
+                })
+                .catch(function (error) {
+                    console.error(error);
+                });
+
 
 
             startTimer()
@@ -198,8 +206,8 @@
                 submitButton.style.display = "none";
 
                 var resultText = CorrectGuesses + " 개 정답";
-                resultMessage.textContent = resultText;
-                resultMessage.style.color = "black";
+                errorContainer.textContent = resultText;
+                errorContainer.style.color = "black";
             }
 
             function showErrorMessage(message) {
@@ -259,13 +267,13 @@
                     wrongCount = 0;
                     CorrectGuesses++;
                     setTimeout(function () {
-                        resultMessage.textContent = "";
+                        errorContainer.textContent = "";
                         nextCeleb();
                     }, 1);
                 } else {
-                    showErrorMessage("꽝")
-                    resultMessage.textContent = "한번 더 틀리면 기회 없습니다!";
-                    resultMessage.style.color = "red";
+                    showErrorMessage("땡")
+                    errorContainer.textContent = "한번 더 틀리면 기회 없습니다!";
+                    errorContainer.style.color = "red";
                     guessInput.value = "";
                     guessInput.focus();
                     wrongCount++;
@@ -279,7 +287,7 @@
             function nextCeleb() {
                 wrongCount = 0;
                 currentCelebIndex++;
-                resultMessage.textContent =""
+                errorContainer.textContent =""
                 if (currentCelebIndex < celebData.length) {
                     showCurrentCeleb();
                 } else {

@@ -2,6 +2,7 @@ package com.example.gp.controller;
 
 import com.example.gp.entity.Celeb;
 import com.example.gp.entity.Record;
+import com.example.gp.entity.Word;
 import com.example.gp.security.JwtTokenProvider;
 import com.example.gp.service.GameService;
 import com.example.gp.service.RecordService;
@@ -41,12 +42,29 @@ public class RestMainController {
     JwtTokenProvider jwtTokenProvider;
 
 
-    @GetMapping("/game2/celeb")
-    public List<Celeb> getCelebsByGender(@RequestParam("sex") int sex) {
-        List<Celeb> celebs = new ArrayList<>();
-        celebs = gameService.findCeleb(sex);
 
-        return celebs;
+    @GetMapping("/words")
+    public ResponseEntity<List<Word>> getWordData(){
+        List<Word> words = gameService.findAllWord();
+
+        if (words.isEmpty()) {
+            return ResponseEntity.notFound().build();
+        }
+
+        return ResponseEntity.ok(words);
+    }
+
+
+    // 인물 사진 데이터 가져오기
+    @GetMapping("/celebs")
+    public ResponseEntity<List<Celeb>> getCelebsByGender(@RequestParam("sex") int sex) {
+        List<Celeb> celebs = gameService.findCeleb(sex);
+
+        if (celebs.isEmpty()) {
+            return ResponseEntity.notFound().build();
+        }
+
+        return ResponseEntity.ok(celebs);
     }
 
     @GetMapping("/nick")
