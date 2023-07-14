@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout}">
+<head>
+    <title>사자성어</title>
+    <style>
+        body {
+            font-family: 'Dongle', sans-serif;
+        }
+
+        .container {
+            background-color: white;
+            border-radius: 15px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .table {
+            margin-top: 20px;
+            width: 80.00vw;
+        }
+
+        .thead {
+            color: black;
+            background-color: #dcd5ff;
+        }
+
+        .table td, .table th {
+            text-align: center;
+            vertical-align: middle;
+            font-family: 'Dongle', sans-serif;
+            font-size: 30px;
+        }
+
+        block {
+            display: flex;
+            height:10vw;
+        }
+
+        /*h2 {*/
+        /*    display: flex;*/
+        /*    font-size: 10vw;*/
+        /*}*/
+
+        h2,h3 {
+            display: flex;
+            align-items: center;
+            font-size: 30px;
+            transition: all 0.3s ease; /* 효과를 부드럽게 하기 위해 transition을 추가 */
+        }
+
+        h3:hover{
+            font-size:6vw;
+        }
+
+
+    </style>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+</head>
+<body>
+<th:block layout:fragment="content">
+    <div class="container">
+        <block th:switch="${gameNum}">
+            <th:block th:case="1">
+                <h3><a href="/record?value=2" class="atag">인물 퀴즈</a></h3>
+                <h2><a href="/record?value=1" class="atag" style="color:black; font-size:6vw;" >사자성어</a></h2>
+                <h3><a href="/record?value=4" class="atag">스피드 클릭</a></h3>
+            </th:block>
+            <th:block th:case="2">
+                <h2><a href="/record?value=2" class="atag" style="color:black; font-size:6vw;">인물 퀴즈</a></h2>
+                <h3><a href="/record?value=1" class="atag">사자성어</a></h3>
+                <h3><a href="/record?value=4" class="atag">스피드 클릭</a></h3>
+            </th:block>
+            <th:block th:case="4">
+                <h3><a href="/record?value=2" class="atag">인물 퀴즈</a></h3>
+                <h3><a href="/record?value=1" class="atag">사자성어</a></h3>
+                <h2><a href="/record?value=4" class="atag" style="color:black; font-size:6vw;">스피드 클릭</a></h2>
+            </th:block>
+        </block>
+        <table class="table">
+            <thead class="thead">
+            <tr>
+                <th>순위</th>
+                <th>닉네임</th>
+                <th>점수</th>
+            </tr>
+            </thead>
+            <tbody>
+            <!-- Spring Boot Controller로부터 받은 List<Record>를 활용하여 각 행을 동적으로 생성합니다. -->
+            <tr th:each="record, status : ${records}">
+                <td th:text="${status.count} + 위"></td>
+                <td th:text="${record.nick}"></td>
+                <td th:text="${record.score}"></td>
+            </tr>
+            </tbody>
+        </table>
+
+        <a class="game-button" href="javascript:history.back()">뒤로가기</a>
+    </div>
+</th:block>
+</body>
+</html>

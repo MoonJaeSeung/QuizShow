@@ -51,17 +51,16 @@ public class MainController {
         List<Word> words = gameService.findAllWord();
         model.addAttribute("words", words);
 
-        extracted(model, request);
-
         return "content/game1";
     }
-    // 인물 퀴즈
+    // 인물 퀴즈 게임
     @GetMapping("/game2")
     public String game2Menu(Model model,HttpServletRequest request) {
-        extracted(model, request);
+
         return "content/game2Menu";
     }
 
+    // 인물 퀴즈 게임 선택화면
     @GetMapping("game2/view")
     public String game2View(@RequestParam("sex")int sex, Model model) {
         int gender = sex;
@@ -69,70 +68,32 @@ public class MainController {
         return "content/game2";
     }
 
-
-
+    // 암기력 게임 선택화면
     @GetMapping("/news")
     public String news(Model model,HttpServletRequest request) {
-        extracted(model, request);
         return "content/game3Menu";
     }
 
+    //  암기력 게임
     @GetMapping("/newsDetail")
     public String newsDetail(@RequestParam("category") int category,Model model) throws IOException {
         List<NewsDto> news = newsService.getNews(category);
         model.addAttribute("news", news);
-        return "content/game3";
+        return "/content/game3";
     }
 
+    // 스피드 클릭 게임
     @GetMapping("/game4")
     public String game4(){
-        return "content/game4";
-    }
-
-    //쿠키를 통해 nick 가져오기
-    private static void extracted(Model model, HttpServletRequest request) {
-        Cookie[] cookies = request.getCookies();
-        //쿠키에서 jwt 토큰 가져오기
-        if(cookies != null){
-            for(Cookie cookie : cookies){
-                if(cookie.getName().equals("jwt")) {
-                    String jwtToken = cookie.getValue();
-
-                    //서명 검증과 파싱을 동시에 수행
-                    Jws<Claims> claimsJws = Jwts.parser()
-                            .setSigningKey("mySecretKey")
-                            .parseClaimsJws(jwtToken);
-
-                    Claims claims = claimsJws.getBody();
-
-                    String nick = claims.getSubject();
-                    model.addAttribute("nick", nick);
-                }// 임시회원 nick 가져오기
-                else if (cookie.getName().equals("nick")) {
-                    String nick = cookie.getValue();
-                    model.addAttribute("nick", nick);
-                }
-            }
-        }
-    }
-
-    //게임 기록
-    @PostMapping ("/record/add")
-    public String addRecord(@RequestBody Record record){
-        //기록 저장
-        recordService.save(record);
-
-        return "choice";
+        return "/content/game4";
     }
 
 
-
+    //기록화면으로 전환
     @GetMapping("/record")
     public String viewRecord(@RequestParam("value") int gameNum,Model model){
-        List<Record> records = recordService.find5ByGame(gameNum); //게임종류별 기록 top10 가져오기
-        model.addAttribute("records",records);
         model.addAttribute("gameNum", gameNum); // 게임 번호를 모델에 추가
-        return "record";
+        return "/record";
     }
 
 
@@ -154,5 +115,3 @@ public class MainController {
 
 }
 
-//와우
-//test2-2

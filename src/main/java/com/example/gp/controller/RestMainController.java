@@ -2,6 +2,7 @@ package com.example.gp.controller;
 
 import com.example.gp.entity.Celeb;
 import com.example.gp.entity.Record;
+import com.example.gp.security.JwtTokenProvider;
 import com.example.gp.service.GameService;
 import com.example.gp.service.RecordService;
 import com.fasterxml.jackson.databind.util.JSONPObject;
@@ -20,7 +21,9 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
 @RestController
@@ -34,45 +37,11 @@ public class RestMainController {
     @Autowired
     RecordService recordService;
 
-    //쿠키를 통해 nick 가져오기
-    @GetMapping(value = "/getNick")
-    public ResponseEntity<String> getNickForAxios(HttpServletRequest request) {
-        Cookie[] cookies = request.getCookies();
-        //쿠키에서 jwt 토큰 가져오기
-        if(cookies != null){
-            for(Cookie cookie : cookies){
-                if(cookie.getName().equals("jwt")) {
-                    String jwtToken = cookie.getValue();
-
-                    //서명 검증과 파싱을 동시에 수행
-                    Jws<Claims> claimsJws = Jwts.parser()
-                            .setSigningKey("mySecretKey")
-                            .parseClaimsJws(jwtToken);
-
-                    Claims claims = claimsJws.getBody();
-                    String nick = claims.getSubject();
-
-                    JSONObject responseJson = new JSONObject();
-                    responseJson.put("nick", nick);
-
-                    return ResponseEntity.ok(responseJson.toString());
-                }// 임시회원 nick 가져오기
-                else if (cookie.getName().equals("nick")) {
-                    String nick = cookie.getValue();
-
-                    // nick 값을 Json 형식으로 응답
-                    JSONObject responseJson = new JSONObject();
-                    responseJson.put("nick", nick);
-
-                    return ResponseEntity.ok(responseJson.toString());
-                }
-            }
-        }
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
-    }
+    @Autowired
+    JwtTokenProvider jwtTokenProvider;
 
 
-    @GetMapping("game2/celeb")
+    @GetMapping("/game2/celeb")
     public List<Celeb> getCelebsByGender(@RequestParam("sex") int sex) {
         List<Celeb> celebs = new ArrayList<>();
         celebs = gameService.findCeleb(sex);
@@ -81,10 +50,12 @@ public class RestMainController {
     }
 
     @GetMapping("/nick")
-    public String getNick(Model model,HttpServletRequest request){
+    public ResponseEntity<String> getNick(Model model,HttpServletRequest request){
         extracted(model, request);
         String nick = (String)model.getAttribute("nick");
-        return nick;
+
+
+        return ResponseEntity.ok(nick);
     }
 
     //쿠키를 통해 nick 가져오기
@@ -114,14 +85,25 @@ public class RestMainController {
         }
     }
 
-    //게임 기록
-    @PostMapping("/record/add")
-    public String addRecord(@RequestBody Record record){
+    //게임 기록 저장
+    @PostMapping("/records")
+    public ResponseEntity<String> addRecord(@RequestBody Record record){
         //기록 저장
         recordService.save(record);
+        log.info("기록 저장 완료: {}", record);
 
-        return "choice";
+        return ResponseEntity.status(HttpStatus.CREATED).body("기록 저장 완료");
     }
+
+    @GetMapping("/records")
+    public ResponseEntity<List<Record>> viewRecords(@RequestParam("value") int gameNum) {
+        List<Record> records = recordService.find5ByGame(gameNum); // Retrieve records based on gameNum
+
+
+        // Set the appropriate HTTP status code and return the records in the response body
+        return ResponseEntity.ok().body(records);
+    }
+
 
 }
 //1차시도

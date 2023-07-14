@@ -78,9 +78,9 @@
             async function getCookieValue() {
                 let nick;
                 try {
-                    const response = await axios.get('/getNick');
-                    nick = response.data.nick;
-                    console.log(nick);
+                    const response = await axios.get('/nick');
+                    nick = response.data;
+                    console.log(nick + " header");
                 } catch (error) {
                     console.error(error);
                 }

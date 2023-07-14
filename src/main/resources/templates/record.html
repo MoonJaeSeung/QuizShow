@@ -53,36 +53,96 @@
         }
 
         h3:hover{
-            font-size:6vw;
+            font-size:50px;
+        }
+
+        .active {
+            font-size: 50px; /* Set font size for active game name */
+            transition: all 0.3s ease;
         }
 
 
     </style>
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
+        $(document).ready(function() {
 
+
+            var gameNum = [[${gameNum}]]
+            console.log("gameNum : " + gameNum)
+            let elementById = document.getElementById(gameNum);
+            elementById.classList.add('active');
+
+            var url1 = "/records?value=" + gameNum;
+
+            $.ajax({
+                url: url1,
+                type: 'get',
+                success: function(data,status) {
+                    console.log(data);
+                    console.log(status);
+
+                    var tbody = $("#recordTableBody"); // Get the tbody element by its id
+
+                    // Clear any existing rows in the tbody
+                    tbody.empty();
+
+                    // Iterate over the received records and dynamically create the table rows
+                    $.each(data, function(i, record) {
+                        var rank = i+ 1;
+                        var row = "<tr><td>" + rank + "</td><td>" + record.nick + "</td><td>" + record.score + "</td></tr>";
+                        tbody.append(row);
+                    });
+
+                }
+            });
+
+            $(".atag").click(function(e) {
+
+                e.preventDefault();
+
+                // Remove the 'active' class from all games
+                $('.atag').removeClass('active');
+                // Add the 'active' class to the clicked game
+                $(this).addClass('active');
+
+                var href = $(this).attr('href');
+                $.ajax({
+                    url: href,
+                    type: 'get',
+                    success: function(data,status) {
+                        console.log(data);
+                        console.log(status);
+
+                        var tbody = $("#recordTableBody"); // Get the tbody element by its id
+
+                        // Clear any existing rows in the tbody
+                        tbody.empty();
+
+                        // Iterate over the received records and dynamically create the table rows
+                        $.each(data, function(i, record) {
+                            var rank = i+ 1;
+                            var row = "<tr><td>" + rank + "</td><td>" + record.nick + "</td><td>" + record.score + "</td></tr>";
+                            tbody.append(row);
+                        });
+
+
+                    }
+                });
+            });
+        });
     </script>
 </head>
 <body>
 <th:block layout:fragment="content">
     <div class="container">
-        <block th:switch="${gameNum}">
-            <th:block th:case="1">
-                <h3><a href="/record?value=2" class="atag">인물 퀴즈</a></h3>
-                <h2><a href="/record?value=1" class="atag" style="color:black; font-size:6vw;" >사자성어</a></h2>
-                <h3><a href="/record?value=4" class="atag">스피드 클릭</a></h3>
-            </th:block>
-            <th:block th:case="2">
-                <h2><a href="/record?value=2" class="atag" style="color:black; font-size:6vw;">인물 퀴즈</a></h2>
-                <h3><a href="/record?value=1" class="atag">사자성어</a></h3>
-                <h3><a href="/record?value=4" class="atag">스피드 클릭</a></h3>
-            </th:block>
-            <th:block th:case="4">
-                <h3><a href="/record?value=2" class="atag">인물 퀴즈</a></h3>
-                <h3><a href="/record?value=1" class="atag">사자성어</a></h3>
-                <h2><a href="/record?value=4" class="atag" style="color:black; font-size:6vw;">스피드 클릭</a></h2>
-            </th:block>
-        </block>
+            <block>
+                <h3><a href="/records?value=2" class="atag" id="2">인물 퀴즈</a></h3>
+                <h3><a href="/records?value=1" class="atag" id="1">사자성어</a></h3>
+                <h3><a href="/records?value=4" class="atag" id="4">스피드 클릭</a></h3>
+            </block>
+
         <table class="table">
             <thead class="thead">
             <tr>
@@ -91,17 +151,10 @@
                 <th>점수</th>
             </tr>
             </thead>
-            <tbody>
-            <!-- Spring Boot Controller로부터 받은 List<Record>를 활용하여 각 행을 동적으로 생성합니다. -->
-            <tr th:each="record, status : ${records}">
-                <td th:text="${status.count} + 위"></td>
-                <td th:text="${record.nick}"></td>
-                <td th:text="${record.score}"></td>
-            </tr>
-            </tbody>
+            <tbody id="recordTableBody"></tbody>
         </table>
 
-        <a class="game-button" href="javascript:history.back()">뒤로가기</a>
+        <a class="game-button" href="javascript:history.back()">다시 하기</a>
     </div>
 </th:block>
 </body>

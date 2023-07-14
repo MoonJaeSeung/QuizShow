@@ -31,20 +31,17 @@ function disconnect() {
     console.log("Disconnected");
 }
 
-var nick = null;
+var nick;
 
 window.onload = function() {
-    axios.get('/getNick')
+    axios.get('/nick')
         .then(response => {
-            nick = response.data.nick;
-            // nick 값을 사용하여 필요한 작업 수행
-
+            nick = response.data;  // directly get the nickname from response.data
+            console.log(nick);  // you can now use the `nick` variable as needed
         })
-        .catch(error =>{
+        .catch(error => {
             console.error(error);
         });
-
-
 };
 
 
