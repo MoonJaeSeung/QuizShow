@@ -75,8 +75,8 @@
             }
 
             .game-button {
-                width: 200px;
-                height: 200px;
+                width: 150px;
+                height: 150px;
                 border-radius: 50%;
                 background-color: #ece7ff;
                 color: #fff;
@@ -171,7 +171,7 @@
 
                     console.log(currentWord)
                     revealedPart = currentWord.fullWord.substring(0,2);
-                    wordContainer.innerText=revealedPart;
+                    wordContainer.innerText=revealedPart + " _ _";
                     guessInput.value= "";
                     guessInput.focus();
                 }

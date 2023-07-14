@@ -40,22 +40,13 @@
                     transition: all 0.3s ease-in-out;
                     outline: none;
                     box-shadow: 0 16px 28px 0 rgba(0, 0, 0, 0.1), 0 25px 50px 0 rgba(0, 0, 0, 0.1);
-
+                    margin-bottom: 20px;
                 }
 
                 password-input:focus {
                     box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.1), 0 1px 18px 0 rgba(0, 0, 0, 0.1);
                 }
 
-                .game-button {
-                    width: 200px;
-                    display: flex;
-                    height: 60px;
-                    font-family: 'Dongle', sans-serif;
-                    font-size: 40px;
-                    align-items: center;
-                    justify-content: center;
-                }
 
 
                 form {
@@ -69,15 +60,15 @@
 <th:block layout:fragment="content">
     <div class="container">
         <form role="form" action="/register" method="post" class="form-style" th:object="${memberFormDto}">
-            <div class="form-group">
+
                 <label for="nick"></label>
                 <input type="text" class="nickname-input" id="nick" name="nick" placeholder="닉네임을 입력하세요">
-                <span class="validation-error" th:if="${#fields.hasErrors('nick')}" th:errors="*{nick}"></span>
-            </div>
-            <div class="form-group">
+                <span class="validation-error" th:if="${#fields.hasErrors('nick')}" th:errors="*{nick}" style="font-family: 'Dongle', sans-serif; font-size: 30px;"></span>
+
                 <label for="password"></label>
                 <input type="password" class="password-input" id="password" name="password" placeholder="비밀번호를 입력하세요">
-            </div>
+                <span class="validation-error" th:if="${#fields.hasErrors('password')}" th:errors="*{password}" style="font-family: 'Dongle', sans-serif; font-size: 30px"></span>
+
             <div th:text="${errorMessage}" style="font-size: 30px; font-family: 'Dongle', sans-serif"></div>
             <button class="game-button" type="submit">회원가입</button>
             <a class="atag" href="/login3">기존 아이디로 로그인</a>

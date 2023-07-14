@@ -56,7 +56,7 @@ public class MemberController {
     public String loginByTemp(@RequestParam("nick") String nick, Model model, HttpServletResponse response){
 
         if(StringUtils.isBlank(nick)){
-            model.addAttribute("errors", Collections.singletonList("이름에 공백은 불가합니다"));
+            model.addAttribute("errors", Collections.singletonList("이름에 공백은 불가합니다."));
             return "member/nickForm";
         }
 
@@ -70,6 +70,12 @@ public class MemberController {
     //공식 회원으로 회원가입
     @PostMapping(value="/register")
     public String register(@Valid MemberFormDto memberFormDto, BindingResult bindingResult, Model model){
+
+        if(bindingResult.hasErrors()){
+            // 유효성 검사 실패시 처리
+            return "member/joinForm";
+        }
+
         try {
             String encodedPassword = PasswordEncoder.encode(memberFormDto.getPassword());
             Member member = Member.createMember(memberFormDto, encodedPassword);
@@ -84,7 +90,7 @@ public class MemberController {
 
 
     //공식 회원으로 로그인
-    @PostMapping(value="/join")
+    @PostMapping(value="/login2")
     public String loginBymember(@Valid MemberFormDto memberFormDto, BindingResult bindingResult, Model model, HttpServletResponse response){
 
         if(bindingResult.hasErrors()){
@@ -99,7 +105,6 @@ public class MemberController {
             Member member = memberService.login(nick, password);
 
             if(member ==null){
-                model.addAttribute("error", "존재하지 않는 유저입니다");
                 return "member/loginForm";
             }
 

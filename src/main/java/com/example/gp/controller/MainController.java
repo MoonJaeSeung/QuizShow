@@ -84,13 +84,13 @@ public class MainController {
     public String newsDetail(@RequestParam("category") int category,Model model) throws IOException {
         List<NewsDto> news = newsService.getNews(category);
         model.addAttribute("news", news);
-        return "/content/game3";
+        return "content/game3";
     }
 
     // 스피드 클릭 게임
     @GetMapping("/game4")
     public String game4(){
-        return "/content/game4";
+        return "content/game4";
     }
 
 
@@ -98,7 +98,7 @@ public class MainController {
     @GetMapping("/record")
     public String viewRecord(@RequestParam("value") int gameNum,Model model){
         model.addAttribute("gameNum", gameNum); // 게임 번호를 모델에 추가
-        return "/record";
+        return "record";
     }
 
 

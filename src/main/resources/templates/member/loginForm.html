@@ -8,9 +8,6 @@
     <style>
       @import url('https://fonts.googleapis.com/css2?family=Dongle:wght@300&display=swap');
 
-      body{
-
-      }
 
       .container{
         display: flex;
@@ -50,22 +47,12 @@
         box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.1), 0 1px 18px 0 rgba(0, 0, 0, 0.1);
       }
 
-
-      .game-button {
-        width: 300px;
-        display: flex;
-        height: 60px;
-        font-family: 'Dongle', sans-serif;
-        font-size: 40px;
-        align-items: center;
-        justify-content: center;
-      }
-
-
       form {
         display: grid;
         justify-items: center;
       }
+
+
 
 
     </style>
@@ -74,7 +61,7 @@
 
 <th:block layout:fragment="content">
   <div class="container">
-    <form role="form" action="/join" method="post" class="form-style" th:object="${memberFormDto}">
+    <form role="form" action="/login2" method="post" class="form-style" th:object="${memberFormDto}">
 
       <input type="text" class="nickname-input" id="nick" name="nick" placeholder="닉네임을 입력하세요">
       <span class="validation-error" th:if="${#fields.hasErrors('nick')}" th:errors="*{nick}" style="font-family: 'Dongle', sans-serif; font-size: 30px"></span>

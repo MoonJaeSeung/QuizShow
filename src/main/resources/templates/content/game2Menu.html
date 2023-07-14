@@ -11,10 +11,7 @@
       flex-direction: column;
     }
 
-    .game-button{
-      width:51vw;
-      height:197px
-    }
+
 
 
   </style>
@@ -22,8 +19,8 @@
 <th:block layout:fragment="content">
 
   <div class="container">
-    <a th:href="@{/game2/view?sex=1}" class="game-button">남자 연예인</a>
-    <a th:href="@{/game2/view?sex=2}" class="game-button">여자 연예인</a>
+    <a th:href="@{/game2/view?sex=1}" class="game-button">남자</a>
+    <a th:href="@{/game2/view?sex=2}" class="game-button">여자</a>
   </div>
 </th:block>
 </html>
