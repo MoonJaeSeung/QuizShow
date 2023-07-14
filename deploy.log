@@ -9748,3 +9748,48 @@ Caused by: java.lang.ClassNotFoundException: com.example.gp.dto.MemberFormDto
 2023-07-15 02:36:27.586 DEBUG 808 --- [clientInboundChannel-58] org.springframework.web.SimpLogging      : Processing CONNECT session=u3ubjhml
 2023-07-15 02:36:27.786 DEBUG 808 --- [clientInboundChannel-61] org.springframework.web.SimpLogging      : Processing SUBSCRIBE /topic/greetings id=sub-0 session=u3ubjhml
 2023-07-15 02:36:32.265 DEBUG 808 --- [MessageBroker-3] o.s.w.s.s.t.h.DefaultSockJsService       : Closed 1 sessions: [rtn4rxhc]
+2023-07-15 02:40:21.955 DEBUG 808 --- [http-nio-8083-exec-5] o.s.web.servlet.DispatcherServlet        : GET "/choice", parameters={}
+2023-07-15 02:40:21.956 DEBUG 808 --- [http-nio-8083-exec-5] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.example.gp.controller.MainController#choice()
+2023-07-15 02:40:21.962 DEBUG 808 --- [http-nio-8083-exec-5] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, application/signed-exchange;v=b3;q=0.7, */*;q=0.8]
+2023-07-15 02:40:22.009 DEBUG 808 --- [http-nio-8083-exec-5] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-07-15 02:40:22.012 DEBUG 808 --- [http-nio-8083-exec-3] s.w.s.h.LoggingWebSocketHandlerDecorator : WebSocketServerSockJsSession[id=u3ubjhml] closed with CloseStatus[code=1000, reason=null]
+2023-07-15 02:40:22.012 DEBUG 808 --- [http-nio-8083-exec-3] o.s.w.s.m.SubProtocolWebSocketHandler    : Clearing session u3ubjhml
+2023-07-15 02:40:22.015 DEBUG 808 --- [clientInboundChannel-63] org.springframework.web.SimpLogging      : Processing DISCONNECT session=u3ubjhml
+2023-07-15 02:40:22.016 DEBUG 808 --- [clientOutboundChannel-42] o.s.w.s.m.SubProtocolWebSocketHandler    : No session for GenericMessage [payload=byte[0], headers={simpMessageType=DISCONNECT_ACK, simpDisconnectMessage=GenericMessage [payload=byte[0], headers={simpMessageType=DISCONNECT, stompCommand=DISCONNECT, simpSessionAttributes={org.springframework.messaging.simp.SimpAttributes.COMPLETED=true}, simpSessionId=u3ubjhml}], simpSessionId=u3ubjhml}]
+2023-07-15 02:40:22.031 DEBUG 808 --- [http-nio-8083-exec-10] o.s.web.servlet.DispatcherServlet        : GET "/css/layout.css", parameters={}
+2023-07-15 02:40:22.031 DEBUG 808 --- [http-nio-8083-exec-10] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [static/], ServletContext [/]]
+2023-07-15 02:40:22.038 DEBUG 808 --- [http-nio-8083-exec-6] o.s.web.servlet.DispatcherServlet        : GET "/css/main.css", parameters={}
+2023-07-15 02:40:22.038 DEBUG 808 --- [http-nio-8083-exec-6] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [static/], ServletContext [/]]
+2023-07-15 02:40:22.042 DEBUG 808 --- [http-nio-8083-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/webjars/sockjs-client/sockjs.min.js", parameters={}
+2023-07-15 02:40:22.043 DEBUG 808 --- [http-nio-8083-exec-1] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+2023-07-15 02:40:22.044 DEBUG 808 --- [http-nio-8083-exec-9] o.s.web.servlet.DispatcherServlet        : GET "/webjars/stomp-websocket/stomp.min.js", parameters={}
+2023-07-15 02:40:22.045 DEBUG 808 --- [http-nio-8083-exec-9] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+2023-07-15 02:40:22.046 DEBUG 808 --- [http-nio-8083-exec-4] o.s.web.servlet.DispatcherServlet        : GET "/js/app.js", parameters={}
+2023-07-15 02:40:22.046 DEBUG 808 --- [http-nio-8083-exec-4] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [static/], ServletContext [/]]
+2023-07-15 02:40:22.062 DEBUG 808 --- [http-nio-8083-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-07-15 02:40:22.066 DEBUG 808 --- [http-nio-8083-exec-9] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-07-15 02:40:22.068 DEBUG 808 --- [http-nio-8083-exec-10] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-07-15 02:40:22.069 DEBUG 808 --- [http-nio-8083-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-07-15 02:40:22.068 DEBUG 808 --- [http-nio-8083-exec-6] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-07-15 02:40:22.135 DEBUG 808 --- [http-nio-8083-exec-7] o.s.web.servlet.DispatcherServlet        : GET "/nick", parameters={}
+2023-07-15 02:40:22.135 DEBUG 808 --- [http-nio-8083-exec-7] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.example.gp.controller.RestMainController#getNick(Model, HttpServletRequest)
+2023-07-15 02:40:22.140 DEBUG 808 --- [http-nio-8083-exec-7] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [text/plain, */*, text/plain, */*, application/json, application/*+json, application/json, application/*+json]
+2023-07-15 02:40:22.140 DEBUG 808 --- [http-nio-8083-exec-7] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing ["1"]
+2023-07-15 02:40:22.140 DEBUG 808 --- [http-nio-8083-exec-7] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-07-15 02:40:22.400 DEBUG 808 --- [http-nio-8083-exec-8] o.s.web.servlet.DispatcherServlet        : GET "/chat/info?t=1689356422398", parameters={masked}
+2023-07-15 02:40:22.400 DEBUG 808 --- [http-nio-8083-exec-8] o.s.w.s.s.s.WebSocketHandlerMapping      : Mapped to org.springframework.web.socket.sockjs.support.SockJsHttpRequestHandler@2759f991
+2023-07-15 02:40:22.400 DEBUG 808 --- [http-nio-8083-exec-8] o.s.w.s.s.t.h.DefaultSockJsService       : Processing transport request: GET http://localhost:8083/chat/info?t=1689356422398
+2023-07-15 02:40:22.400 DEBUG 808 --- [http-nio-8083-exec-8] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-07-15 02:40:22.411 DEBUG 808 --- [http-nio-8083-exec-2] o.s.web.servlet.DispatcherServlet        : GET "/nick", parameters={}
+2023-07-15 02:40:22.412 DEBUG 808 --- [http-nio-8083-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.example.gp.controller.RestMainController#getNick(Model, HttpServletRequest)
+2023-07-15 02:40:22.416 DEBUG 808 --- [http-nio-8083-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [text/plain, */*, text/plain, */*, application/json, application/*+json, application/json, application/*+json]
+2023-07-15 02:40:22.416 DEBUG 808 --- [http-nio-8083-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing ["1"]
+2023-07-15 02:40:22.417 DEBUG 808 --- [http-nio-8083-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-07-15 02:40:22.421 DEBUG 808 --- [http-nio-8083-exec-5] o.s.web.servlet.DispatcherServlet        : GET "/chat/822/t0d55gmi/websocket", parameters={}
+2023-07-15 02:40:22.421 DEBUG 808 --- [http-nio-8083-exec-5] o.s.w.s.s.s.WebSocketHandlerMapping      : Mapped to org.springframework.web.socket.sockjs.support.SockJsHttpRequestHandler@2759f991
+2023-07-15 02:40:22.422 DEBUG 808 --- [http-nio-8083-exec-5] o.s.w.s.s.t.h.DefaultSockJsService       : Processing transport request: GET http://localhost:8083/chat/822/t0d55gmi/websocket
+2023-07-15 02:40:22.424 DEBUG 808 --- [http-nio-8083-exec-5] o.s.web.servlet.DispatcherServlet        : Completed 101 SWITCHING_PROTOCOLS
+2023-07-15 02:40:22.427 DEBUG 808 --- [http-nio-8083-exec-5] s.w.s.h.LoggingWebSocketHandlerDecorator : New WebSocketServerSockJsSession[id=t0d55gmi]
+2023-07-15 02:40:22.438 DEBUG 808 --- [clientInboundChannel-66] org.springframework.web.SimpLogging      : Processing CONNECT session=t0d55gmi
+2023-07-15 02:40:22.444 DEBUG 808 --- [clientInboundChannel-69] org.springframework.web.SimpLogging      : Processing SUBSCRIBE /topic/greetings id=sub-0 session=t0d55gmi
+2023-07-15 02:40:27.260 DEBUG 808 --- [MessageBroker-4] o.s.w.s.s.t.h.DefaultSockJsService       : Closed 1 sessions: [u3ubjhml]
