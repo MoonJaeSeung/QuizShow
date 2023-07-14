@@ -1,7 +1,9 @@
 package com.example.gp.controller;
 
 import com.example.gp.entity.Celeb;
+import com.example.gp.entity.Record;
 import com.example.gp.service.GameService;
+import com.example.gp.service.RecordService;
 import com.fasterxml.jackson.databind.util.JSONPObject;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jws;
@@ -13,10 +15,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -31,6 +30,9 @@ public class RestMainController {
 
     @Autowired
     GameService gameService;
+
+    @Autowired
+    RecordService recordService;
 
     //쿠키를 통해 nick 가져오기
     @GetMapping(value = "/getNick")
@@ -110,6 +112,15 @@ public class RestMainController {
                 }
             }
         }
+    }
+
+    //게임 기록
+    @PostMapping("/record/add")
+    public String addRecord(@RequestBody Record record){
+        //기록 저장
+        recordService.save(record);
+
+        return "choice";
     }
 
 }
