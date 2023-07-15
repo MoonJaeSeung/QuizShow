@@ -8,29 +8,31 @@
     <style>
         .container {
             display: flex;
-            flex-wrap: wrap; /* 요소들이 한 줄에 다 들어가지 않을 경우 자동으로 다음 줄로 넘어감 */
+            flex-wrap: nowrap; /* 요소들이 한 줄에 다 들어가지 않을 경우 자동으로 다음 줄로 넘어감 */
             justify-content: flex-start; /* 요소들을 왼쪽으로 정렬 */
             align-items: flex-start;
             max-height: 200px;
-            overflow-x: hidden; /* 컨테이너의 내용이 넘칠 경우 스크롤 생성 */
+            overflow-x: hidden; /* 초기에는 가로 스크롤 숨김 */
             overflow-y: hidden; /* 세로 스크롤을 숨김 */
+            scroll-behavior: smooth; /* 부드러운 스크롤 동작을 위해 추가 */
+            flex-direction: row;
+        }
+
+        .container:hover {
+            overflow-x: scroll; /* 마우스를 갖다 대면 가로 스크롤 표시 */
         }
 
         a.game-button {
-            margin: 10px;
             width: 150px;
             height: 150px;
             border-radius: 50%;
             flex-shrink: 0;
         }
-
-
-
     </style>
 
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-
 </head>
+
 <th:block layout:fragment="content">
     <block>
         <div class="container">
@@ -38,11 +40,12 @@
             <a th:href="@{/game2}" class="game-button">인물 퀴즈</a>
             <a th:href="@{/news}" class="game-button">암기력</a>
             <a th:href="@{/game4}" class="game-button">스피드 클릭</a>
-
-
         </div>
-
         <th:block th:replace="chat::chatFragment"></th:block>
     </block>
+</th:block>
+
+<th:block layout:fragment="script">
+
 </th:block>
 </html>
