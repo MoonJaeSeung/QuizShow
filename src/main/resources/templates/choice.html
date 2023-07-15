@@ -12,7 +12,7 @@
             justify-content: flex-start; /* 요소들을 왼쪽으로 정렬 */
             align-items: flex-start;
             max-height: 200px;
-            overflow-x: scroll; /* 컨테이너의 내용이 넘칠 경우 스크롤 생성 */
+            overflow-x: hidden; /* 컨테이너의 내용이 넘칠 경우 스크롤 생성 */
             overflow-y: hidden; /* 세로 스크롤을 숨김 */
         }
 
@@ -23,6 +23,8 @@
             border-radius: 50%;
             flex-shrink: 0;
         }
+
+
 
     </style>
 
@@ -36,6 +38,8 @@
             <a th:href="@{/game2}" class="game-button">인물 퀴즈</a>
             <a th:href="@{/news}" class="game-button">암기력</a>
             <a th:href="@{/game4}" class="game-button">스피드 클릭</a>
+
+
         </div>
 
         <th:block th:replace="chat::chatFragment"></th:block>

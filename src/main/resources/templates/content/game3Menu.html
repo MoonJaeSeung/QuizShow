@@ -6,10 +6,25 @@
   <title>최신 뉴스</title>
   <style>
 
-    .container{
+    .container {
       display: flex;
-      flex-direction: column;
+      flex-wrap: wrap; /* 요소들이 한 줄에 다 들어가지 않을 경우 자동으로 다음 줄로 넘어감 */
+      justify-content: flex-start; /* 요소들을 왼쪽으로 정렬 */
+      align-items: flex-start;
+      max-height: 200px;
+      overflow-x: scroll; /* 컨테이너의 내용이 넘칠 경우 스크롤 생성 */
+      overflow-y: hidden; /* 세로 스크롤을 숨김 */
     }
+
+    a.game-button {
+      margin: 10px;
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+
 
 
   </style>
