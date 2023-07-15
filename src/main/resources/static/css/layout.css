@@ -23,8 +23,8 @@ body {
     font-size: 40px;
     margin: 10px;
     padding: 10px 20px;
-    background: linear-gradient(90deg, #dcd5ff, #d1c8ff);
-    color: #ffffff;
+    background: linear-gradient(90deg, #ffffff, #ffffff);
+    color: #000000;
     border: none;
     cursor: pointer;
     text-decoration: none;
@@ -35,8 +35,8 @@ body {
 }
 
 .game-button:hover {
-    background: linear-gradient(90deg, #d1c8ff, #dcd5ff);
-    transform: scale(1.05);
+    background: linear-gradient(90deg, #eae8ff, #dcd5ff);
+    transform: scale(1.15);
     box-shadow: 0 15px 30px rgba(0,0,0,0.2);
 }
 

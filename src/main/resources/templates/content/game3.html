@@ -68,7 +68,7 @@
         }
 
         .modal-content {
-            height: 411px;
+            height: 432px;
             font-family: 'Dongle', sans-serif;
             font-size: 40px;
             background-color: #fff;
@@ -112,21 +112,8 @@
             border: 2px solid #555;
         }
 
-        #submitButton {
-            /* Button 디자인 */
-            background-color: #c5baff;
-            color: white;
-            padding: 12px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: 0.5s;
-            height: 85px;
-        }
 
-        #submitButton:hover {
-            background-color: #b1a2ff;
-        }
+
 
         .timer {
             font-family: 'Dongle', sans-serif;
@@ -149,7 +136,7 @@
         #refresh{
             display: flex;
             justify-content: center;
-            width: 300px;
+
         }
 
         @keyframes shake {
@@ -171,6 +158,10 @@
             animation: shake 5s;
         }
 
+        .block{
+            display: flex;
+            justify-content: center;
+        }
 
 
     </style>
@@ -192,20 +183,24 @@
     <!-- 모달 창을 정의합니다. -->
     <div id="myModal" class="modal">
         <div class="modal-content">
-            <!-- 모달 내용을 추가합니다. -->
+
             <h3>퀴즈</h3>
             <p><span id="newsTitle"></span></p>
             <input id="gameInput" class="game-input" type="text" placeholder="빈칸을 채워주세요">
-            <block style="display: flex; justify-content: center">
-            <button id="submitButton">제출</button>
+
+            <block class="block">
+            <button id="submitButton" class="game-button">제출</button>
             </block>
+
         </div>
     </div>
+
+    <block class="block">
+    <button onclick="refreshPage()" class="game-button" id="refresh" hidden="hidden" style="margin-bottom: 20px">다시 하기</button>
+    </block>
+
     <div class="desc">시선을 기사 제목에 집중하세요! <br>기사 제목 빈칸을 채워 넣는 미션에 도전해 보세요.<br> <span style="font-size: 30px">실시간 뉴스</span></div>
-    <div style="display: flex; justify-content: center">
-    <button onclick="refreshPage()" class="game-button" id="refresh" hidden="hidden" style="margin-bottom: 20px">다시
-        하기
-    </button>
+    <div class="block">
     </div>
     <div class="container">
 
@@ -228,7 +223,7 @@
         <script>
 
             var timerInterval;
-            var timeRemaining = 30; // 남은 시간 (초)
+            var timeRemaining = 6; // 남은 시간 (초)
 
 
 

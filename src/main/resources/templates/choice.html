@@ -8,18 +8,18 @@
     <style>
         .container {
             display: flex;
-            flex-wrap: nowrap; /* 요소들이 한 줄에 다 들어가지 않을 경우 자동으로 다음 줄로 넘어감 */
-            justify-content: flex-start; /* 요소들을 왼쪽으로 정렬 */
+            flex-wrap: nowrap;
+            justify-content: flex-start;
             align-items: flex-start;
             max-height: 200px;
-            overflow-x: hidden; /* 초기에는 가로 스크롤 숨김 */
-            overflow-y: hidden; /* 세로 스크롤을 숨김 */
-            scroll-behavior: smooth; /* 부드러운 스크롤 동작을 위해 추가 */
+            overflow-x: hidden;
+            overflow-y: hidden;
+            scroll-behavior: smooth;
             flex-direction: row;
         }
 
         .container:hover {
-            overflow-x: scroll; /* 마우스를 갖다 대면 가로 스크롤 표시 */
+            overflow-x: scroll;
         }
 
         a.game-button {
@@ -27,7 +27,21 @@
             height: 150px;
             border-radius: 50%;
             flex-shrink: 0;
+            background: linear-gradient(90deg, #ffffff, #ffffff);
+            color: #000000;
+            border: none;
+            cursor: pointer;
+            text-decoration: none;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.5s ease-in-out;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
+
+
+
+
     </style>
 
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
@@ -46,6 +60,20 @@
 </th:block>
 
 <th:block layout:fragment="script">
+    <script>
+        function getRandomColor() {
+            var letters = '0123456789ABCDEF';
+            var color = '#';
+            for (var i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
+        }
+
+
+    </script>
+
+
 
 </th:block>
 </html>
