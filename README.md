@@ -121,6 +121,9 @@
 
 &nbsp;&nbsp;[로그 설정 파일 수정 & 저장 후 재시작하면 이전 파일로 돌아가는 경우](https://iwin.tistory.com/138)
 
+&nbsp;&nbsp;[인스턴스 CPU 사용률 과부하시 대처방안](https://iwin.tistory.com/142)
+
+
 
 ---
 
