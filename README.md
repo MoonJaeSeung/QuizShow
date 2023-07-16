@@ -138,6 +138,9 @@
 &nbsp;&nbsp;[인스턴스 CPU 사용률 과부하시 대처방안](https://iwin.tistory.com/142)
 
 
+## 프로젝트 회고
+
+&nbsp;&nbsp[프로젝트 회고](https://www.notion.so/30-3-Review-6b72d381c2c849d483d51959b15b90d8)
 
 ---
 
