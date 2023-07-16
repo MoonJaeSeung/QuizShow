@@ -82,7 +82,7 @@
     
 - **DevOps (AWS , docker, CI/CD)**
     
-   
+  [AWS 철통 보안 장치 만들기 for 해킹 방지](https://iwin.tistory.com/125)
     
   [EC2 생성 & 탄력적 IP 연결](https://iwin.tistory.com/102)
     
