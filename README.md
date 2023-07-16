@@ -4,6 +4,9 @@
 
 [프로젝트 구현](https://www.notion.so/30-V1-aac81e2f51d7459a896276e2f528b225?pvs=21)
 
+[프로젝트 회고](https://www.notion.so/30-3-Review-6b72d381c2c849d483d51959b15b90d8)
+
+
 사이트 체험 링크 : http://30quiz.com/
 <br><br><br>
 
@@ -41,6 +44,17 @@
 ![image](https://github.com/MoonJaeSeung/QuizShow/assets/108584477/4bfc88a6-eb5f-4556-9b0e-03b310b684af)
 
 
+![image](https://github.com/MoonJaeSeung/QuizShow/assets/108584477/b66558c3-45b3-483b-b3c7-1d3ae803a551)
+
+![image](https://github.com/MoonJaeSeung/QuizShow/assets/108584477/fc59a3c5-1816-475b-ace8-ab6090df4d2f)
+
+![우우!](https://github.com/MoonJaeSeung/QuizShow/assets/108584477/6ac1f5f9-9b0c-479a-b83b-e6d7354a92a0)
+
+![채팅ㄴㅁ](https://github.com/MoonJaeSeung/QuizShow/assets/108584477/9ac94b6b-6083-4799-b994-877f5fd4e1a7)
+<br>
+
+
+![image](https://github.com/MoonJaeSeung/QuizShow/assets/108584477/6d29d741-a6cd-4000-948c-8c303b65da39)
 
 
 
