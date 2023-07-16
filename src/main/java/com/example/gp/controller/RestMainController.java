@@ -68,8 +68,8 @@ public class RestMainController {
     }
 
     @GetMapping("/nick")
-    public ResponseEntity<String> getNick(Model model,HttpServletRequest request){
-        extracted(model, request);
+    public ResponseEntity<String> getNick(Model model,HttpServletRequest request, JwtTokenProvider jwtTokenProvider){
+        extracted(model, request, jwtTokenProvider);
         String nick = (String)model.getAttribute("nick");
 
 
@@ -77,24 +77,29 @@ public class RestMainController {
     }
 
     //쿠키를 통해 nick 가져오기
-    private static void extracted(Model model, HttpServletRequest request) {
+    private static void extracted(Model model, HttpServletRequest request, JwtTokenProvider jwtTokenProvider) {
         Cookie[] cookies = request.getCookies();
-        //쿠키에서 jwt 토큰 가져오기
-        if(cookies != null){
-            for(Cookie cookie : cookies){
-                if(cookie.getName().equals("jwt")) {
+        // 쿠키에서 jwt 토큰 가져오기
+        if (cookies != null) {
+            for (Cookie cookie : cookies) {
+                if (cookie.getName().equals("jwt")) {
                     String jwtToken = cookie.getValue();
 
-                    //서명 검증과 파싱을 동시에 수행
-                    Jws<Claims> claimsJws = Jwts.parser()
-                            .setSigningKey("mySecretKey")
-                            .parseClaimsJws(jwtToken);
+                    // 토큰 유효성 검증
+                    if (jwtTokenProvider.validateToken(jwtToken)) {
+                        // 서명 검증과 파싱을 동시에 수행
+                        Jws<Claims> claimsJws = Jwts.parser()
+                                .setSigningKey("mySecretKey")
+                                .parseClaimsJws(jwtToken);
 
-                    Claims claims = claimsJws.getBody();
+                        Claims claims = claimsJws.getBody();
 
-                    String nick = claims.getSubject();
-                    model.addAttribute("nick", nick);
-                }// 임시회원 nick 가져오기
+                        String nick = claims.getSubject();
+                        model.addAttribute("nick", nick);
+                    } else {
+                        // Invalid token, handle accordingly
+                    }
+                } // 임시회원 nick 가져오기
                 else if (cookie.getName().equals("nick")) {
                     String nick = cookie.getValue();
                     model.addAttribute("nick", nick);
@@ -102,6 +107,7 @@ public class RestMainController {
             }
         }
     }
+
 
     //게임 기록 저장
     @PostMapping("/records")
