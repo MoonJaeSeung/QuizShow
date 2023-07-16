@@ -47,6 +47,7 @@ public class MainController {
     //사자성어 게임
     @GetMapping("/game1")
     public String gameView1(){
+        log.info("game1Click");  //게임 인기도 조사를 위해 로그 수집
         return "content/game1";
     }
 
@@ -62,6 +63,7 @@ public class MainController {
     // 인물 퀴즈 게임
     @GetMapping("/game2")
     public String game2Menu() {
+        log.info("game2Click");
         return "content/game2Menu";
     }
 
@@ -82,6 +84,7 @@ public class MainController {
     //  암기력 게임
     @GetMapping("/newsDetail")
     public String newsDetail(@RequestParam("category") int category,Model model) throws IOException {
+        log.info("game3Click");
         List<NewsDto> news = newsService.getNews(category);
         model.addAttribute("news", news);
         return "content/game3";
@@ -90,6 +93,7 @@ public class MainController {
     // 스피드 클릭 게임
     @GetMapping("/game4")
     public String game4(){
+        log.info("game4Click");
         return "content/game4";
     }
 
