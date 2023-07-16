@@ -71,7 +71,7 @@
       <span class="validation-error" th:if="${#fields.hasErrors('nick')}" th:errors="*{nick}" style="font-family: 'Dongle', sans-serif; font-size: 30px"></span>
 
       <input type="password" class="password-input" id="password" name="password" placeholder="비밀번호를 입력하세요"><br>
-      <div th:text="${errorMessage}" style="font-size: 30px; font-family: 'Dongle', sans-serif"></div>
+      <span class="validation-error" th:if="${#fields.hasErrors('password')}" th:errors="*{password}" style="font-family: 'Dongle', sans-serif; font-size: 30px"></span>
 
       <button class="game-button" type="submit">시작</button>
     </form>

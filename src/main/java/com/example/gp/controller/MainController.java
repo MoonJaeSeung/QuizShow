@@ -38,7 +38,7 @@ public class MainController {
     NewsService newsService;
 
 
-    //게임 선택
+    //게임 선택 화면
     @GetMapping("/choice")
     public String choice(){
         return "choice";
@@ -51,15 +51,6 @@ public class MainController {
         return "content/game1";
     }
 
-//    //사자성어 게임
-//    @GetMapping("/game1")
-//    public String gameView1(Model model, HttpServletRequest request){
-//        //사자성어 문제 가져오기
-//        List<Word> words = gameService.findAllWord();
-//        model.addAttribute("words", words);
-//
-//        return "content/game1";
-//    }
     // 인물 퀴즈 게임
     @GetMapping("/game2")
     public String game2Menu() {

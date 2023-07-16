@@ -36,6 +36,7 @@ public class MemberController {
         model.addAttribute("memberFormDto", new MemberFormDto());
         return "member/nickForm";
     }
+
     //회원가입 화면
     @GetMapping(value="/join")
     public String joinMember(MemberFormDto memberFormDto,Model model){
