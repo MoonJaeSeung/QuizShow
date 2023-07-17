@@ -22,24 +22,6 @@
             overflow-x: scroll;
         }
 
-        a.game-button {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            flex-shrink: 0;
-            background: linear-gradient(90deg, #ffffff, #ffffff);
-            color: #000000;
-            border: none;
-            cursor: pointer;
-            text-decoration: none;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-            transition: all 0.5s ease-in-out;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-
 
 
     </style>
@@ -59,21 +41,5 @@
     </block>
 </th:block>
 
-<th:block layout:fragment="script">
-    <script>
-        function getRandomColor() {
-            var letters = '0123456789ABCDEF';
-            var color = '#';
-            for (var i = 0; i < 6; i++) {
-                color += letters[Math.floor(Math.random() * 16)];
-            }
-            return color;
-        }
 
-
-    </script>
-
-
-
-</th:block>
 </html>

@@ -23,7 +23,7 @@ body {
     font-size: 40px;
     margin: 10px;
     padding: 10px 20px;
-    background: linear-gradient(90deg, #ffffff, #ffffff);
+    /*background: linear-gradient(90deg, #ffffff, #ffffff);*/
     color: #000000;
     border: none;
     cursor: pointer;
@@ -45,3 +45,4 @@ a.atag{
     color: #c5baff;
     padding:10px;
 }
+
