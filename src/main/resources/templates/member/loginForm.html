@@ -58,6 +58,11 @@
         border-radius: 50%;
       }
 
+      .error-message{
+        font-family: 'Dongle', sans-serif;
+        font-size: 30px;
+      }
+
 
     </style>
   </th:block>
@@ -72,7 +77,7 @@
 
       <input type="password" class="password-input" id="password" name="password" placeholder="비밀번호를 입력하세요"><br>
       <span class="validation-error" th:if="${#fields.hasErrors('password')}" th:errors="*{password}" style="font-family: 'Dongle', sans-serif; font-size: 30px"></span>
-
+      <div class="error-message" th:if="${errorMessage}" th:text="${errorMessage}">에러 메시지 </div>
       <button class="game-button" type="submit">시작</button>
     </form>
     <a class="atag" href="/" >임시회원으로 이용</a>
