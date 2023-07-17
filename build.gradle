@@ -36,6 +36,8 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-validation'
 //    implementation 'org.springframework.cloud:spring-cloud-starter-aws:2.2.1.RELEASE'
 
+    //h2
+    runtimeOnly 'com.h2database:h2'
 
     // Querydsl dependencies
     implementation "com.querydsl:querydsl-jpa:${querydslVersion}"
@@ -69,6 +71,8 @@ dependencies {
     implementation 'org.webjars:bootstrap:3.3.7'
     implementation 'org.webjars:jquery:3.1.1-1'
     implementation 'org.json:json:20210307'
+
+
 
 }
 

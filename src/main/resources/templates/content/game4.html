@@ -12,8 +12,8 @@
 
         #game-area {
             position: relative;
-            width: 500px;
-            height: 500px;
+            width: 90vw;
+            height: 90vw;
             border: 1px solid black;
         }
 
@@ -21,18 +21,13 @@
             position: absolute;
             top: 0;
             left: 0;
-            width: 50px;
-            height: 50px;
+            width: 6vw;
+            height: 6vw;
             background-color: #ece7ff;
             border-radius: 50%;
             cursor: pointer;
         }
-        .timer{
-            font-family: 'Dongle', sans-serif;
-            text-align: center;
-            font-size: 70px;
-            margin-bottom: 10px;
-        }
+
 
         .score{
             font-family: 'Dongle', sans-serif;
@@ -46,24 +41,10 @@
             font-size: 100px;
         }
 
-        @keyframes shake {
-            0% {
-                transform: translateX(0);
-            }
-            10%, 30%, 50%, 70%, 90% {
-                transform: translateX(-10px);
-            }
-            20%, 40%, 60%, 80% {
-                transform: translateX(10px);
-            }
-            100% {
-                transform: translateX(0);
-            }
+        .container{
+            max-height: 1140px;
         }
 
-        .shake-animation {
-            animation: shake 5s;
-        }
 
     </style>
 </head>
@@ -138,8 +119,9 @@
 
             circle.style.backgroundColor = randomColor;  // Set the circle's background color to the random color
 
-            var maxX = gameArea.offsetWidth - circle.offsetWidth;
-            var maxY = gameArea.offsetHeight - circle.offsetHeight;
+            var maxX = gameArea.offsetWidth - circle.offsetWidth -40;
+            var maxY = gameArea.offsetHeight - circle.offsetHeight - 40;
+
 
             var randomX = Math.floor(Math.random() * maxX);
             var randomY = Math.floor(Math.random() * maxY);

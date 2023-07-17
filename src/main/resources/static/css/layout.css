@@ -2,9 +2,6 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    /*min-height: 500px;*/
-    display:flex;
-    flex-direction: column;
     align-items: center;
     padding-bottom : 200px;
 }
@@ -15,6 +12,7 @@ body {
 }
 
 .game-button {
+    background-color: white;
     width: 150px;
     height: 150px;
     border-radius: 50%;
@@ -23,7 +21,6 @@ body {
     font-size: 40px;
     margin: 10px;
     padding: 10px 20px;
-    /*background: linear-gradient(90deg, #ffffff, #ffffff);*/
     color: #000000;
     border: none;
     cursor: pointer;
@@ -44,5 +41,57 @@ a.atag{
     text-decoration: none;
     color: #c5baff;
     padding:10px;
+}
+
+#timer {
+    font-size: 70px;
+    margin-bottom: 10px;
+}
+
+
+#guessInput {
+    font-size: 40px;
+    border-radius: 3px;
+    border: 1px solid #ccc;
+    width: 200px;
+}
+
+@keyframes shake {
+    0% {
+        transform: translateX(0);
+    }
+    10%, 30%, 50%, 70%, 90% {
+        transform: translateX(-10px);
+    }
+    20%, 40%, 60%, 80% {
+        transform: translateX(10px);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+.shake-animation {
+    animation: shake 5s;
+}
+
+
+
+#toastContainer{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+    width:50px;
+    opacity: 1;
+
+}
+
+.toast{
+    border-color: #e5d3fb91;
+}
+#errorContainer{
+    font-size:40px;
 }
 
