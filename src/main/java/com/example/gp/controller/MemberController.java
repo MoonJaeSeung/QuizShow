@@ -61,6 +61,8 @@ public class MemberController {
             return "member/nickForm";
         }
 
+        nick = nick.replaceAll("\\s+", "");
+
         Cookie nickCookie = new Cookie("nick", nick);
         nickCookie.setMaxAge(3600);  //쿠키 유효시간 설정
         response.addCookie(nickCookie);

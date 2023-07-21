@@ -1,17 +1,28 @@
 var nick;
 
-window.onload = function() {
+
+// 버튼 클릭 이벤트 처리
+$("#connect").click(connect);
+$("#disconnect").click(disconnect);
+
+$(document).ready(function(){
+    $("#send").click(function(event) {
+        sendMessage(event);
+    });
+});
+
+// 페이지 로드 시 닉네임을 가져와 웹소켓 연결
+$(function () {
     axios.get('/nick')
         .then(response => {
             nick = response.data;
             console.log(nick);
-            // 웹소켓 연결 - 닉네임을 가져온 후에 연결 시작
             connect();
         })
         .catch(error => {
             console.error(error);
         });
-};
+});
 
 var stompClient = null;
 
@@ -29,7 +40,6 @@ function setConnected(connected) {
 function connect() {
     var socket = new SockJS('/chat');
     stompClient = Stomp.over(socket);
-    console.log(nick + "sex!!!!!");
     stompClient.connect({ "nick": nick }, function (frame) {  // Add the nickname to the connect header
         setConnected(true);
         stompClient.subscribe('/topic/greetings', function (greeting) {
@@ -65,8 +75,8 @@ function disconnect() {
 
 
 
-function sendMessage() {
-
+function sendMessage(event) {
+    event.preventDefault();
     // 현재 시간 가져오기
     const now = new Date();
     const hours = now.getHours().toString().padStart(2, '0');
@@ -84,28 +94,14 @@ function sendMessage() {
 
     stompClient.send("/app/hello", {}, JSON.stringify(messageData));
     input.value="";
+
 }
 
 function showGreeting(message) {
     $("#greetings").append("<div style='margin-top: 10px'>" + message + "</div>");
 }
 
-$(function () {
-    $("form").on('submit', function (e) {
-        e.preventDefault();
-    });
-    $("#connect").click(function () {
-        connect();
-    });
-    $("#disconnect").click(function () {
-        disconnect();
-    });
-    $("#send").click(function () {
-        sendMessage();
-    });
 
-
-});
 
 window.addEventListener("beforeunload", function(e) {
     disconnect();
