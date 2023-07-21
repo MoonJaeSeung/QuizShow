@@ -29,6 +29,7 @@ function setConnected(connected) {
 function connect() {
     var socket = new SockJS('/chat');
     stompClient = Stomp.over(socket);
+    console.log(nick + "sex!!!!!");
     stompClient.connect({ "nick": nick }, function (frame) {  // Add the nickname to the connect header
         setConnected(true);
         stompClient.subscribe('/topic/greetings', function (greeting) {
@@ -37,8 +38,10 @@ function connect() {
         stompClient.subscribe('/topic/userList', function (userList) {
             showUserList(JSON.parse(userList.body));
         });
+        stompClient.send("/app/requestUsers");  // 요청 메시지 전송
     });
 }
+
 
 function showUserList(userList) {
     let userListContainer = document.getElementById("userList");
@@ -49,6 +52,7 @@ function showUserList(userList) {
         userListContainer.appendChild(userElement);
     });
 }
+
 
 function disconnect() {
     if (stompClient !== null) {
@@ -100,10 +104,10 @@ $(function () {
         sendMessage();
     });
 
-    // 웹소켓 연결
-    connect();
+
 });
 
 window.addEventListener("beforeunload", function(e) {
     disconnect();
 });
+

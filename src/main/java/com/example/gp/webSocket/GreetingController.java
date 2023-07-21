@@ -55,6 +55,11 @@ public class GreetingController {
 		broadcastConnectedUserNicknames();
 	}
 
+	@MessageMapping("/requestUsers")
+	public void requestConnectedUsers() {
+		broadcastConnectedUserNicknames();
+	}
+
 	private void broadcastConnectedUserNicknames() {
 		List<String> nicknames = new ArrayList<>(userNicknames.values());
 		simpMessagingTemplate.convertAndSend("/topic/userList", nicknames);

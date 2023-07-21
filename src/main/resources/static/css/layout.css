@@ -95,3 +95,20 @@ a.atag{
     font-size:40px;
 }
 
+#userList {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+
+}
+
+#userList p {
+    margin: 5px;
+    padding: 8px 12px;
+    background-color: #d1ecf1;
+    color: #0c5460;
+    border-radius: 5px;
+}
+
