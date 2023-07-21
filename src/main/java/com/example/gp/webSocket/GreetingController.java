@@ -36,6 +36,11 @@ public class GreetingController {
 		return new Greeting(greetingMessage);
 	}
 
+	private void broadcastConnectedUserNicknames() {
+		List<String> nicknames = new ArrayList<>(userNicknames.values());
+		simpMessagingTemplate.convertAndSend("/topic/userList", nicknames);
+	}
+
 	@EventListener
 	public void handleWebSocketConnectListener(SessionConnectEvent event) {
 		StompHeaderAccessor headerAccessor = StompHeaderAccessor.wrap(event.getMessage());
@@ -60,8 +65,5 @@ public class GreetingController {
 		broadcastConnectedUserNicknames();
 	}
 
-	private void broadcastConnectedUserNicknames() {
-		List<String> nicknames = new ArrayList<>(userNicknames.values());
-		simpMessagingTemplate.convertAndSend("/topic/userList", nicknames);
-	}
+
 }
