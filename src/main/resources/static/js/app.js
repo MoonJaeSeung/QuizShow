@@ -1,3 +1,18 @@
+var nick;
+
+window.onload = function() {
+    axios.get('/nick')
+        .then(response => {
+            nick = response.data;
+            console.log(nick);
+            // 웹소켓 연결 - 닉네임을 가져온 후에 연결 시작
+            connect();
+        })
+        .catch(error => {
+            console.error(error);
+        });
+};
+
 var stompClient = null;
 
 function setConnected(connected) {
@@ -14,11 +29,24 @@ function setConnected(connected) {
 function connect() {
     var socket = new SockJS('/chat');
     stompClient = Stomp.over(socket);
-    stompClient.connect({}, function (frame) {
+    stompClient.connect({ "nick": nick }, function (frame) {  // Add the nickname to the connect header
         setConnected(true);
         stompClient.subscribe('/topic/greetings', function (greeting) {
             showGreeting(JSON.parse(greeting.body).content);
         });
+        stompClient.subscribe('/topic/userList', function (userList) {
+            showUserList(JSON.parse(userList.body));
+        });
+    });
+}
+
+function showUserList(userList) {
+    let userListContainer = document.getElementById("userList");
+    userListContainer.innerHTML = "";  // Clear the container
+    userList.forEach(user => {
+        let userElement = document.createElement("p");
+        userElement.textContent = user;
+        userListContainer.appendChild(userElement);
     });
 }
 
@@ -30,18 +58,7 @@ function disconnect() {
     console.log("Disconnected");
 }
 
-var nick;
 
-window.onload = function() {
-    axios.get('/nick')
-        .then(response => {
-            nick = response.data;  // directly get the nickname from response.data
-            console.log(nick);  // you can now use the `nick` variable as needed
-        })
-        .catch(error => {
-            console.error(error);
-        });
-};
 
 
 function sendMessage() {
@@ -87,7 +104,6 @@ $(function () {
     connect();
 });
 
-
-
-
-
+window.addEventListener("beforeunload", function(e) {
+    disconnect();
+});

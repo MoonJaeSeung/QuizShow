@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>WebSocket Test</title>
+</head>
+<body>
+<h1>실시간 접속자 리스트</h1>
+<div>
+    <label for="username">사용자 이름: </label>
+    <input type="text" id="username" name="username" th:value="${#httpServletRequest.remoteUser}" />
+    <button onclick="join()">입장</button>
+    <button onclick="leave()">퇴장</button>
+</div>
+<ul id="userList">
+    <!-- 실시간으로 업데이트될 접속자 리스트를 나열할 목록 -->
+</ul>
+
+<script src="/webjars/sockjs-client/sockjs.min.js"></script>
+<script src="/webjars/stomp-websocket/stomp.min.js"></script>
+<script>
+    var stompClient = null;
+
+    function connect() {
+        var socket = new SockJS('/chat');
+        stompClient = Stomp.over(socket);
+        stompClient.connect({}, function (frame) {
+            console.log('Connected: ' + frame);
+        });
+    }
+
+    function join() {
+        var username = document.getElementById("username").value;
+        stompClient.send("/app/join", {}, username);
+    }
+
+    function leave() {
+        var username = document.getElementById("username").value;
+        stompClient.send("/app/leave", {}, username);
+    }
+
+    stompClient.subscribe('/topic/activeUsers', function (users) {
+        showUsers(JSON.parse(users.body));
+    });
+
+    function showUsers(users) {
+        var userList = document.getElementById("userList");
+        userList.innerHTML = ""; // 기존 목록 비우기
+        users.forEach(function (user) {
+            var listItem = document.createElement("li");
+            listItem.innerText = user;
+            userList.appendChild(listItem);
+        });
+    }
+
+    connect();
+</script>
+</body>
+</html>

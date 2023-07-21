@@ -96,6 +96,11 @@ public class MainController {
         return "record";
     }
 
+    @GetMapping("/user")
+    public String match(){
+        return "fragments/user";
+    }
+
 
     @GetMapping("/addWord")
     public String addWord(){
