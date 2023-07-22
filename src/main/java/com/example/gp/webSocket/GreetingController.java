@@ -33,13 +33,12 @@ public class GreetingController {
 	private final Map<String, String> userNicknames = new HashMap<>();
 	private final Map<String, String> nickToSessionId = new HashMap<>(); //
 
-	@Autowired
-	public final MatchService matchService;
+
 
 	@Autowired
-	public GreetingController(SimpMessagingTemplate simpMessagingTemplate, MatchService matchService) {
+	public GreetingController(SimpMessagingTemplate simpMessagingTemplate) {
 		this.simpMessagingTemplate = simpMessagingTemplate;
-		this.matchService = matchService;
+
 	}
 
 	@MessageMapping("/hello")

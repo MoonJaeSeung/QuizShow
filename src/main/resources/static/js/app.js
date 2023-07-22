@@ -77,7 +77,7 @@ function showUserList(userList) {
     userListDiv.html('');
     userList.forEach(nick => {
         let nickElement = $('<button>').text(nick).addClass('user-button').click(function(event) {
-            showUserOptions(nick, event);
+            // showUserOptions(nick, event);
         });
         userListDiv.append(nickElement);
     });

@@ -102,9 +102,10 @@ public class MainController {
     }
 
 
+    //단어 추가하기
     @GetMapping("/addWord")
     public String addWord(){
-        return "/admin/addWord";
+        return "admin/addWord";
     }
 
     @PostMapping("/addWord")
@@ -112,7 +113,7 @@ public class MainController {
 
         Word word = new Word(fullWord);
         gameService.addWord(word);
-        return "/admin/addWord";
+        return "admin/addWord";
     }
 
 
