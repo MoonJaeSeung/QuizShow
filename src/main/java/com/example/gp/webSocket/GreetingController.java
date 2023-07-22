@@ -1,29 +1,45 @@
 package com.example.gp.webSocket;
 
+
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.event.EventListener;
+
 import org.springframework.messaging.handler.annotation.MessageMapping;
+import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.messaging.simp.SimpMessageHeaderAccessor;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.messaging.simp.stomp.StompHeaderAccessor;
 import org.springframework.stereotype.Controller;
+
 import org.springframework.web.socket.messaging.SessionConnectEvent;
 import org.springframework.web.socket.messaging.SessionDisconnectEvent;
 import org.springframework.web.util.HtmlUtils;
 
+
+import java.security.Principal;
 import java.util.*;
 
+
+
+
 @Controller
+@Slf4j
 public class GreetingController {
 
 	private final SimpMessagingTemplate simpMessagingTemplate;
 	private final Set<String> connectedUserIds = new HashSet<>();
 	private final Map<String, String> userNicknames = new HashMap<>();
+	private final Map<String, String> nickToSessionId = new HashMap<>(); //
 
 	@Autowired
-	public GreetingController(SimpMessagingTemplate simpMessagingTemplate) {
+	public final MatchService matchService;
+
+	@Autowired
+	public GreetingController(SimpMessagingTemplate simpMessagingTemplate, MatchService matchService) {
 		this.simpMessagingTemplate = simpMessagingTemplate;
+		this.matchService = matchService;
 	}
 
 	@MessageMapping("/hello")
@@ -48,6 +64,8 @@ public class GreetingController {
 		String nickname = (String) headerAccessor.getNativeHeader("nick").get(0);
 		connectedUserIds.add(sessionId);
 		userNicknames.put(sessionId, nickname);
+		nickToSessionId.put(nickname, sessionId); // 새로운 맵에 닉네임과 세션 ID 저장
+		log.info(nickname + " !!!!!!!!!");
 		broadcastConnectedUserNicknames();
 	}
 
@@ -56,13 +74,27 @@ public class GreetingController {
 		StompHeaderAccessor headerAccessor = StompHeaderAccessor.wrap(event.getMessage());
 		String sessionId = headerAccessor.getSessionId();
 		connectedUserIds.remove(sessionId);
-		userNicknames.remove(sessionId);
+		String nickname = userNicknames.remove(sessionId);
+		nickToSessionId.remove(nickname); // 연결이 끊어진 사용자의 닉네임과 세션 ID를 맵에서 제거
 		broadcastConnectedUserNicknames();
 	}
 
 	@MessageMapping("/requestUsers")
 	public void requestConnectedUsers() {
 		broadcastConnectedUserNicknames();
+	}
+
+
+
+
+	@MessageMapping("/requestSessionId")
+	public void handleRequestSessionId(StompHeaderAccessor headerAccessor) {
+		String sessionId = headerAccessor.getSessionId();
+
+		if (sessionId != null) {
+			log.info(sessionId + " haha");
+			simpMessagingTemplate.convertAndSendToUser(sessionId, "/queue/sessionId", sessionId);
+		}
 	}
 
 

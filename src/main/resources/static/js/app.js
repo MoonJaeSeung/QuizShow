@@ -1,6 +1,6 @@
 var nick;
 var stompClient = null;
-
+let sessionId;
 
 
 // 페이지 로드 시 닉네임을 가져와 웹소켓 연결
@@ -36,20 +36,40 @@ function setConnected(connected) {
     $("#greetings").html("");
 }
 
+function requestSessionId() {
+    stompClient.send("/app/requestSessionId");
+}
+
 function connect() {
     var socket = new SockJS('/chat');
     stompClient = Stomp.over(socket);
-    stompClient.connect({ "nick": nick }, function (frame) {  // Add the nickname to the connect header
+    stompClient.connect({ "nick": nick }, function (frame) {  // Modify this line
+        console.log(JSON.stringify(frame.headers, null, 2) + "---------");
         setConnected(true);
+        sessionId = frame.headers['session']; // 변경된 코드
+        console.log("Connected with session ID: ", sessionId); // 이 줄을 추가합니다.
+        requestSessionId();
         stompClient.subscribe('/topic/greetings', function (greeting) {
             showGreeting(JSON.parse(greeting.body).content);
         });
         stompClient.subscribe('/topic/userList', function (userList) {
             showUserList(JSON.parse(userList.body));
         });
-        stompClient.send("/app/requestUsers");  // 요청 메시지 전송
+        stompClient.subscribe('/queue/challenge', function (challenge) {
+            console.log("asfsafsa");
+            handleChallenge(JSON.parse(challenge.body).challenger);
+        });
+        stompClient.send("/app/requestUsers");
     });
 }
+
+
+
+function handleChallenge(challenger) {
+    alert(challenger + " has challenged you!");
+}
+
+
 
 
 function showUserList(userList) {
@@ -65,15 +85,12 @@ function showUserList(userList) {
 
 function showUserOptions(nick, event) {
     let userOptions = $('<div>').addClass('user-options');
-    let challengeButton = $('<button>').text('대결하기').addClass('option-button').click(function(event) {
+    let challengeButton = $('<button>').text('대결 신청').addClass('option-button').click(function(event) {
         challengeUser(nick);
         // event.stopPropagation();  // 이벤트 전파를 멈춤
     });
-    let infoButton = $('<button>').text('정보보기').addClass('option-button').click(function(event) {
-        showUserInfo(nick);
-        // event.stopPropagation();  // 이벤트 전파를 멈춤
-    });
-    userOptions.append(challengeButton, infoButton);
+
+    userOptions.append(challengeButton);
     $('body').append(userOptions);  // HTML 문서에 팝업 추가
 
 
@@ -102,18 +119,6 @@ function showUserOptions(nick, event) {
 }
 
 
-
-
-
-
-
-function challengeUser(nick) {
-    // 대결 로직 구현
-}
-
-function showUserInfo(nick) {
-    // 사용자 정보 보여주는 로직 구현
-}
 
 
 function disconnect() {
