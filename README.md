@@ -32,29 +32,37 @@
 
 
 
-최근 TV에서 유행하는 간단한 퀴즈 게임들을 즐길 수 있는 사이트입니다.
+30초동안 다양한 미션을 해결하며 다른 사람과 경쟁하는 사이트입니다.
 
-이 사이트에서는 이어말하기와 같은 간단한 게임을 플레이하면서 스트레스를 해소할 수 있습니다. 또한 순위 시스템을 도입하여 다른 사람들과 자신의 기록을 비교할 수 있습니다.<br><br>
+<br><br>
 
 
 ![image](https://github.com/MoonJaeSeung/QuizShow/assets/108584477/98db2d2f-44f1-49c5-9697-a765f021dbf5)
 
-
+<br><br>
 
 ![image](https://github.com/MoonJaeSeung/QuizShow/assets/108584477/4bfc88a6-eb5f-4556-9b0e-03b310b684af)
 
+<br><br>
 
 ![image](https://github.com/MoonJaeSeung/QuizShow/assets/108584477/b66558c3-45b3-483b-b3c7-1d3ae803a551)
 
+<br><br>
+
 ![image](https://github.com/MoonJaeSeung/QuizShow/assets/108584477/fc59a3c5-1816-475b-ace8-ab6090df4d2f)
+
+<br><br>
 
 ![우우!](https://github.com/MoonJaeSeung/QuizShow/assets/108584477/6ac1f5f9-9b0c-479a-b83b-e6d7354a92a0)
 
+
+
 ![채팅ㄴㅁ](https://github.com/MoonJaeSeung/QuizShow/assets/108584477/9ac94b6b-6083-4799-b994-877f5fd4e1a7)
-<br>
 
 
-![image](https://github.com/MoonJaeSeung/QuizShow/assets/108584477/6d29d741-a6cd-4000-948c-8c303b65da39)
+
+![image](https://github.com/MoonJaeSeung/QuizShow/assets/108584477/4b079a2e-bbc5-491e-a1f3-d0bcb466f514?size=800x800)
+
 
 
 
