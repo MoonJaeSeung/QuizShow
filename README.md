@@ -148,7 +148,7 @@
 
 ## 프로젝트 회고
 
-&nbsp;&nbsp[프로젝트 회고](https://www.notion.so/30-3-Review-6b72d381c2c849d483d51959b15b90d8)
+&nbsp;&nbsp;[프로젝트 회고](https://www.notion.so/30-3-Review-6b72d381c2c849d483d51959b15b90d8)
 
 ---
 
