@@ -89,7 +89,7 @@ public class RestMainController {
                     if (jwtTokenProvider.validateToken(jwtToken)) {
                         // 서명 검증과 파싱을 동시에 수행
                         Jws<Claims> claimsJws = Jwts.parser()
-                                .setSigningKey("mySecretKey")
+                                .setSigningKey(jwtTokenProvider.secretKey)
                                 .parseClaimsJws(jwtToken);
 
                         Claims claims = claimsJws.getBody();

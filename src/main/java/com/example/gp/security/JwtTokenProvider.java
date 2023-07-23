@@ -17,10 +17,10 @@ import java.util.Date;
 public class JwtTokenProvider {
 
     @Value("${jwt.secretKey}")
-    private String secretKey;
+    public String secretKey;
 
     @Value("${jwt.validitySeconds}")
-    private long validitySeconds;
+    public long validitySeconds; // 1시간
 
     public String createToken(String nick){
         Claims claims = Jwts.claims().setSubject(nick);

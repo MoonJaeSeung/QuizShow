@@ -96,13 +96,10 @@ public class MainController {
         return "record";
     }
 
-    @GetMapping("/user")
-    public String match(){
-        return "fragments/user";
-    }
 
 
-    //단어 추가하기
+
+    //단어 추가 화면
     @GetMapping("/addWord")
     public String addWord(){
         return "admin/addWord";
