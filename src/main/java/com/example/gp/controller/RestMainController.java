@@ -13,6 +13,7 @@ import io.jsonwebtoken.Jwts;
 import lombok.extern.slf4j.Slf4j;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
@@ -40,6 +41,12 @@ public class RestMainController {
 
     @Autowired
     JwtTokenProvider jwtTokenProvider;
+
+    @Value("${jwt.secretKey}")
+    public String secretKey;
+
+    @Value("${jwt.validitySeconds}")
+    public long validitySeconds;
 
 
 
@@ -69,7 +76,7 @@ public class RestMainController {
 
     @GetMapping("/nick")
     public ResponseEntity<String> getNick(Model model,HttpServletRequest request, JwtTokenProvider jwtTokenProvider){
-        extracted(model, request, jwtTokenProvider);
+        extracted(model, request, jwtTokenProvider, secretKey);
         String nick = (String)model.getAttribute("nick");
 
 
@@ -77,7 +84,7 @@ public class RestMainController {
     }
 
     //쿠키를 통해 nick 가져오기
-    private static void extracted(Model model, HttpServletRequest request, JwtTokenProvider jwtTokenProvider) {
+    private static void extracted(Model model, HttpServletRequest request, JwtTokenProvider jwtTokenProvider, String secretKey) {
         Cookie[] cookies = request.getCookies();
         // 쿠키에서 jwt 토큰 가져오기
         if (cookies != null) {
@@ -86,10 +93,10 @@ public class RestMainController {
                     String jwtToken = cookie.getValue();
 
                     // 토큰 유효성 검증
-                    if (jwtTokenProvider.validateToken(jwtToken)) {
+                    if (jwtTokenProvider.validateToken(jwtToken, secretKey)) {
                         // 서명 검증과 파싱을 동시에 수행
                         Jws<Claims> claimsJws = Jwts.parser()
-                                .setSigningKey(jwtTokenProvider.secretKey)
+                                .setSigningKey(secretKey)
                                 .parseClaimsJws(jwtToken);
 
                         Claims claims = claimsJws.getBody();

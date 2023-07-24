@@ -34,8 +34,6 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
 	@Override
 	public void registerStompEndpoints(StompEndpointRegistry registry) {
 		registry.addEndpoint("/chat")
-//				.setAllowedOrigins("80")  // Here you can set allowed origins for your app, "*" means all origins are allowed.
-//				.addInterceptors(new HttpHandshakeInterceptor(jwtTokenProvider))  // Adding the Interceptor
 				.withSockJS();
 	}
 

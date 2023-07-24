@@ -19,8 +19,12 @@ public class JwtTokenProvider {
     @Value("${jwt.secretKey}")
     public String secretKey;
 
+//    public final String secretKey = "mySecretKey";
+
     @Value("${jwt.validitySeconds}")
     public long validitySeconds; // 1시간
+//    public final long validitySeconds = 3600000;
+
 
     public String createToken(String nick){
         Claims claims = Jwts.claims().setSubject(nick);
@@ -35,7 +39,7 @@ public class JwtTokenProvider {
                 .compact();
     }
 
-    public boolean validateToken(String token){
+    public boolean validateToken(String token, String secretKey){
         try{
             Jwts.parser().setSigningKey(secretKey).parseClaimsJws(token);
             return true;

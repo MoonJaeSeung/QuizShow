@@ -23,9 +23,6 @@ public class MemberService {
     @Autowired
     private final MemberRepository memberRepository;
 
-    public List<Member> getAllMembers() {
-        return memberRepository.findAll();
-    }
 
     public void save(Member member) {
         Member findNick = memberRepository.findByNick(member.getNick());
