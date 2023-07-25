@@ -38,22 +38,6 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
 	}
 
 
-	@Override
-	public void configureClientInboundChannel(ChannelRegistration registration) {
-		registration.interceptors(new ChannelInterceptorAdapter() {
-			@Override
-			public Message<?> preSend(Message<?> message, MessageChannel channel) {
-				StompHeaderAccessor accessor = MessageHeaderAccessor.getAccessor(message, StompHeaderAccessor.class);
-				if (StompCommand.CONNECT.equals(accessor.getCommand())) {
-					String username = accessor.getNativeHeader("nick").get(0);  // "username"을 "nick"으로 변경
-					Principal user = () -> username;
-					accessor.setUser(user);
-				}
-				return message;
-			}
-		});
-	}
-
 
 
 }

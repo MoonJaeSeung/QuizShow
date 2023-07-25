@@ -9,6 +9,7 @@ services:
     ports:
       - 8080:8080
 
+
   nginx:
     container_name: nginx
     image: moonjaeseung/moon-nginx
